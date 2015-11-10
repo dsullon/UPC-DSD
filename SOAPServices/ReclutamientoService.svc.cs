@@ -53,6 +53,7 @@ namespace SOAPServices
             Rubro usuarioExistente = RubroDAO.Obtener(id);
             RubroDAO.Eliminar(usuarioExistente);
         }
+
         public List<Rubro> ListarRubros()
         {
             return RubroDAO.ListarTodos().ToList();
