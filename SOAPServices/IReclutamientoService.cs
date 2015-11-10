@@ -12,6 +12,8 @@ namespace SOAPServices
     [ServiceContract]
     public interface IReclutamientoService
     {
+        #region . Rubro .
+
         [OperationContract]
         Rubro CrearRubro(string descripcion);
         [OperationContract]
@@ -22,5 +24,22 @@ namespace SOAPServices
         void EliminarRubro(int id);
         [OperationContract]
         List<Rubro> ListarRubros();
+
+        #endregion
+
+        #region . Empresa .
+
+        [OperationContract]
+        Empresa CrearEmpresa(string email, string clave, string razonSocial, string numeroRuc, Rubro rubro);
+        [OperationContract]
+        Empresa ObtenerEmpresa(int id);
+        [OperationContract]
+        Empresa ModificarEmpresa(int id, string email, string clave, string razonSocial, string numeroRuc, Rubro rubro);
+        [OperationContract]
+        void EliminarEmpresa(int id);
+        [OperationContract]
+        List<Empresa> ListarEmpresas();
+
+        #endregion
     }
 }

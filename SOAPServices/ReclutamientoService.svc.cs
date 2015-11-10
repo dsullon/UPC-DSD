@@ -13,6 +13,8 @@ namespace SOAPServices
     // NOTA: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione ReclutamientoService.svc o ReclutamientoService.svc.cs en el Explorador de soluciones e inicie la depuración.
     public class ReclutamientoService : IReclutamientoService
     {
+        #region . Rubro . 
+
         private RubroDAO rubroDAO = null;
         private RubroDAO RubroDAO
         {
@@ -58,5 +60,65 @@ namespace SOAPServices
         {
             return RubroDAO.ListarTodos().ToList();
         }
+
+        #endregion
+
+        #region . Empresa .
+
+        private EmpresaDAO empresaDAO = null;
+        private EmpresaDAO EmpresaDAO
+        {
+            get
+            {
+                if (empresaDAO == null)
+                    empresaDAO = new EmpresaDAO();
+                return empresaDAO;
+            }
+        }
+
+        public Empresa CrearEmpresa(string email, string clave, string razonSocial, string numeroRuc, Rubro rubro)
+        {
+            Empresa usuarioCrear = new Empresa()
+            {
+                EmailContacto = email,
+                Clave = clave,
+                RazonSocial = razonSocial,
+                NumeroRuc = numeroRuc,
+                Rubro = rubro
+            };
+            return EmpresaDAO.Crear(usuarioCrear);
+        }
+
+        public Empresa ObtenerEmpresa(int id)
+        {
+            return EmpresaDAO.Obtener(id);
+        }
+
+        public Empresa ModificarEmpresa(int id, string email, string clave, string razonSocial, string numeroRuc, Rubro rubro)
+        {
+            Empresa usuarioModificar = new Empresa()
+            {
+                Id = id,
+                EmailContacto = email,
+                Clave = clave,
+                RazonSocial = razonSocial,
+                NumeroRuc = numeroRuc,
+                Rubro = rubro
+            };
+            return EmpresaDAO.Modificar(usuarioModificar);
+        }
+
+        public void EliminarEmpresa(int id)
+        {
+            Empresa usuarioExistente = EmpresaDAO.Obtener(id);
+            EmpresaDAO.Eliminar(usuarioExistente);
+        }
+
+        public List<Empresa> ListarEmpresas()
+        {
+            return EmpresaDAO.ListarTodos().ToList();
+        }
+
+        #endregion
     }
 }

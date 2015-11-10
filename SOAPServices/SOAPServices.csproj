@@ -81,6 +81,7 @@
     <Compile Include="IReclutamientoService.cs" />
     <Compile Include="Persistencia\BaseDAO.cs" />
     <Compile Include="Persistencia\ConexionUtil.cs" />
+    <Compile Include="Persistencia\EmpresaDAO.cs" />
     <Compile Include="Persistencia\NHibernateHelper.cs" />
     <Compile Include="Persistencia\RubroDAO.cs" />
     <Compile Include="ReclutamientoService.svc.cs">
