@@ -45,8 +45,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="MySql.Data, Version=6.1.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DLL\MySql.Data.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>ReferenciaExterna\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate">
       <HintPath>..\..\DLL\NHibernate.dll</HintPath>
@@ -90,6 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ReferenciaExterna\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Web.Debug.config">
