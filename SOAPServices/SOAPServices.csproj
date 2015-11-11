@@ -51,6 +51,7 @@
     <Reference Include="NHibernate">
       <HintPath>..\..\DLL\NHibernate.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -71,13 +72,14 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Dominio\Rubro.hbm.xml" />
-    <Content Include="Dominio\Empresa.hbm.xml" />
+    <EmbeddedResource Include="Dominio\Empresa.hbm.xml" />
     <Content Include="ReclutamientoService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dominio\Aptitud.cs" />
     <Compile Include="Dominio\Empresa.cs" />
+    <Compile Include="Dominio\OperationStatus.cs" />
     <Compile Include="Dominio\Requerimiento.cs" />
     <Compile Include="Dominio\Rubro.cs" />
     <Compile Include="IReclutamientoService.cs" />
@@ -96,7 +98,9 @@
     <Folder Include="ReferenciaExterna\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\PublishProfiles\reclutamientoupc - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\reclutamientoupc - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\reclutamientoupc - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\reclutamientoupc - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

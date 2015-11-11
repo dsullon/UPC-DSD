@@ -30,7 +30,7 @@ namespace SOAPServices
         #region . Empresa .
 
         [OperationContract]
-        Empresa CrearEmpresa(string email, string clave, string razonSocial, string numeroRuc, int idRubro);
+        OperationStatus CrearEmpresa(string email, string clave, string razonSocial, string numeroRuc, int idRubro);
         [OperationContract]
         Empresa ObtenerEmpresa(int id);
         [OperationContract]

@@ -3,7 +3,7 @@
 namespace SOAPServices.Dominio
 {
     [DataContract]
-    public class Empresa
+    public class Aptitud
     {
         [DataMember]
         public int Id { get; set; }
