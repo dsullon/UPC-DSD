@@ -71,12 +71,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Dominio\Rubro.hbm.xml" />
-    <Content Include="Dominio\Empresa.hbm.xml" />
-    <Content Include="Dominio\Postulante.hbm.xml" />
+    <EmbeddedResource Include="Dominio\Empresa.hbm.xml" />
+    <EmbeddedResource Include="Dominio\Postulante.hbm.xml" />
     <Content Include="ReclutamientoService.svc" />
-    <Content Include="ReferenciaExterna\Iesi.Collections.dll" />
-    <Content Include="ReferenciaExterna\MySql.Data.dll" />
-    <Content Include="ReferenciaExterna\NHibernate.dll" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -99,7 +96,11 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\PublishProfiles\reclutamientoupc - FTP %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\reclutamientoupc - FTP %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\reclutamientoupc - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\reclutamientoupc - Web Deploy %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\reclutamientoupc - Web Deploy %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\reclutamientoupc - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
