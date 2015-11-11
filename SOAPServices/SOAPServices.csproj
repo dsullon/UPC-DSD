@@ -72,18 +72,23 @@
   <ItemGroup>
     <EmbeddedResource Include="Dominio\Rubro.hbm.xml" />
     <Content Include="Dominio\Empresa.hbm.xml" />
+    <Content Include="Dominio\Postulante.hbm.xml" />
     <Content Include="ReclutamientoService.svc" />
+    <Content Include="ReferenciaExterna\Iesi.Collections.dll" />
     <Content Include="ReferenciaExterna\MySql.Data.dll" />
+    <Content Include="ReferenciaExterna\NHibernate.dll" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dominio\Empresa.cs" />
+    <Compile Include="Dominio\Postulante.cs" />
     <Compile Include="Dominio\Rubro.cs" />
     <Compile Include="IReclutamientoService.cs" />
     <Compile Include="Persistencia\BaseDAO.cs" />
     <Compile Include="Persistencia\ConexionUtil.cs" />
     <Compile Include="Persistencia\EmpresaDAO.cs" />
     <Compile Include="Persistencia\NHibernateHelper.cs" />
+    <Compile Include="Persistencia\PostulanteDAO.cs" />
     <Compile Include="Persistencia\RubroDAO.cs" />
     <Compile Include="ReclutamientoService.svc.cs">
       <DependentUpon>ReclutamientoService.svc</DependentUpon>
