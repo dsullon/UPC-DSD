@@ -234,10 +234,10 @@ namespace Reclutamiento.MVC.ReclutamientoWS {
         System.Threading.Tasks.Task<Reclutamiento.MVC.ReclutamientoWS.Rubro[]> ListarRubrosAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReclutamientoService/CrearEmpresa", ReplyAction="http://tempuri.org/IReclutamientoService/CrearEmpresaResponse")]
-        Reclutamiento.MVC.ReclutamientoWS.Empresa CrearEmpresa(string email, string clave, string razonSocial, string numeroRuc, Reclutamiento.MVC.ReclutamientoWS.Rubro rubro);
+        Reclutamiento.MVC.ReclutamientoWS.Empresa CrearEmpresa(string email, string clave, string razonSocial, string numeroRuc, int idRubro);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReclutamientoService/CrearEmpresa", ReplyAction="http://tempuri.org/IReclutamientoService/CrearEmpresaResponse")]
-        System.Threading.Tasks.Task<Reclutamiento.MVC.ReclutamientoWS.Empresa> CrearEmpresaAsync(string email, string clave, string razonSocial, string numeroRuc, Reclutamiento.MVC.ReclutamientoWS.Rubro rubro);
+        System.Threading.Tasks.Task<Reclutamiento.MVC.ReclutamientoWS.Empresa> CrearEmpresaAsync(string email, string clave, string razonSocial, string numeroRuc, int idRubro);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReclutamientoService/ObtenerEmpresa", ReplyAction="http://tempuri.org/IReclutamientoService/ObtenerEmpresaResponse")]
         Reclutamiento.MVC.ReclutamientoWS.Empresa ObtenerEmpresa(int id);
@@ -246,10 +246,10 @@ namespace Reclutamiento.MVC.ReclutamientoWS {
         System.Threading.Tasks.Task<Reclutamiento.MVC.ReclutamientoWS.Empresa> ObtenerEmpresaAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReclutamientoService/ModificarEmpresa", ReplyAction="http://tempuri.org/IReclutamientoService/ModificarEmpresaResponse")]
-        Reclutamiento.MVC.ReclutamientoWS.Empresa ModificarEmpresa(int id, string email, string clave, string razonSocial, string numeroRuc, Reclutamiento.MVC.ReclutamientoWS.Rubro rubro);
+        Reclutamiento.MVC.ReclutamientoWS.Empresa ModificarEmpresa(int id, string email, string clave, string razonSocial, string numeroRuc, int idRubro);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReclutamientoService/ModificarEmpresa", ReplyAction="http://tempuri.org/IReclutamientoService/ModificarEmpresaResponse")]
-        System.Threading.Tasks.Task<Reclutamiento.MVC.ReclutamientoWS.Empresa> ModificarEmpresaAsync(int id, string email, string clave, string razonSocial, string numeroRuc, Reclutamiento.MVC.ReclutamientoWS.Rubro rubro);
+        System.Threading.Tasks.Task<Reclutamiento.MVC.ReclutamientoWS.Empresa> ModificarEmpresaAsync(int id, string email, string clave, string razonSocial, string numeroRuc, int idRubro);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReclutamientoService/EliminarEmpresa", ReplyAction="http://tempuri.org/IReclutamientoService/EliminarEmpresaResponse")]
         void EliminarEmpresa(int id);
@@ -331,12 +331,12 @@ namespace Reclutamiento.MVC.ReclutamientoWS {
             return base.Channel.ListarRubrosAsync();
         }
         
-        public Reclutamiento.MVC.ReclutamientoWS.Empresa CrearEmpresa(string email, string clave, string razonSocial, string numeroRuc, Reclutamiento.MVC.ReclutamientoWS.Rubro rubro) {
-            return base.Channel.CrearEmpresa(email, clave, razonSocial, numeroRuc, rubro);
+        public Reclutamiento.MVC.ReclutamientoWS.Empresa CrearEmpresa(string email, string clave, string razonSocial, string numeroRuc, int idRubro) {
+            return base.Channel.CrearEmpresa(email, clave, razonSocial, numeroRuc, idRubro);
         }
         
-        public System.Threading.Tasks.Task<Reclutamiento.MVC.ReclutamientoWS.Empresa> CrearEmpresaAsync(string email, string clave, string razonSocial, string numeroRuc, Reclutamiento.MVC.ReclutamientoWS.Rubro rubro) {
-            return base.Channel.CrearEmpresaAsync(email, clave, razonSocial, numeroRuc, rubro);
+        public System.Threading.Tasks.Task<Reclutamiento.MVC.ReclutamientoWS.Empresa> CrearEmpresaAsync(string email, string clave, string razonSocial, string numeroRuc, int idRubro) {
+            return base.Channel.CrearEmpresaAsync(email, clave, razonSocial, numeroRuc, idRubro);
         }
         
         public Reclutamiento.MVC.ReclutamientoWS.Empresa ObtenerEmpresa(int id) {
@@ -347,12 +347,12 @@ namespace Reclutamiento.MVC.ReclutamientoWS {
             return base.Channel.ObtenerEmpresaAsync(id);
         }
         
-        public Reclutamiento.MVC.ReclutamientoWS.Empresa ModificarEmpresa(int id, string email, string clave, string razonSocial, string numeroRuc, Reclutamiento.MVC.ReclutamientoWS.Rubro rubro) {
-            return base.Channel.ModificarEmpresa(id, email, clave, razonSocial, numeroRuc, rubro);
+        public Reclutamiento.MVC.ReclutamientoWS.Empresa ModificarEmpresa(int id, string email, string clave, string razonSocial, string numeroRuc, int idRubro) {
+            return base.Channel.ModificarEmpresa(id, email, clave, razonSocial, numeroRuc, idRubro);
         }
         
-        public System.Threading.Tasks.Task<Reclutamiento.MVC.ReclutamientoWS.Empresa> ModificarEmpresaAsync(int id, string email, string clave, string razonSocial, string numeroRuc, Reclutamiento.MVC.ReclutamientoWS.Rubro rubro) {
-            return base.Channel.ModificarEmpresaAsync(id, email, clave, razonSocial, numeroRuc, rubro);
+        public System.Threading.Tasks.Task<Reclutamiento.MVC.ReclutamientoWS.Empresa> ModificarEmpresaAsync(int id, string email, string clave, string razonSocial, string numeroRuc, int idRubro) {
+            return base.Channel.ModificarEmpresaAsync(id, email, clave, razonSocial, numeroRuc, idRubro);
         }
         
         public void EliminarEmpresa(int id) {
