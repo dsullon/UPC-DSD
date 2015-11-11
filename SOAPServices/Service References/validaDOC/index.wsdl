@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:ValidaDOCwsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="urn:ValidaDOCwsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="urn:ValidaDOCwsdl">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+      <xsd:complexType name="dniDetails">
+        <xsd:all>
+          <xsd:element name="numruc" type="xsd:string" />
+          <xsd:element name="razoc" type="xsd:string" />
+          <xsd:element name="estado_cont" type="xsd:string" />
+          <xsd:element name="condi_dom" type="xsd:string" />
+          <xsd:element name="ubigeo" type="xsd:string" />
+          <xsd:element name="tipo_via" type="xsd:string" />
+          <xsd:element name="nom_via" type="xsd:string" />
+          <xsd:element name="cod_zona" type="xsd:string" />
+          <xsd:element name="tipo_zona" type="xsd:string" />
+          <xsd:element name="numero" type="xsd:string" />
+          <xsd:element name="interior" type="xsd:string" />
+          <xsd:element name="lote" type="xsd:string" />
+          <xsd:element name="departamento" type="xsd:string" />
+          <xsd:element name="manzana" type="xsd:string" />
+          <xsd:element name="kilometro" type="xsd:string" />
+          <xsd:element name="status" type="xsd:string" />
+          <xsd:element name="dni" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="rucDetails">
+        <xsd:all>
+          <xsd:element name="numruc" type="xsd:string" />
+          <xsd:element name="razoc" type="xsd:string" />
+          <xsd:element name="estado_cont" type="xsd:string" />
+          <xsd:element name="condi_dom" type="xsd:string" />
+          <xsd:element name="ubigeo" type="xsd:string" />
+          <xsd:element name="tipo_via" type="xsd:string" />
+          <xsd:element name="nom_via" type="xsd:string" />
+          <xsd:element name="cod_zona" type="xsd:string" />
+          <xsd:element name="tipo_zona" type="xsd:string" />
+          <xsd:element name="numero" type="xsd:string" />
+          <xsd:element name="interior" type="xsd:string" />
+          <xsd:element name="lote" type="xsd:string" />
+          <xsd:element name="departamento" type="xsd:string" />
+          <xsd:element name="manzana" type="xsd:string" />
+          <xsd:element name="kilometro" type="xsd:string" />
+          <xsd:element name="status" type="xsd:string" />
+          <xsd:element name="dni" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="validaDNIRequest">
+    <wsdl:part name="dni" type="xsd:string" />
+    <wsdl:part name="key" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="validaDNIResponse">
+    <wsdl:part name="return" type="tns:dniDetails" />
+  </wsdl:message>
+  <wsdl:message name="validaRUCRequest">
+    <wsdl:part name="dni" type="xsd:string" />
+    <wsdl:part name="key" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="validaRUCResponse">
+    <wsdl:part name="return" type="tns:rucDetails" />
+  </wsdl:message>
+  <wsdl:portType name="ValidaDOCwsdlPortType">
+    <wsdl:operation name="validaDNI">
+      <documentation>Retorna los datos de una persona si el DNI es valido</documentation>
+      <wsdl:input message="tns:validaDNIRequest" />
+      <wsdl:output message="tns:validaDNIResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="validaRUC">
+      <documentation>Retorna los datos de una empresa si el RUC es valido</documentation>
+      <wsdl:input message="tns:validaRUCRequest" />
+      <wsdl:output message="tns:validaRUCResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ValidaDOCwsdlBinding" type="tns:ValidaDOCwsdlPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="validaDNI">
+      <soap:operation soapAction="urn:ValidaDNIwsdl#ValidaDNI" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:ValidaDNIwsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:ValidaDNIwsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validaRUC">
+      <soap:operation soapAction="urn:ValidaRUCwsdl#ValidaRUC" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:ValidaRUCwsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:ValidaRUCwsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ValidaDOCwsdl">
+    <wsdl:port name="ValidaDOCwsdlPort" binding="tns:ValidaDOCwsdlBinding">
+      <soap:address location="http://ws.razonsocialperu.com/index.php" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

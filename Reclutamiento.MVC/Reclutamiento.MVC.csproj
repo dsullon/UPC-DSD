@@ -21,6 +21,12 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <ApplicationInsightsResourceId>/subscriptions/e40b5d47-ab34-4bb6-9469-428602541588/resourcegroups/Default-ApplicationInsights-CentralUS/providers/microsoft.insights/components/Reclutamiento.MVC</ApplicationInsightsResourceId>
+    <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>12.0</OldToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
