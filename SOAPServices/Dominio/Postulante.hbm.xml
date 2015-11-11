@@ -4,16 +4,16 @@
                    namespace="SOAPServices.Dominio"
                    default-lazy="false">
   <class name="Postulante" table="Postulante">
-    <id name="IdPostulante" access="property" column="idPostulante">
+    <id name="Id" access="property" column="idPostulante">
       <!--<generator class="increment" />-->
       <generator class="native" />
     </id>
-    <property name="Nombre" column="Nombre" />
-    <property name="apellidoPaterno" column="apellidoPaterno" />
-    <property name="apellidoMaterno" column="apellidoMaterno" />
-    <property name="fechaNacimiento" column="fechaNacimiento" />
-    <property name="email" column="email" />
-    <property name="clave" column="clave" />
+    <property name="Nombre" column="nombre" />
+    <property name="ApellidoPaterno" column="apellidoPaterno" />
+    <property name="ApellidoMaterno" column="apellidoMaterno" />
+    <property name="FechaNacimiento" column="fechaNacimiento" />
+    <property name="Email" column="email" />
+    <property name="Clave" column="clave" />
     
   </class>
 </hibernate-mapping>
