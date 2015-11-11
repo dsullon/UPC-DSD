@@ -4,14 +4,14 @@
                    namespace="SOAPServices.Dominio"
                    default-lazy="false">
   <class name="Empresa" table="Empresa">
-    <id name="Id" access="property" column="idEmpresa">
+    <id name="Id" access="property" column="idRubro">
       <!--<generator class="increment" />-->
       <generator class="native" />
     </id>
-    <property name="EmailContacto" column="emailContacto" />
-    <property name="Clave" column="clave" />
-    <property name="RazonSocial" column="razonSocial" />
-    <property name="NumeroRuc" column="numeroRuc" />
+    <property name="EmailContacto" column="descripcion" />
+    <property name="Clave" column="descripcion" />
+    <property name="RazonSocial" column="descripcion" />
+    <property name="NumeroRuc" column="descripcion" />
     <many-to-one name="Rubro" column="idRubro" />
   </class>
 </hibernate-mapping>

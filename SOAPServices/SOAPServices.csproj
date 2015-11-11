@@ -71,22 +71,20 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Dominio\Rubro.hbm.xml" />
-    <EmbeddedResource Include="Dominio\Empresa.hbm.xml" />
-    <EmbeddedResource Include="Dominio\Postulante.hbm.xml" />
+    <Content Include="Dominio\Empresa.hbm.xml" />
     <Content Include="ReclutamientoService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dominio\Aptitud.cs" />
     <Compile Include="Dominio\Empresa.cs" />
-    <Compile Include="Dominio\Postulante.cs" />
+    <Compile Include="Dominio\Requerimiento.cs" />
     <Compile Include="Dominio\Rubro.cs" />
     <Compile Include="IReclutamientoService.cs" />
     <Compile Include="Persistencia\BaseDAO.cs" />
     <Compile Include="Persistencia\ConexionUtil.cs" />
     <Compile Include="Persistencia\EmpresaDAO.cs" />
     <Compile Include="Persistencia\NHibernateHelper.cs" />
-    <Compile Include="Persistencia\PostulanteDAO.cs" />
     <Compile Include="Persistencia\RubroDAO.cs" />
     <Compile Include="ReclutamientoService.svc.cs">
       <DependentUpon>ReclutamientoService.svc</DependentUpon>
@@ -95,13 +93,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ReferenciaExterna\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\PublishProfiles\reclutamientoupc - FTP %282%29.pubxml" />
-    <None Include="Properties\PublishProfiles\reclutamientoupc - FTP %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\reclutamientoupc - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\reclutamientoupc - Web Deploy %282%29.pubxml" />
-    <None Include="Properties\PublishProfiles\reclutamientoupc - Web Deploy %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\reclutamientoupc - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

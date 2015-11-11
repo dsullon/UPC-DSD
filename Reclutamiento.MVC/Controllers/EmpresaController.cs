@@ -22,7 +22,7 @@ namespace Reclutamiento.MVC.Controllers
         [HttpPost]
         public ActionResult Registrar(Empresa empresa)
         {
-            proxy.CrearEmpresa(empresa.EmailContacto, empresa.Clave, empresa.RazonSocial, empresa.NumeroRuc, empresa.Rubro.Id);
+            proxy.CrearEmpresa(empresa.EmailContacto, empresa.Clave, empresa.RazonSocial, empresa.NumeroRuc, empresa.Rubro);
             return RedirectToAction("Index", "Home");
         }
 

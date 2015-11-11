@@ -75,14 +75,14 @@
         <xs:element minOccurs="0" name="clave" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="razonSocial" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="numeroRuc" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="idRubro" type="xs:int" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" minOccurs="0" name="rubro" nillable="true" type="q5:Rubro" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="CrearEmpresaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" minOccurs="0" name="CrearEmpresaResult" nillable="true" type="q5:Empresa" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" minOccurs="0" name="CrearEmpresaResult" nillable="true" type="q6:Empresa" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -96,7 +96,7 @@
   <xs:element name="ObtenerEmpresaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" minOccurs="0" name="ObtenerEmpresaResult" nillable="true" type="q6:Empresa" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" minOccurs="0" name="ObtenerEmpresaResult" nillable="true" type="q7:Empresa" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -108,14 +108,14 @@
         <xs:element minOccurs="0" name="clave" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="razonSocial" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="numeroRuc" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="idRubro" type="xs:int" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" minOccurs="0" name="rubro" nillable="true" type="q8:Rubro" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ModificarEmpresaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" minOccurs="0" name="ModificarEmpresaResult" nillable="true" type="q7:Empresa" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" minOccurs="0" name="ModificarEmpresaResult" nillable="true" type="q9:Empresa" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -139,7 +139,7 @@
   <xs:element name="ListarEmpresasResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" minOccurs="0" name="ListarEmpresasResult" nillable="true" type="q8:ArrayOfEmpresa" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" minOccurs="0" name="ListarEmpresasResult" nillable="true" type="q10:ArrayOfEmpresa" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
