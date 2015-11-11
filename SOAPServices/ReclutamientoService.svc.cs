@@ -76,15 +76,17 @@ namespace SOAPServices
             }
         }
 
-        public Empresa CrearEmpresa(string email, string clave, string razonSocial, string numeroRuc, Rubro rubro)
+        public Empresa CrearEmpresa(string email, string clave, string razonSocial, string numeroRuc, int idRubro)
         {
+            Rubro rubroExistente = RubroDAO.Obtener(idRubro);
             Empresa usuarioCrear = new Empresa()
             {
+                
                 EmailContacto = email,
                 Clave = clave,
                 RazonSocial = razonSocial,
                 NumeroRuc = numeroRuc,
-                Rubro = rubro
+                Rubro = rubroExistente
             };
             return EmpresaDAO.Crear(usuarioCrear);
         }
@@ -94,8 +96,9 @@ namespace SOAPServices
             return EmpresaDAO.Obtener(id);
         }
 
-        public Empresa ModificarEmpresa(int id, string email, string clave, string razonSocial, string numeroRuc, Rubro rubro)
+        public Empresa ModificarEmpresa(int id, string email, string clave, string razonSocial, string numeroRuc, int idRubro)
         {
+            Rubro rubroExistente = RubroDAO.Obtener(idRubro);
             Empresa usuarioModificar = new Empresa()
             {
                 Id = id,
@@ -103,7 +106,7 @@ namespace SOAPServices
                 Clave = clave,
                 RazonSocial = razonSocial,
                 NumeroRuc = numeroRuc,
-                Rubro = rubro
+                Rubro = rubroExistente
             };
             return EmpresaDAO.Modificar(usuarioModificar);
         }
