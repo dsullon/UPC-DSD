@@ -10,24 +10,24 @@ namespace SOAPServices.Dominio
     public class Postulante
     {
         [DataMember]
-        public int idPostulante { get; set; }
+        public int Id { get; set; }
 
         [DataMember]
         public string Nombre { get; set; }
 
         [DataMember]
-        public string apellidoPaterno { get; set; }
+        public string ApellidoPaterno { get; set; }
 
         [DataMember]
-        public string apellidoMaterno { get; set; }
+        public string ApellidoMaterno { get; set; }
 
         [DataMember]
-        public string fechaNacimiento { get; set; }
+        public string FechaNacimiento { get; set; }
 
         [DataMember]
-        public string email { get; set; }
+        public string Email { get; set; }
 
         [DataMember]
-        public string clave { get; set; }
+        public string Clave { get; set; }
     }
 }
