@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ReclutamientoService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="BasicHttpsBinding_IReclutamientoService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://reclutamientoupc.azurewebsites.net/ReclutamientoService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://reclutamientoupc.azurewebsites.net/ReclutamientoService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://reclutamientoupc.azurewebsites.net/ReclutamientoService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" />
+      <xsd:import schemaLocation="http://reclutamientoupc.azurewebsites.net/ReclutamientoService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IReclutamientoService_CrearRubro_InputMessage">
+    <wsdl:part name="parameters" element="tns:CrearRubro" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_CrearRubro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CrearRubroResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ObtenerRubro_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerRubro" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ObtenerRubro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerRubroResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ModificarRubro_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarRubro" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ModificarRubro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarRubroResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_EliminarRubro_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarRubro" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_EliminarRubro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarRubroResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ListarRubros_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarRubros" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ListarRubros_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarRubrosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_CrearEmpresa_InputMessage">
+    <wsdl:part name="parameters" element="tns:CrearEmpresa" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_CrearEmpresa_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CrearEmpresaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ObtenerEmpresa_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerEmpresa" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ObtenerEmpresa_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerEmpresaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ModificarEmpresa_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarEmpresa" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ModificarEmpresa_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarEmpresaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_EliminarEmpresa_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarEmpresa" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_EliminarEmpresa_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarEmpresaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ListarEmpresas_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarEmpresas" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ListarEmpresas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarEmpresasResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IReclutamientoService">
+    <wsdl:operation name="CrearRubro">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/CrearRubro" message="tns:IReclutamientoService_CrearRubro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/CrearRubroResponse" message="tns:IReclutamientoService_CrearRubro_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRubro">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/ObtenerRubro" message="tns:IReclutamientoService_ObtenerRubro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/ObtenerRubroResponse" message="tns:IReclutamientoService_ObtenerRubro_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarRubro">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/ModificarRubro" message="tns:IReclutamientoService_ModificarRubro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/ModificarRubroResponse" message="tns:IReclutamientoService_ModificarRubro_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarRubro">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/EliminarRubro" message="tns:IReclutamientoService_EliminarRubro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/EliminarRubroResponse" message="tns:IReclutamientoService_EliminarRubro_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarRubros">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/ListarRubros" message="tns:IReclutamientoService_ListarRubros_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/ListarRubrosResponse" message="tns:IReclutamientoService_ListarRubros_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CrearEmpresa">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/CrearEmpresa" message="tns:IReclutamientoService_CrearEmpresa_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/CrearEmpresaResponse" message="tns:IReclutamientoService_CrearEmpresa_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerEmpresa">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/ObtenerEmpresa" message="tns:IReclutamientoService_ObtenerEmpresa_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/ObtenerEmpresaResponse" message="tns:IReclutamientoService_ObtenerEmpresa_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarEmpresa">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/ModificarEmpresa" message="tns:IReclutamientoService_ModificarEmpresa_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/ModificarEmpresaResponse" message="tns:IReclutamientoService_ModificarEmpresa_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarEmpresa">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/EliminarEmpresa" message="tns:IReclutamientoService_EliminarEmpresa_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/EliminarEmpresaResponse" message="tns:IReclutamientoService_EliminarEmpresa_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarEmpresas">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/ListarEmpresas" message="tns:IReclutamientoService_ListarEmpresas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/ListarEmpresasResponse" message="tns:IReclutamientoService_ListarEmpresas_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IReclutamientoService" type="tns:IReclutamientoService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CrearRubro">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/CrearRubro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRubro">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/ObtenerRubro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarRubro">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/ModificarRubro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarRubro">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/EliminarRubro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarRubros">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/ListarRubros" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearEmpresa">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/CrearEmpresa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerEmpresa">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/ObtenerEmpresa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarEmpresa">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/ModificarEmpresa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarEmpresa">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/EliminarEmpresa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarEmpresas">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/ListarEmpresas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpsBinding_IReclutamientoService" type="tns:IReclutamientoService">
+    <wsp:PolicyReference URI="#BasicHttpsBinding_IReclutamientoService_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CrearRubro">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/CrearRubro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRubro">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/ObtenerRubro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarRubro">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/ModificarRubro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarRubro">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/EliminarRubro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarRubros">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/ListarRubros" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearEmpresa">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/CrearEmpresa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerEmpresa">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/ObtenerEmpresa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarEmpresa">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/ModificarEmpresa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarEmpresa">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/EliminarEmpresa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarEmpresas">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/ListarEmpresas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ReclutamientoService">
+    <wsdl:port name="BasicHttpBinding_IReclutamientoService" binding="tns:BasicHttpBinding_IReclutamientoService">
+      <soap:address location="http://reclutamientoupc.azurewebsites.net/ReclutamientoService.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpsBinding_IReclutamientoService" binding="tns:BasicHttpsBinding_IReclutamientoService">
+      <soap:address location="https://reclutamientoupc.azurewebsites.net/ReclutamientoService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

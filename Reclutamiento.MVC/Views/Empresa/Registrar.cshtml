@@ -1,0 +1,69 @@
+﻿@model Reclutamiento.MVC.ReclutamientoWS.Empresa
+
+@{
+    ViewBag.Title = "Registrar";
+    Layout = "~/Views/shared/_BootstrapLayout.basic.cshtml";
+}
+
+<h2>Registrar</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Empresa</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Clave)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Clave)
+            @Html.ValidationMessageFor(model => model.Clave)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EmailContacto)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EmailContacto)
+            @Html.ValidationMessageFor(model => model.EmailContacto)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NumeroRuc)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NumeroRuc)
+            @Html.ValidationMessageFor(model => model.NumeroRuc)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RazonSocial)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RazonSocial)
+            @Html.ValidationMessageFor(model => model.RazonSocial)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Rubro.Id)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Rubro.Id, new SelectList(ViewBag.Rubros, "Id", "Descripcion"))
+            @Html.ValidationMessageFor(model => model.Rubro)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@*@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}*@

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Reclutamiento.MVC.ReclutamientoWS;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -24,6 +25,11 @@ namespace Reclutamiento.MVC.Controllers
 
             //ViewData["Rubros"] = listaRubros;
             return View();
+        }
+
+        public ActionResult Listado() {
+            var resultado = proxy.ListarEmpresas();
+            return View(resultado);
         }
 
         [HttpPost]
