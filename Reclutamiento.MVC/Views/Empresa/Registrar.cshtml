@@ -1,4 +1,6 @@
-﻿@model Reclutamiento.MVC.ReclutamientoWS.Empresa
+﻿@using System.Web.Optimization
+
+@model Reclutamiento.MVC.ReclutamientoWS.Empresa
 
 @{
     ViewBag.Title = "Registrar";
@@ -6,28 +8,62 @@
 }
 
 <h2>Registrar</h2>
+<div class="success" style="display:none;">
+    The product has been updated.
+</div>
+<div class="bg-danger" style="display:none;">
+    <table>
+        <tr>
+            <td style="vertical-align:top;">
+            </td>
+            <td>
+                <span class="errorMessage" />
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="alert alert-error" style="display:none;">
+    <strong>Error!<br/></strong><span class="errorMessage" />
+</div>  
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm("Empresa", "Registrar", FormMethod.Post, new { @class = "form-inline", @role = "form" }))
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
         <legend>Empresa</legend>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Clave)
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmailContacto, "Email:", new { @class = "sr-only" })
+            <div>
+                @Html.TextBoxFor(model => model.EmailContacto, new { @class = "form-control", @placeholder = "Introduce tu email" })
+            </div>
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Clave)
-            @Html.ValidationMessageFor(model => model.Clave)
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">&dArr;</span>
+            @Html.LabelFor(model => model.EmailContacto, "Email:", new { @class = "sr-only" })
+            <div>
+                @Html.TextBoxFor(model => model.EmailContacto, new { @class = "form-control", @placeholder = "Introduce tu email" })
+            </div>
         </div>
 
-        <div class="editor-label">
+
+        @*<div class="editor-label">
             @Html.LabelFor(model => model.EmailContacto)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.EmailContacto)
             @Html.ValidationMessageFor(model => model.EmailContacto)
+        </div>*@
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Clave)
+        </div>
+        <div class="editor-field">
+            @Html.PasswordFor(model => model.Clave)
+            @Html.ValidationMessageFor(model => model.Clave)
         </div>
 
         <div class="editor-label">
@@ -55,7 +91,8 @@
         </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="button" class="btn btn-primary btn-lg active" value="Submit" onclick="editarEmpresa.crearEmpresa();" />
+            @*<input type="submit" value="Create" />*@
         </p>
     </fieldset>
 }
@@ -64,6 +101,6 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
-@*@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}*@
+@section Scripts {
+    @Scripts.Render("~/upc")
+}

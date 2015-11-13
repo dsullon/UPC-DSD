@@ -11,6 +11,11 @@ namespace Reclutamiento.MVC.Controllers
     {
         ReclutamientoServiceClient proxy = new ReclutamientoServiceClient();
 
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         public ActionResult Registrar()
         {
             var listaRubros = proxy.ListarRubros();
@@ -35,7 +40,9 @@ namespace Reclutamiento.MVC.Controllers
         [HttpPost]
         public ActionResult Registrar(Empresa empresa)
         {
-            OperationStatus opStatus = proxy.CrearEmpresa(empresa.EmailContacto, empresa.Clave, empresa.RazonSocial, empresa.NumeroRuc, empresa.Rubro.Id);
+            var r = new Rubro() { Id = 0 };
+            //OperationStatus opStatus = proxy.CrearEmpresa(empresa.EmailContacto, empresa.Clave, empresa.RazonSocial, empresa.NumeroRuc, empresa.Rubro.Id);
+            OperationStatus opStatus = proxy.CrearEmpresa(empresa.EmailContacto, empresa.Clave, empresa.RazonSocial, empresa.NumeroRuc, r.Id);
             return Json(opStatus);
             //var result = proxy.CrearEmpresa(empresa.EmailContacto, empresa.Clave, empresa.RazonSocial, empresa.NumeroRuc, empresa.Rubro.Id);
             //if (result.Success)

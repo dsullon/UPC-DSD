@@ -200,7 +200,7 @@
     <None Include="Properties\PublishProfiles\reclutamientoweb - Web Deploy.pubxml" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
-    <Content Include="scripts\empresa.js" />
+    <Content Include="scripts\upcempresa.js" />
     <None Include="scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="scripts\jquery-1.9.1.js" />
     <Content Include="scripts\jquery-1.9.1.min.js" />
@@ -271,6 +271,7 @@
     <Content Include="Views\ExampleLayouts\Fluid.cshtml" />
     <Content Include="Views\Empresa\Listado.cshtml" />
     <Content Include="Views\Empresa\Registrar.cshtml" />
+    <Content Include="Views\Empresa\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

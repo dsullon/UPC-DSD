@@ -56,18 +56,18 @@ var editarEmpresa = new function () {
 
         $.ajax(url, {
             type: "POST",
-            data: product,
+            data: empresa,
             dataType: "json",
             success: function (data) {
                 if (data.Success == true) {
                     // The update operation has succeeded
                     $('.success').show();
-                    $('.error').hide();
+                    $('.alert.alert-error').hide();
                 }
                 else {
                     // The update operation has failed - display the error message
                     $('.success').hide();
-                    $('.error').show();
+                    $('.alert.alert-error').show();
 
                     var message = '';
                     for (var i = 0; i < data.Messages.length; i++) {
@@ -79,10 +79,10 @@ var editarEmpresa = new function () {
                     $('.errorMessage').html(message);
                 }
 
-                loadingPanel.hide();
+                //loadingPanel.hide();
             },
             error: function (data) {
-                loadingPanel.hide();
+                //loadingPanel.hide();
             }
         });
     };
@@ -92,3 +92,19 @@ var editarEmpresa = new function () {
         crearEmpresa: crearEmpresa
     }
 }();
+
+$('[data-dismiss=modal]').on('click', function (e) {
+    var $t = $(this),
+        target = $t[0].href || $t.data("target") || $t.parents('.modal') || [];
+
+    $(target)
+      .find("input,textarea,select")
+         .val('')
+         .end()
+      .find("input[type=checkbox], input[type=radio]")
+         .prop("checked", "")
+         .end()
+      .find(".alert.alert-error")
+         .css("display", "none")
+         .end();
+})
