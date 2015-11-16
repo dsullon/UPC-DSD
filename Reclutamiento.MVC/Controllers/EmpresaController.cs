@@ -10,49 +10,26 @@ namespace Reclutamiento.MVC.Controllers
     public class EmpresaController : Controller
     {
         ReclutamientoServiceClient proxy = new ReclutamientoServiceClient();
-
+        // GET: Empresa
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult Registrar()
+        public JsonResult ExisteRUC(string numeroRUC)
         {
-            var listaRubros = proxy.ListarRubros();
-            ViewBag.Rubros = listaRubros;
-            //ViewData["Rubros"] =
-            //    from p in listaRubros
-            //    select new SelectListItem
-            //    {
-            //        Text = p.Descripcion,
-            //        Value = p.Id.ToString()
-            //    };
+            var empresa = proxy.ListarEmpresas().Where(c => c.NumeroRuc.Equals(numeroRUC)).FirstOrDefault();
+            if (empresa != null)
+                return new JsonResult { Data = false };
+            return new JsonResult { Data = true };
 
-            //ViewData["Rubros"] = listaRubros;
-            return View();
-        }
+            //    return Json(true, JsonRequestBehavior.AllowGet);
 
-        public ActionResult Listado() {
-            var resultado = proxy.ListarEmpresas();
-            return View(resultado);
-        }
+            //return Json("Email address in use", JsonRequestBehavior.AllowGet);
 
-        [HttpPost]
-        public ActionResult Registrar(Empresa empresa)
-        {
-            var r = new Rubro() { Id = 0 };
-            //OperationStatus opStatus = proxy.CrearEmpresa(empresa.EmailContacto, empresa.Clave, empresa.RazonSocial, empresa.NumeroRuc, empresa.Rubro.Id);
-            OperationStatus opStatus = proxy.CrearEmpresa(empresa.EmailContacto, empresa.Clave, empresa.RazonSocial, empresa.NumeroRuc, r.Id);
-            return Json(opStatus);
-            //var result = proxy.CrearEmpresa(empresa.EmailContacto, empresa.Clave, empresa.RazonSocial, empresa.NumeroRuc, empresa.Rubro.Id);
-            //if (result.Success)
-            //    return RedirectToAction("Index", "Home");
-            //else
-            //{
-            //    ViewBag.Error = TempData["error"];
-            //    return View();
-            //}
         }
 
     }
+
+
 }

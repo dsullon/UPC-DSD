@@ -1,57 +1,243 @@
-﻿@using System.Web.Optimization
-
-@{
+﻿@{
     ViewBag.Title = "Index";
-    Layout = "~/Views/shared/_BootstrapLayout.basic.cshtml";
 }
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<script>
+
+    // When the browser is ready...
+    $(function () {
+
+        // Setup form validation on the #register-form element
+        $("#form1").validate({
+
+            // Specify the validation rules
+            rules: {
+                RazonSocial: {
+                    required: true,
+                },
+                NumeroRuc: {
+                    required: true,
+                    remote: {
+                        url: "/Empresa/ExisteRUC",
+                        timeout: 2000,
+                        type: "post"
+                    }
+                },
+                EmailContacto: {
+                    required: true,
+                    email: true
+                },
+                Clave: {
+                    required: true,
+                    minlength: 5
+                },
+                Confirma: {
+                    minlength: 5,
+                    equalTo: "#Clave"
+                }
+            },
+
+            // Specify the validation error messages
+            messages: {
+                RazonSocial: {
+                    required: "Ingrese la razón social"
+                },
+                NumeroRuc:{
+                    required: "Ingrese el número de ruc",
+                    remote: "Existe una empresa registrada con el número de RUC"
+                },
+                Clave: {
+                    required: "Ingrese el password",
+                    minlength: "El password debe ser como mínimo de 5 caracteres"
+                },
+                Confirma:"La contraseña ingresada no coincide con la anterior",
+                EmailContacto: "Ingrese un email válido"
+            },
+
+            submitHandler: function (form) {
+                var clave = $('#Clave').val();
+                var email = $('#EmailContacto').val();
+                var ruc = $('#NumeroRuc').val();
+                var razonSocial = $('#RazonSocial').val();
+                var rubro = $('#Rubro').val();
+
+                var empresa = {
+                    Clave: clave,
+                    EmailContacto: email,
+                    NumeroRuc: ruc,
+                    RazonSocial: razonSocial,
+                    Rubro: rubro,
+                };
+
+                var url = 'Empresa/Registrar';
+
+                $.ajax(url, {
+                    type: "POST",
+                    data: empresa,
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.Success == true) {
+                            // The update operation has succeeded
+                            $('.success').show();
+                            $('.alert.alert-error').hide();
+                        }
+                        else {
+                            // The update operation has failed - display the error message
+                            $('.success').hide();
+                            $('.alert.alert-error').show();
+
+                            var message = '';
+                            for (var i = 0; i < data.Messages.length; i++) {
+                                if (i > 0)
+                                    message += '</br>';
+
+                                message += data.Messages[i];
+                            }
+                            $('.errorMessage').html(message);
+                        }
+
+                        //loadingPanel.hide();
+                    },
+                    error: function (data) {
+                        //loadingPanel.hide();
+                    }
+                });
+
+                //form.submit();
+            }
+        });
+
+    });
+
+</script>
+
+<h2>Index</h2>
 
 <div>
     @Html.ActionLink("Postulante", "Index", "Home")
     @*@Html.ActionLink("Registrate", "Registrar", "Empresa", new { })
-    @Html.ActionLink("Ingresar", "Login", "Empresa")*@
+        @Html.ActionLink("Ingresar", "Login", "Empresa")*@
     <a href="#myModal" role="button" class="btn" data-toggle="modal">Registrate</a>
     <a href="#" role="button" class="btn" data-toggle="modal">Ingresa</a>
 </div>
 
-<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="myModalLabel">Crear cuenta</h3>
-    </div>
-    <div class="modal-body">
-        <div class="alert alert-error" style="display:none;">
-            <strong>Error!<br /></strong><span class="errorMessage" />
-        </div>  
-        <form class="form-horizontal" role="form">
-            <div class="control-group">
-                <label class="control-label" for="EmailContacto">Email</label>
-                <div class="controls">
-                    <input type="email" id="EmailContacto" placeholder="Email">
-                </div>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+    Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Crear Empresa</h4>
             </div>
-            <div class="control-group">
-                <label class="control-label" for="Clave">Password</label>
-                <div class="controls">
-                    <input type="password" id="Clave" placeholder="Password">
-                </div>
+            <div class="modal-body">
+                <div class="alert alert-error" style="display:none;">
+                    <strong>Error!<br /></strong><span class="errorMessage" />
+                </div>  
+                <form class="form-horizontal" role="form" id="form1">
+
+                    <div class="form-group">
+                        <label for="EmailContacto" class="col-lg-3 control-label">Email</label>
+                        <div class="col-lg-9">
+                            <input type="email" class="form-control" id="EmailContacto"
+                                   placeholder="Email">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Clave" class="col-lg-3 control-label">Password</label>
+                        <div class="col-lg-9">
+                            <input type="password" class="form-control" id="Clave" name="Clave"
+                                   placeholder="Password">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Confirma" class="col-lg-3 control-label">Confirma el Password</label>
+                        <div class="col-lg-9">
+                            <input type="password" class="form-control" id="Confirma" name="Confirma"
+                                   placeholder="Confirma el Password">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="NumeroRuc" class="col-lg-3 control-label">Número de RUC</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" id="NumeroRuc" name="NumeroRuc"
+                                   placeholder="Número de RUC">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="RazonSocial" class="col-lg-3 control-label">Razón social</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" id="RazonSocial" name="RazonSocial"
+                                   placeholder="Razón social">
+                        </div>
+                    </div>
+
+
+                    @*<div class="form-group">
+                        <label for="EmailContacto" class="col-lg-2 control-label">Email</label>
+                        <div class="col-lg-10">
+                            <div class="input-group">
+                                <span class="input-group-addon">@@</span>
+                                <input type="text" class="form-control" placeholder="Email"
+                                       id="EmailContacto" name="EmailContacto">
+                            </div>
+                        </div>
+                    </div>*@
+
+                    @*<div class="control-group">
+                        <label class="control-label" for="Clave">Password</label>
+                        <div class="controls">
+                            <input type="password" id="Clave" name="Clave" placeholder="Password">
+                        </div>
+                    </div>*@
+                    @*<div class="control-group">
+                        <label class="control-label" for="NumeroRuc">Número de RUC</label>
+                        <div class="controls">
+                            <input type="text" id="NumeroRuc" name="NumeroRuc" placeholder="Número de RUC">
+                        </div>
+                    </div>*@
+                    @*<div class="control-group">
+                        <label class="control-label" for="RazonSocial">Razón social</label>
+                        <div class="controls">
+                            <input type="text" id="RazonSocial" name="RazonSocial" placeholder="Razón social">
+                        </div>
+                    </div>*@
+                    @*<div>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-primary" name="submit" value="Registrar" />
+                    </div>*@
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        <input type="submit" class="btn btn-primary" name="submit" value="Registrar" />
+                    </div>
+                </form>
+                @*<form action="" method="post" id="register-form" novalidate="novalidate">
+
+                        <div class="label">First Name</div><input type="text" id="firstname" name="firstname" /><br />
+                        <div class="label">Last Name</div><input type="text" id="lastname" name="lastname" /><br />
+                        <div class="label">Email</div><input type="text" id="email" name="email" /><br />
+                        <div class="label">Password</div><input type="password" id="password" name="password" /><br />
+                        <div style="margin-left:140px;"><input type="submit" name="submit" value="Submit" /></div>
+
+                    </form>*@
             </div>
-            <div class="control-group">
-                <label class="control-label" for="NumeroRuc">Número de RUC</label>
-                <div class="controls">
-                    <input type="text" id="NumeroRuc" placeholder="Número de RUC">
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label" for="RazonSocial">Razón social</label>
-                <div class="controls">
-                    <input type="text" id="RazonSocial" placeholder="Razón social">
-                </div>
-            </div>
-        </form>
-    </div>
-    <div class="modal-footer">
-        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
-        <button class="btn btn-primary" onclick="editarEmpresa.crearEmpresa();">Registrarse</button>
+            @*<div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <input type="submit" name="submit" value="Submit" />
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>*@
+        </div>
     </div>
 </div>
 
