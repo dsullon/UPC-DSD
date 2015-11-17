@@ -10,6 +10,10 @@
     // When the browser is ready...
     $(function () {
 
+        $.validator.addMethod("password", function (value, element) {
+            return this.optional(element) || /(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,10})$/.test(value);
+        }, "Passwords are 6-16 characters");
+
         // Setup form validation on the #register-form element
         $("#form1").validate({
 
@@ -22,21 +26,40 @@
                     required: true,
                     remote: {
                         url: "/Empresa/ExisteRUC",
-                        timeout: 2000,
-                        type: "post"
+                        //timeout: 2000,
+                        type: "post",
+                        data: {
+                            ruc: function () {
+                                return $("#NumeroRuc").val();
+                            }
+                        }
                     }
                 },
                 EmailContacto: {
                     required: true,
-                    email: true
+                    email: true,
+                    remote: {
+                        url: "/Empresa/ExisteEmail",
+                        //timeout: 2000,
+                        type: "post",
+                        data: {
+                            email: function () {
+                                return $("#EmailContacto").val();
+                            }
+                        }
+                    }
                 },
                 Clave: {
                     required: true,
-                    minlength: 5
+                    minlength: 5,
+                    password: true
                 },
                 Confirma: {
                     minlength: 5,
                     equalTo: "#Clave"
+                },
+                Rubro: {
+                    required: true
                 }
             },
 
@@ -45,16 +68,30 @@
                 RazonSocial: {
                     required: "Ingrese la razón social"
                 },
-                NumeroRuc:{
+                NumeroRuc: {
                     required: "Ingrese el número de ruc",
+                    number: true,
                     remote: "Existe una empresa registrada con el número de RUC"
                 },
                 Clave: {
                     required: "Ingrese el password",
-                    minlength: "El password debe ser como mínimo de 5 caracteres"
+                    minlength: "El password debe ser como mínimo de 5 caracteres",
+                    password: "La contraseña debe estar entre 8 y 10 caracteres, por lo menos un digito y un alfanumérico, y no puede contener caracteres espaciales"
                 },
-                Confirma:"La contraseña ingresada no coincide con la anterior",
-                EmailContacto: "Ingrese un email válido"
+                Confirma: "La contraseña ingresada no coincide con la anterior",
+                EmailContacto: {
+                    required: "Ingrese un email válido",
+                    remote: "El email ingresado se encuentra registrado"
+                },
+                Rubro: "Seleccione el rubro"
+            },
+            highlight: function (element) {
+                $(element).closest('.control-group').removeClass('success').addClass('error');
+            },
+            success: function (element) {
+                element
+                .text('OK!').addClass('valid')
+                .closest('.control-group').removeClass('error').addClass('success');
             },
 
             submitHandler: function (form) {
@@ -72,15 +109,16 @@
                     Rubro: rubro,
                 };
 
-                var url = 'Empresa/Registrar';
+                var url = 'Registrar';
 
                 $.ajax(url, {
                     type: "POST",
-                    data: empresa,
+                    data: { empresa: empresa, rubro: rubro },
                     dataType: "json",
                     success: function (data) {
                         if (data.Success == true) {
                             // The update operation has succeeded
+                            window.location.href = 'Listado';
                             $('.success').show();
                             $('.alert.alert-error').hide();
                         }
@@ -114,6 +152,26 @@
 
 </script>
 
+<style>
+    label.valid {
+        width: 24px;
+        height: 24px;
+        background: url(../Images/valid.png) center center no-repeat;
+        display: inline-block;
+        text-indent: -9999px;
+        right: -5px;
+        top: 0;
+        position: absolute;
+    }
+
+    label.error {
+        font-weight: bold;
+        color: red;
+        padding: 2px 8px;
+        margin-top: 2px;
+    }
+</style>
+
 <h2>Index</h2>
 
 <div>
@@ -123,12 +181,6 @@
     <a href="#myModal" role="button" class="btn" data-toggle="modal">Registrate</a>
     <a href="#" role="button" class="btn" data-toggle="modal">Ingresa</a>
 </div>
-
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-    Launch demo modal
-</button>
-
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
@@ -140,20 +192,18 @@
             <div class="modal-body">
                 <div class="alert alert-error" style="display:none;">
                     <strong>Error!<br /></strong><span class="errorMessage" />
-                </div>  
+                </div>
                 <form class="form-horizontal" role="form" id="form1">
-
                     <div class="form-group">
-                        <label for="EmailContacto" class="col-lg-3 control-label">Email</label>
-                        <div class="col-lg-9">
-                            <input type="email" class="form-control" id="EmailContacto"
-                                   placeholder="Email">
+                        <label class="control-label col-md-3" for="EmailContacto">Email</label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control" id="EmailContacto" name="EmailContacto" placeholder="Ingrese un email válido" />
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="Clave" class="col-lg-3 control-label">Password</label>
-                        <div class="col-lg-9">
+                        <div class="col-lg-7">
                             <input type="password" class="form-control" id="Clave" name="Clave"
                                    placeholder="Password">
                         </div>
@@ -161,7 +211,7 @@
 
                     <div class="form-group">
                         <label for="Confirma" class="col-lg-3 control-label">Confirma el Password</label>
-                        <div class="col-lg-9">
+                        <div class="col-lg-7">
                             <input type="password" class="form-control" id="Confirma" name="Confirma"
                                    placeholder="Confirma el Password">
                         </div>
@@ -169,7 +219,7 @@
 
                     <div class="form-group">
                         <label for="NumeroRuc" class="col-lg-3 control-label">Número de RUC</label>
-                        <div class="col-lg-9">
+                        <div class="col-lg-7">
                             <input type="text" class="form-control" id="NumeroRuc" name="NumeroRuc"
                                    placeholder="Número de RUC">
                         </div>
@@ -177,66 +227,31 @@
 
                     <div class="form-group">
                         <label for="RazonSocial" class="col-lg-3 control-label">Razón social</label>
-                        <div class="col-lg-9">
+                        <div class="col-lg-7">
                             <input type="text" class="form-control" id="RazonSocial" name="RazonSocial"
                                    placeholder="Razón social">
                         </div>
                     </div>
 
+                    <div class="form-group">
+                        <label for="Rubro" class="col-lg-3 control-label">Rubro</label>
+                        <div class="col-lg-7">
+                            @Html.DropDownList("Rubro", new SelectList(ViewBag.Rubros, "Id", "Descripcion"),
+                            "<-Seleccione->", new { @class = "form-control" })
+                        </div>
+                    </div>
 
-                    @*<div class="form-group">
-                        <label for="EmailContacto" class="col-lg-2 control-label">Email</label>
-                        <div class="col-lg-10">
-                            <div class="input-group">
-                                <span class="input-group-addon">@@</span>
-                                <input type="text" class="form-control" placeholder="Email"
-                                       id="EmailContacto" name="EmailContacto">
-                            </div>
-                        </div>
-                    </div>*@
-
-                    @*<div class="control-group">
-                        <label class="control-label" for="Clave">Password</label>
-                        <div class="controls">
-                            <input type="password" id="Clave" name="Clave" placeholder="Password">
-                        </div>
-                    </div>*@
-                    @*<div class="control-group">
-                        <label class="control-label" for="NumeroRuc">Número de RUC</label>
-                        <div class="controls">
-                            <input type="text" id="NumeroRuc" name="NumeroRuc" placeholder="Número de RUC">
-                        </div>
-                    </div>*@
-                    @*<div class="control-group">
-                        <label class="control-label" for="RazonSocial">Razón social</label>
-                        <div class="controls">
-                            <input type="text" id="RazonSocial" name="RazonSocial" placeholder="Razón social">
-                        </div>
-                    </div>*@
-                    @*<div>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <input type="submit" class="btn btn-primary" name="submit" value="Registrar" />
-                    </div>*@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                         <input type="submit" class="btn btn-primary" name="submit" value="Registrar" />
                     </div>
                 </form>
-                @*<form action="" method="post" id="register-form" novalidate="novalidate">
-
-                        <div class="label">First Name</div><input type="text" id="firstname" name="firstname" /><br />
-                        <div class="label">Last Name</div><input type="text" id="lastname" name="lastname" /><br />
-                        <div class="label">Email</div><input type="text" id="email" name="email" /><br />
-                        <div class="label">Password</div><input type="password" id="password" name="password" /><br />
-                        <div style="margin-left:140px;"><input type="submit" name="submit" value="Submit" /></div>
-
-                    </form>*@
             </div>
-            @*<div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <div class="modal-footer">
+                @*<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     <input type="submit" name="submit" value="Submit" />
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>*@
+                    <button type="button" class="btn btn-primary">Save changes</button>*@
+            </div>
         </div>
     </div>
 </div>
