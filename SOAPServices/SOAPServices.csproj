@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -74,6 +75,9 @@
     <EmbeddedResource Include="Dominio\Rubro.hbm.xml" />
     <EmbeddedResource Include="Dominio\Empresa.hbm.xml" />
     <Content Include="ReclutamientoService.svc" />
+    <Content Include="ReferenciaExterna\Iesi.Collections.dll" />
+    <Content Include="ReferenciaExterna\MySql.Data.dll" />
+    <Content Include="ReferenciaExterna\NHibernate.dll" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -95,7 +99,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="ReferenciaExterna\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\reclutamientoupc - FTP %282%29.pubxml" />

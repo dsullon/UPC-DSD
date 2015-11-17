@@ -109,7 +109,7 @@
                     Rubro: rubro,
                 };
 
-                var url = 'Registrar';
+                var url = '/Empresa/Registrar';
 
                 $.ajax(url, {
                     type: "POST",
@@ -118,7 +118,7 @@
                     success: function (data) {
                         if (data.Success == true) {
                             // The update operation has succeeded
-                            window.location.href = 'Listado';
+                            window.location.href = '/Empresa/Listado';
                             $('.success').show();
                             $('.alert.alert-error').hide();
                         }
