@@ -1,0 +1,23 @@
+﻿@if (Session["EmpresaId"] != null)
+{
+    using (Html.BeginForm("LogOff", "Empresa", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                @Html.ActionLink("Bienvenido: " + Session["EmpresaNombre"] + "!", "Editar", "Empresa", routeValues: null, htmlAttributes: new { title = "Empresa" })
+            </li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a></li>
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Postulante", "Index", "Home", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Registrarse", "Registrar", "Empresa", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Iniciar sesión", "Login", "Empresa", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}
+

@@ -63,10 +63,48 @@ namespace Reclutamiento.MVC.Controllers
             //}
         }
 
+        public ActionResult Editar()
+        {
+            return View();
+        }
+
         public ActionResult Listado()
         {
-            var resultado = proxy.ListarEmpresas();
-            return View(resultado);
+            if (Session["EmpresaId"] != null)
+            {
+                var resultado = proxy.ListarEmpresas();
+                return View(resultado);
+            }
+            else
+                return RedirectToAction("Index", "Empresa");
+        }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(Empresa empresa)
+        {
+            if (ModelState.IsValid)
+            {
+                var empresaExistente= proxy.ListarEmpresas().Where(c => c.EmailContacto.Equals(empresa.EmailContacto) && c.Clave.Equals(empresa.Clave)).FirstOrDefault();
+                if (empresaExistente != null)
+                {
+                    Session["EmpresaId"] = empresaExistente.Id.ToString();
+                    Session["EmpresaNombre"] = empresaExistente.RazonSocial.ToString();
+                    return RedirectToAction("Listado","Empresa");
+                }
+            }
+            return View(empresa);
+        }
+
+        [HttpPost]
+        public ActionResult LogOff()
+        {
+            Session.Abandon();
+            return RedirectToAction("Index", "Home");
         }
     }
 
