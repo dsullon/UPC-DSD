@@ -81,12 +81,14 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dominio\Anuncio.cs" />
     <Compile Include="Dominio\Aptitud.cs" />
     <Compile Include="Dominio\Empresa.cs" />
     <Compile Include="Dominio\OperationStatus.cs" />
-    <Compile Include="Dominio\Requerimiento.cs" />
     <Compile Include="Dominio\Rubro.cs" />
     <Compile Include="IReclutamientoService.cs" />
+    <Compile Include="Persistencia\AnuncioDAO.cs" />
+    <Compile Include="Persistencia\AptitudDAO.cs" />
     <Compile Include="Persistencia\BaseDAO.cs" />
     <Compile Include="Persistencia\ConexionUtil.cs" />
     <Compile Include="Persistencia\EmpresaDAO.cs" />
