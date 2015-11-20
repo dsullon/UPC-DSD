@@ -41,5 +41,35 @@ namespace SOAPServices
         List<Empresa> ListarEmpresas();
 
         #endregion
+
+        #region . Anuncio .
+
+        [OperationContract]
+        OperationStatus CrearAnuncio(string titulo, string descripcion, int idAptitud);
+        [OperationContract]
+        Empresa ObtenerAnuncio(int id);
+        [OperationContract]
+        Empresa ModificarAnuncio(int id, string titulo, string descripcion, int idAptitud);
+        [OperationContract]
+        void EliminarAnuncio(int id);
+        [OperationContract]
+        List<Anuncio> ListarAnuncios();
+
+        #endregion
+
+        #region . Aptitud .
+
+        [OperationContract]
+        Rubro CrearAptitud(string descripcion, int valor);
+        [OperationContract]
+        Rubro ObtenerAptitud(int id);
+        [OperationContract]
+        Rubro ModificarAptitud(int id, string descripcion, int valor);
+        [OperationContract]
+        void EliminarAptitud(int id);
+        [OperationContract]
+        List<Aptitud> ListarAptitudes();
+
+        #endregion
     }
 }
