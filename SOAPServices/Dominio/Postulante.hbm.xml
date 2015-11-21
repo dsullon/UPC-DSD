@@ -13,6 +13,7 @@
     <property name="apellidoMaterno" column="apellidoMaterno" />
     <property name="fechaNacimiento" column="fechaNacimiento" />
     <property name="email" column="email" />
+    <property name="dni" column="dni" />
     <property name="clave" column="clave" />
   </class>
 </hibernate-mapping>

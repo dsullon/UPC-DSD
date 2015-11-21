@@ -35,6 +35,11 @@ namespace SOAPServices.Dominio
         public string email { get; set; }
 
         [DataMember]
+        [Required(ErrorMessage = "El campo DNI es obligatorio")]
+        [EmailAddress(ErrorMessage = "El dni ingresado no es válido")]
+        public string dni { get; set; }
+
+        [DataMember]
         [Required(ErrorMessage = "El campo Clave es obligatorio")]
         public string clave { get; set; }
     }

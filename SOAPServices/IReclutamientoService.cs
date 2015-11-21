@@ -42,6 +42,21 @@ namespace SOAPServices
 
         #endregion
 
+        #region . Postulante .
+
+        [OperationContract]
+        OperationStatus CrearPostulante(string nombre, string apellidoPaterno, string apellidoMaterno, DateTime fechaNacimiento, string email, string clave);
+        [OperationContract]
+        Postulante ObtenerPostulante(int id);
+        [OperationContract]
+        Postulante ModificarPostulante(int idPostulante, string nombre, string apellidoPaterno, string apellidoMaterno, DateTime fechaNacimiento, string email, string clave);
+        [OperationContract]
+        public void EliminarPostulante(int id);
+        [OperationContract]
+        public List<Postulante> ListarPostulante();
+
+        #endregion
+
         //#region . Anuncio .
 
         //[OperationContract]

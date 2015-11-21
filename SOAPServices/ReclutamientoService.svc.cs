@@ -154,7 +154,7 @@ namespace SOAPServices
 
         #endregion
 
-        #region . Empresa .
+        #region . Postulante .
 
         private PostulanteDAO postulanteDAO = null;
 
