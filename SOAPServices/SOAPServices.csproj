@@ -74,6 +74,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Dominio\Rubro.hbm.xml" />
     <EmbeddedResource Include="Dominio\Empresa.hbm.xml" />
+    <Content Include="Dominio\Postulante.hbm.xml" />
     <Content Include="ReclutamientoService.svc" />
     <Content Include="ReferenciaExterna\Iesi.Collections.dll" />
     <Content Include="ReferenciaExterna\MySql.Data.dll" />
@@ -94,6 +95,7 @@
     <Compile Include="Persistencia\ConexionUtil.cs" />
     <Compile Include="Persistencia\EmpresaDAO.cs" />
     <Compile Include="Persistencia\NHibernateHelper.cs" />
+    <Compile Include="Persistencia\PostulanteDAO.cs" />
     <Compile Include="Persistencia\RubroDAO.cs" />
     <Compile Include="ReclutamientoService.svc.cs">
       <DependentUpon>ReclutamientoService.svc</DependentUpon>

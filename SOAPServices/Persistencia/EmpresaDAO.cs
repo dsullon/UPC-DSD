@@ -2,7 +2,7 @@
 
 namespace SOAPServices.Persistencia
 {
-    public class EmpresaDAO : BaseDAO<Empresa, int>
+    public class PostulanteDAO : BaseDAO<Empresa, int>
     {
     }
 }
