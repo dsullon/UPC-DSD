@@ -85,6 +85,7 @@
     <Compile Include="Dominio\Aptitud.cs" />
     <Compile Include="Dominio\Empresa.cs" />
     <Compile Include="Dominio\OperationStatus.cs" />
+    <Compile Include="Dominio\Postulante.cs" />
     <Compile Include="Dominio\Rubro.cs" />
     <Compile Include="IReclutamientoService.cs" />
     <Compile Include="Persistencia\AnuncioDAO.cs" />
