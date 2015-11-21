@@ -125,7 +125,7 @@ namespace SOAPServices
         {
             return EmpresaDAO.Obtener(id);
         }
-
+        
         public Empresa ModificarEmpresa(int id, string email, string clave, string razonSocial, string numeroRuc, int idRubro)
         {
             Rubro rubroExistente = RubroDAO.Obtener(idRubro);
@@ -150,6 +150,100 @@ namespace SOAPServices
         public List<Empresa> ListarEmpresas()
         {
             return EmpresaDAO.ListarTodos().ToList();
+        }
+
+        #endregion
+
+        #region . Empresa .
+
+        private PostulanteDAO postulanteDAO = null;
+
+        private PostulanteDAO PostulanteDAO
+        {
+            get
+            {
+                if (postulanteDAO == null)
+                    postulanteDAO = new PostulanteDAO();
+                return postulanteDAO;
+            }
+        }
+
+
+        public OperationStatus CrearPostulante(string nombre, string apellidoPaterno, string apellidoMaterno, DateTime fechaNacimiento, string email, string clave)
+        {
+            try
+            {
+                //Rubro rubroExistente = RubroDAO.Obtener(idRubro);
+                Postulante postulanteCrear = new Postulante()
+                {
+                    nombre = nombre,
+                    apellidoPaterno = apellidoPaterno,
+                    apellidoMaterno = apellidoMaterno,
+                    fechaNacimiento = fechaNacimiento,
+                    email = email,
+                    clave = clave
+                };
+
+                var validationContext = new ValidationContext(postulanteCrear, serviceProvider: null, items: null);
+                var validationResults = new List<ValidationResult>();
+
+                var isValid = Validator.TryValidateObject(postulanteCrear, validationContext, validationResults, true);
+
+                if (!isValid)
+                {
+                    OperationStatus opStatus = new OperationStatus();
+                    opStatus.Success = false;
+
+                    foreach (ValidationResult message in validationResults)
+                    {
+                        opStatus.Messages.Add(message.ErrorMessage);
+                    }
+
+                    return opStatus;
+                }
+                else
+                {
+                    PostulanteDAO.Crear(postulanteCrear);
+                    return new OperationStatus { Success = true };
+                }
+            }
+            catch (Exception e)
+            {
+                return OperationStatus.CreateFromException("Al crear al postulante.", e);
+            }
+        }
+
+        public Postulante ObtenerPostulante(int id)
+        {
+            return PostulanteDAO.Obtener(id);
+        }
+        
+        public Postulante ModificarPostulante(int idPostulante, string nombre, string apellidoPaterno, string apellidoMaterno, DateTime fechaNacimiento, string email, string clave)
+        {
+            //Rubro rubroExistente = RubroDAO.Obtener(idRubro);
+            Postulante postulanteModificar = new Postulante()
+            {
+                idPostulante = idPostulante,
+                nombre = nombre,
+                apellidoPaterno = apellidoPaterno,
+                apellidoMaterno = apellidoMaterno,
+                fechaNacimiento = fechaNacimiento,
+                email = email,
+                clave = clave
+                //Rubro = rubroExistente
+            };
+            return postulanteDAO.Modificar(postulanteModificar);
+        }
+
+        public void EliminarPostulante(int id)
+        {
+            Postulante postulanteExistente = PostulanteDAO.Obtener(id);
+            PostulanteDAO.Eliminar(postulanteExistente);
+        }
+
+        public List<Postulante> ListarPostulante()
+        {
+            return PostulanteDAO.ListarTodos().ToList();
         }
 
         #endregion
