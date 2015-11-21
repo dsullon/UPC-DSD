@@ -53,13 +53,8 @@ namespace Reclutamiento.MVC.Controllers
 
         public ActionResult Listado()
         {
-            if (Session["idPostulante"] != null)
-            {
-                var resultado = proxy.ListarPostulante();
+           var resultado = proxy.ListarPostulante();
                 return View(resultado);
-            }
-            else
-                return RedirectToAction("Index", "Postulante");
         }
 
 
@@ -73,7 +68,7 @@ namespace Reclutamiento.MVC.Controllers
                 {
                     Session["PostulanteId"] = postulanteExistente.idPostulante.ToString();
                     Session["PostulanteNombre"] = postulanteExistente.nombre.ToString();
-                    return RedirectToAction("Listado", "Empresa");
+                    return RedirectToAction("Listado", "Postulante");
                 }
             }
             return View(postulante);
