@@ -169,7 +169,7 @@ namespace SOAPServices
         }
 
 
-        public OperationStatus CrearPostulante(string nombre, string apellidoPaterno, string apellidoMaterno, DateTime fechaNacimiento, string email, string clave)
+        public OperationStatus CrearPostulante(string nombre, string apellidoPaterno, string apellidoMaterno, DateTime fechaNacimiento, string email, string dni,string clave)
         {
             try
             {
@@ -181,6 +181,7 @@ namespace SOAPServices
                     apellidoMaterno = apellidoMaterno,
                     fechaNacimiento = fechaNacimiento,
                     email = email,
+                    dni = dni,
                     clave = clave
                 };
 
@@ -218,7 +219,7 @@ namespace SOAPServices
             return PostulanteDAO.Obtener(id);
         }
         
-        public Postulante ModificarPostulante(int idPostulante, string nombre, string apellidoPaterno, string apellidoMaterno, DateTime fechaNacimiento, string email, string clave)
+        public Postulante ModificarPostulante(int idPostulante, string nombre, string apellidoPaterno, string apellidoMaterno, DateTime fechaNacimiento, string email, string dni, string clave)
         {
             //Rubro rubroExistente = RubroDAO.Obtener(idRubro);
             Postulante postulanteModificar = new Postulante()
@@ -229,6 +230,7 @@ namespace SOAPServices
                 apellidoMaterno = apellidoMaterno,
                 fechaNacimiento = fechaNacimiento,
                 email = email,
+                dni = dni,
                 clave = clave
                 //Rubro = rubroExistente
             };
