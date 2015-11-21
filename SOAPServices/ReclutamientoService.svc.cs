@@ -67,13 +67,13 @@ namespace SOAPServices
 
         #region . Empresa .
 
-        private PostulanteDAO empresaDAO = null;
-        private PostulanteDAO EmpresaDAO
+        private EmpresaDAO empresaDAO = null;
+        private EmpresaDAO EmpresaDAO
         {
             get
             {
                 if (empresaDAO == null)
-                    empresaDAO = new PostulanteDAO();
+                    empresaDAO = new EmpresaDAO();
                 return empresaDAO;
             }
         }
@@ -153,7 +153,5 @@ namespace SOAPServices
         }
 
         #endregion
-
-        
     }
 }
