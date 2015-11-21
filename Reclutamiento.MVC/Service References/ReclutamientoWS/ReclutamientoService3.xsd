@@ -143,4 +143,83 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="CrearPostulante">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apellidoPaterno" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apellidoMaterno" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="fechaNacimiento" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dni" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="clave" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CrearPostulanteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" minOccurs="0" name="CrearPostulanteResult" nillable="true" type="q9:OperationStatus" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerPostulante">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerPostulanteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" minOccurs="0" name="ObtenerPostulanteResult" nillable="true" type="q10:Postulante" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModificarPostulante">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idPostulante" type="xs:int" />
+        <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apellidoPaterno" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apellidoMaterno" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="fechaNacimiento" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dni" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="clave" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModificarPostulanteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" minOccurs="0" name="ModificarPostulanteResult" nillable="true" type="q11:Postulante" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarPostulante">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarPostulanteResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarPostulante">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarPostulanteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" minOccurs="0" name="ListarPostulanteResult" nillable="true" type="q12:ArrayOfPostulante" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

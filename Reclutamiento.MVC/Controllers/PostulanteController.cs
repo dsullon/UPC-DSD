@@ -18,7 +18,7 @@ namespace Reclutamiento.MVC.Controllers
 
         public JsonResult ExisteDNI(string dni)
         {
-            var postulante = proxy.ListarPostulante().Where(c => c.NumeroDNI.Equals(dni)).FirstOrDefault();
+            var postulante = proxy.ListarPostulante().Where(c => c.dni.Equals(dni)).FirstOrDefault();
             if (postulante != null)
                 return new JsonResult { Data = false };
             return new JsonResult { Data = true };
@@ -28,5 +28,63 @@ namespace Reclutamiento.MVC.Controllers
             //return Json("Email address in use", JsonRequestBehavior.AllowGet);
 
         }
+
+        public JsonResult ExisteEmail(string email)
+        {
+            var postulante = proxy.ListarPostulante().Where(c => c.email.Equals(email)).FirstOrDefault();
+            if (postulante != null)
+                return new JsonResult { Data = false };
+            return new JsonResult { Data = true };
+        }
+
+        [HttpPost]
+        public ActionResult Registrar(Postulante postulante)
+        {
+            //var r = proxy.ObtenerRubro(rubro);
+            OperationStatus opStatus = proxy.CrearPostulante(postulante.nombre, postulante.apellidoPaterno, postulante.apellidoMaterno, postulante.fechaNacimiento, postulante.email, postulante.dni, postulante.clave);
+            return Json(opStatus);
+            
+        }
+
+        public ActionResult Editar()
+        {
+            return View();
+        }
+
+        public ActionResult Listado()
+        {
+            if (Session["idPostulante"] != null)
+            {
+                var resultado = proxy.ListarPostulante();
+                return View(resultado);
+            }
+            else
+                return RedirectToAction("Index", "Postulante");
+        }
+
+
+        [HttpPost]
+        public ActionResult Login(Postulante postulante)
+        {
+            if (ModelState.IsValid)
+            {
+                var postulanteExistente = proxy.ListarPostulante().Where(c => c.email.Equals(postulante.email) && c.clave.Equals(postulante.clave)).FirstOrDefault();
+                if (postulanteExistente != null)
+                {
+                    Session["PostulanteId"] = postulanteExistente.idPostulante.ToString();
+                    Session["PostulanteNombre"] = postulanteExistente.nombre.ToString();
+                    return RedirectToAction("Listado", "Empresa");
+                }
+            }
+            return View(postulante);
+        }
+
+        [HttpPost]
+        public ActionResult LogOff()
+        {
+            Session.Abandon();
+            return RedirectToAction("Index", "Home");
+        }
+
     }
 }

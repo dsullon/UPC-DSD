@@ -216,6 +216,9 @@
     <Content Include="Service References\ReclutamientoWS\Reclutamiento.MVC.ReclutamientoWS.Rubro.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\ReclutamientoWS\Reclutamiento.MVC.ReclutamientoWS.Postulante.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\ReclutamientoWS\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
