@@ -24,6 +24,26 @@ namespace SOAPServices
             }
         }
 
+        #region . EMPRESA .
+
+        public Empresa CrearEmpresa(Empresa empresa)
+        {
+            return EmpresaDAO.Crear(empresa);
+        }
+
+        public bool EliminarEmpresa(Empresa empresa)
+        {
+            int idEmpresa = empresa.Id;
+            EmpresaDAO.Eliminar(empresa);
+            var emp = EmpresaDAO.Obtener(idEmpresa);
+            return emp == null;
+        }
+
+        public Empresa ModificarEmpresa(Empresa empresa)
+        {
+            return EmpresaDAO.Modificar(empresa);
+        }
+
         public List<Empresa> ListarEmpresa()
         {
             return EmpresaDAO.ListarTodos().ToList();
@@ -34,5 +54,9 @@ namespace SOAPServices
             int idEmpresa = int.Parse(id);
             return EmpresaDAO.Obtener(idEmpresa);
         }
+
+        #endregion
+
+
     }
 }

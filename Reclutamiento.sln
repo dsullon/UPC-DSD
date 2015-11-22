@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Librerias", "Librerias", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reclutamiento.MVC", "Reclutamiento.MVC\Reclutamiento.MVC.csproj", "{9EC282EF-61B3-44B7-A0D4-D3E1A3FFEE3D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOAPServicesTest", "SOAPServicesTest\SOAPServicesTest.csproj", "{80DA4C45-0422-4E49-96E3-88537E34ACA8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{9EC282EF-61B3-44B7-A0D4-D3E1A3FFEE3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9EC282EF-61B3-44B7-A0D4-D3E1A3FFEE3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9EC282EF-61B3-44B7-A0D4-D3E1A3FFEE3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80DA4C45-0422-4E49-96E3-88537E34ACA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80DA4C45-0422-4E49-96E3-88537E34ACA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80DA4C45-0422-4E49-96E3-88537E34ACA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80DA4C45-0422-4E49-96E3-88537E34ACA8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

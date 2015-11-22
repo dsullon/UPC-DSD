@@ -16,8 +16,20 @@ namespace SOAPServices
         #region . EMPRESA .
 
         [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "Empresas", ResponseFormat = WebMessageFormat.Json)]
+        Empresa CrearEmpresa(Empresa empresa);
+
+        [OperationContract]
+        [WebInvoke(Method = "DELETE", UriTemplate = "Empresas", ResponseFormat = WebMessageFormat.Json)]
+        bool EliminarEmpresa(Empresa empresa);
+
+        [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "Empresas", ResponseFormat = WebMessageFormat.Json)]
         List<Empresa> ListarEmpresa();
+
+        [OperationContract]
+        [WebInvoke(Method = "PUT", UriTemplate = "Empresas", ResponseFormat = WebMessageFormat.Json)]
+        Empresa ModificarEmpresa(Empresa empresa);
 
         [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "Empresas/{id}", ResponseFormat = WebMessageFormat.Json)]
