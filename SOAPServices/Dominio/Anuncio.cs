@@ -11,18 +11,18 @@ namespace SOAPServices.Dominio
     public class Anuncio
     {
         [DataMember]
-        public int id { get; set; }
+        public int Id { get; set; }
 
         [DataMember]
         [Required(ErrorMessage = "El campo titulo es obligatorio")]
-        public string titulo { get; set; }
+        public string Titulo { get; set; }
 
         [DataMember]
         [Required(ErrorMessage = "El campo descripcion es obligatorio")]
-        public string descripcion { get; set; }
+        public string Descripcion { get; set; }
 
         [DataMember]
         [Required(ErrorMessage = "El campo aptitud es obligatorio")]
-        public Aptitud aptitud { get; set; }
+        public List<Aptitud> Aptitud { get; set; }
     }
 }
