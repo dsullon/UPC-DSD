@@ -18,7 +18,7 @@ namespace Reclutamiento.MVC.Controllers
 
         public JsonResult ExisteDNI(string dni)
         {
-            var postulante = proxy.ListarPostulante().Where(c => c.NumeroDNI.Equals(dni)).FirstOrDefault();
+            var postulante = proxy.ListarPostulante().Where(c => c.dni.Equals(dni)).FirstOrDefault();
             if (postulante != null)
                 return new JsonResult { Data = false };
             return new JsonResult { Data = true };

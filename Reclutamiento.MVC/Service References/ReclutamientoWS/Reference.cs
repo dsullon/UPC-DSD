@@ -260,6 +260,163 @@ namespace Reclutamiento.MVC.ReclutamientoWS {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Postulante", Namespace="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio")]
+    [System.SerializableAttribute()]
+    public partial class Postulante : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string apellidoMaternoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string apellidoPaternoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string claveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string dniField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string emailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime fechaNacimientoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idPostulanteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nombreField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string apellidoMaterno {
+            get {
+                return this.apellidoMaternoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.apellidoMaternoField, value) != true)) {
+                    this.apellidoMaternoField = value;
+                    this.RaisePropertyChanged("apellidoMaterno");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string apellidoPaterno {
+            get {
+                return this.apellidoPaternoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.apellidoPaternoField, value) != true)) {
+                    this.apellidoPaternoField = value;
+                    this.RaisePropertyChanged("apellidoPaterno");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string clave {
+            get {
+                return this.claveField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.claveField, value) != true)) {
+                    this.claveField = value;
+                    this.RaisePropertyChanged("clave");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string dni {
+            get {
+                return this.dniField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.dniField, value) != true)) {
+                    this.dniField = value;
+                    this.RaisePropertyChanged("dni");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string email {
+            get {
+                return this.emailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.emailField, value) != true)) {
+                    this.emailField = value;
+                    this.RaisePropertyChanged("email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime fechaNacimiento {
+            get {
+                return this.fechaNacimientoField;
+            }
+            set {
+                if ((this.fechaNacimientoField.Equals(value) != true)) {
+                    this.fechaNacimientoField = value;
+                    this.RaisePropertyChanged("fechaNacimiento");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int idPostulante {
+            get {
+                return this.idPostulanteField;
+            }
+            set {
+                if ((this.idPostulanteField.Equals(value) != true)) {
+                    this.idPostulanteField = value;
+                    this.RaisePropertyChanged("idPostulante");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string nombre {
+            get {
+                return this.nombreField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nombreField, value) != true)) {
+                    this.nombreField = value;
+                    this.RaisePropertyChanged("nombre");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ReclutamientoWS.IReclutamientoService")]
     public interface IReclutamientoService {
@@ -323,6 +480,36 @@ namespace Reclutamiento.MVC.ReclutamientoWS {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReclutamientoService/ListarEmpresas", ReplyAction="http://tempuri.org/IReclutamientoService/ListarEmpresasResponse")]
         System.Threading.Tasks.Task<Reclutamiento.MVC.ReclutamientoWS.Empresa[]> ListarEmpresasAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReclutamientoService/CrearPostulante", ReplyAction="http://tempuri.org/IReclutamientoService/CrearPostulanteResponse")]
+        Reclutamiento.MVC.ReclutamientoWS.OperationStatus CrearPostulante(string nombre, string apellidoPaterno, string apellidoMaterno, System.DateTime fechaNacimiento, string email, string dni, string clave);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReclutamientoService/CrearPostulante", ReplyAction="http://tempuri.org/IReclutamientoService/CrearPostulanteResponse")]
+        System.Threading.Tasks.Task<Reclutamiento.MVC.ReclutamientoWS.OperationStatus> CrearPostulanteAsync(string nombre, string apellidoPaterno, string apellidoMaterno, System.DateTime fechaNacimiento, string email, string dni, string clave);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReclutamientoService/ObtenerPostulante", ReplyAction="http://tempuri.org/IReclutamientoService/ObtenerPostulanteResponse")]
+        Reclutamiento.MVC.ReclutamientoWS.Postulante ObtenerPostulante(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReclutamientoService/ObtenerPostulante", ReplyAction="http://tempuri.org/IReclutamientoService/ObtenerPostulanteResponse")]
+        System.Threading.Tasks.Task<Reclutamiento.MVC.ReclutamientoWS.Postulante> ObtenerPostulanteAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReclutamientoService/ModificarPostulante", ReplyAction="http://tempuri.org/IReclutamientoService/ModificarPostulanteResponse")]
+        Reclutamiento.MVC.ReclutamientoWS.Postulante ModificarPostulante(int idPostulante, string nombre, string apellidoPaterno, string apellidoMaterno, System.DateTime fechaNacimiento, string email, string dni, string clave);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReclutamientoService/ModificarPostulante", ReplyAction="http://tempuri.org/IReclutamientoService/ModificarPostulanteResponse")]
+        System.Threading.Tasks.Task<Reclutamiento.MVC.ReclutamientoWS.Postulante> ModificarPostulanteAsync(int idPostulante, string nombre, string apellidoPaterno, string apellidoMaterno, System.DateTime fechaNacimiento, string email, string dni, string clave);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReclutamientoService/EliminarPostulante", ReplyAction="http://tempuri.org/IReclutamientoService/EliminarPostulanteResponse")]
+        void EliminarPostulante(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReclutamientoService/EliminarPostulante", ReplyAction="http://tempuri.org/IReclutamientoService/EliminarPostulanteResponse")]
+        System.Threading.Tasks.Task EliminarPostulanteAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReclutamientoService/ListarPostulante", ReplyAction="http://tempuri.org/IReclutamientoService/ListarPostulanteResponse")]
+        Reclutamiento.MVC.ReclutamientoWS.Postulante[] ListarPostulante();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReclutamientoService/ListarPostulante", ReplyAction="http://tempuri.org/IReclutamientoService/ListarPostulanteResponse")]
+        System.Threading.Tasks.Task<Reclutamiento.MVC.ReclutamientoWS.Postulante[]> ListarPostulanteAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -430,6 +617,46 @@ namespace Reclutamiento.MVC.ReclutamientoWS {
         
         public System.Threading.Tasks.Task<Reclutamiento.MVC.ReclutamientoWS.Empresa[]> ListarEmpresasAsync() {
             return base.Channel.ListarEmpresasAsync();
+        }
+        
+        public Reclutamiento.MVC.ReclutamientoWS.OperationStatus CrearPostulante(string nombre, string apellidoPaterno, string apellidoMaterno, System.DateTime fechaNacimiento, string email, string dni, string clave) {
+            return base.Channel.CrearPostulante(nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, email, dni, clave);
+        }
+        
+        public System.Threading.Tasks.Task<Reclutamiento.MVC.ReclutamientoWS.OperationStatus> CrearPostulanteAsync(string nombre, string apellidoPaterno, string apellidoMaterno, System.DateTime fechaNacimiento, string email, string dni, string clave) {
+            return base.Channel.CrearPostulanteAsync(nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, email, dni, clave);
+        }
+        
+        public Reclutamiento.MVC.ReclutamientoWS.Postulante ObtenerPostulante(int id) {
+            return base.Channel.ObtenerPostulante(id);
+        }
+        
+        public System.Threading.Tasks.Task<Reclutamiento.MVC.ReclutamientoWS.Postulante> ObtenerPostulanteAsync(int id) {
+            return base.Channel.ObtenerPostulanteAsync(id);
+        }
+        
+        public Reclutamiento.MVC.ReclutamientoWS.Postulante ModificarPostulante(int idPostulante, string nombre, string apellidoPaterno, string apellidoMaterno, System.DateTime fechaNacimiento, string email, string dni, string clave) {
+            return base.Channel.ModificarPostulante(idPostulante, nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, email, dni, clave);
+        }
+        
+        public System.Threading.Tasks.Task<Reclutamiento.MVC.ReclutamientoWS.Postulante> ModificarPostulanteAsync(int idPostulante, string nombre, string apellidoPaterno, string apellidoMaterno, System.DateTime fechaNacimiento, string email, string dni, string clave) {
+            return base.Channel.ModificarPostulanteAsync(idPostulante, nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, email, dni, clave);
+        }
+        
+        public void EliminarPostulante(int id) {
+            base.Channel.EliminarPostulante(id);
+        }
+        
+        public System.Threading.Tasks.Task EliminarPostulanteAsync(int id) {
+            return base.Channel.EliminarPostulanteAsync(id);
+        }
+        
+        public Reclutamiento.MVC.ReclutamientoWS.Postulante[] ListarPostulante() {
+            return base.Channel.ListarPostulante();
+        }
+        
+        public System.Threading.Tasks.Task<Reclutamiento.MVC.ReclutamientoWS.Postulante[]> ListarPostulanteAsync() {
+            return base.Channel.ListarPostulanteAsync();
         }
     }
 }

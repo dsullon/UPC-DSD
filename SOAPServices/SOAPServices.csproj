@@ -75,6 +75,7 @@
     <EmbeddedResource Include="Dominio\Rubro.hbm.xml" />
     <EmbeddedResource Include="Dominio\Empresa.hbm.xml" />
     <Content Include="Dominio\Postulante.hbm.xml" />
+    <Content Include="EntityServices.svc" />
     <Content Include="ReclutamientoService.svc" />
     <Content Include="ReferenciaExterna\Iesi.Collections.dll" />
     <Content Include="ReferenciaExterna\MySql.Data.dll" />
@@ -88,6 +89,10 @@
     <Compile Include="Dominio\OperationStatus.cs" />
     <Compile Include="Dominio\Postulante.cs" />
     <Compile Include="Dominio\Rubro.cs" />
+    <Compile Include="EntityServices.svc.cs">
+      <DependentUpon>EntityServices.svc</DependentUpon>
+    </Compile>
+    <Compile Include="IEntityServices.cs" />
     <Compile Include="IReclutamientoService.cs" />
     <Compile Include="Persistencia\AnuncioDAO.cs" />
     <Compile Include="Persistencia\AptitudDAO.cs" />
