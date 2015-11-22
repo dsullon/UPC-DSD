@@ -45,11 +45,11 @@ namespace SOAPServices
         #region . Postulante .
 
         [OperationContract]
-        OperationStatus CrearAnuncio(string titulo, string descripcion, int idAptitud);
+        OperationStatus CrearPostulante(string nombre, string apellidoPaterno, string apellidoMaterno, DateTime fechaNacimiento, string email, string dni, string clave);
         [OperationContract]
-        Empresa ObtenerAnuncio(int id);
+        Postulante ObtenerPostulante(int id);
         [OperationContract]
-        Empresa ModificarAnuncio(int id, string titulo, string descripcion, int idAptitud);
+        Postulante ModificarPostulante(int id, string nombre, string apellidoPaterno, string apellidoMaterno, DateTime fechaNacimiento, string email, string dni, string clave);
         [OperationContract]
         void EliminarPostulante(int id);
         [OperationContract]
