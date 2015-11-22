@@ -249,5 +249,140 @@ namespace SOAPServices
         }
 
         #endregion
+        
+        #region . Aptitud .
+
+        private AptitudDAO aptitudDAO = null;
+        private AptitudDAO AptitudDAO
+        {
+            get
+            {
+                if (aptitudDAO == null)
+                    aptitudDAO = new AptitudDAO();
+                return aptitudDAO;
+            }
+        }
+
+        public Aptitud CrearAptitud(string descripcion)
+        {
+            Aptitud aptitudCrear = new Aptitud()
+            {
+                Descripcion = descripcion
+            };
+            return AptitudDAO.Crear(aptitudCrear);
+        }
+
+        public Aptitud ObtenerAptitud(int id)
+        {
+            return AptitudDAO.Obtener(id);
+        }
+
+        public Aptitud ModificarAptitud(int id, string descripcion)
+        {
+            Aptitud aptitudModificar = new Aptitud()
+            {
+                Id = id,
+                Descripcion = descripcion
+            };
+            return AptitudDAO.Modificar(aptitudModificar);
+        }
+
+        public void EliminarAptitud(int id)
+        {
+            Aptitud aptitudExistente = AptitudDAO.Obtener(id);
+            AptitudDAO.Eliminar(aptitudExistente);
+        }
+
+        public List<Aptitud> ListarAptitudes()
+        {
+            return AptitudDAO.ListarTodos().ToList();
+        }
+
+        #endregion
+
+        #region . Anuncio .
+
+        private AnuncioDAO anuncioDAO = null;
+        private AnuncioDAO AnuncioDAO
+        {
+            get
+            {
+                if (anuncioDAO == null)
+                    anuncioDAO = new AnuncioDAO();
+                return anuncioDAO;
+            }
+        }
+
+        public OperationStatus CrearAnuncio(string titulo, string descripcion, List<Aptitud> aptitudes)
+        {
+            try
+            {
+                //Aptitud aptitudesExistentes = AptitudDAO.ListarTodos;
+                Anuncio anuncioCrear = new Anuncio()
+                {
+                    Titulo = titulo,
+                    Descripcion = descripcion,
+                    Aptitud = aptitudes
+                };
+
+                var validationContext = new ValidationContext(anuncioCrear, serviceProvider: null, items: null);
+                var validationResults = new List<ValidationResult>();
+
+                var isValid = Validator.TryValidateObject(anuncioCrear, validationContext, validationResults, true);
+
+                if (!isValid)
+                {
+                    OperationStatus opStatus = new OperationStatus();
+                    opStatus.Success = false;
+
+                    foreach (ValidationResult message in validationResults)
+                    {
+                        opStatus.Messages.Add(message.ErrorMessage);
+                    }
+
+                    return opStatus;
+                }
+                else
+                {
+                    AnuncioDAO.Crear(anuncioCrear);
+                    return new OperationStatus { Success = true };
+                }
+            }
+            catch (Exception e)
+            {
+                return OperationStatus.CreateFromException("Al crear el anuncio.", e);
+            }
+        }
+
+        public Anuncio ObtenerAnuncio(int id)
+        {
+            return AnuncioDAO.Obtener(id);
+        }
+
+        public Anuncio ModificarAnuncio(int id, string titulo, string descripcion, List<Aptitud> aptitud)
+        {
+            //Aptitud aptitudExistente = AptitudDAO.Obtener(aptitud);
+            Anuncio anuncioModificar = new Anuncio()
+            {
+                Id = id,
+                Titulo = titulo,
+                Descripcion = descripcion,
+                Aptitud = aptitud
+            };
+            return AnuncioDAO.Modificar(anuncioModificar);
+        }
+
+        public void EliminarAnuncio(int id)
+        {
+            Anuncio anuncioExistente = AnuncioDAO.Obtener(id);
+            AnuncioDAO.Eliminar(anuncioExistente);
+        }
+
+        public List<Anuncio> ListarAnuncios()
+        {
+            return AnuncioDAO.ListarTodos().ToList();
+        }
+
+        #endregion
     }
 }
