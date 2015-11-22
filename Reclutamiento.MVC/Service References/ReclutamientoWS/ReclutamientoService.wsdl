@@ -93,6 +93,36 @@
   <wsdl:message name="IReclutamientoService_ListarEmpresas_OutputMessage">
     <wsdl:part name="parameters" element="tns:ListarEmpresasResponse" />
   </wsdl:message>
+  <wsdl:message name="IReclutamientoService_CrearPostulante_InputMessage">
+    <wsdl:part name="parameters" element="tns:CrearPostulante" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_CrearPostulante_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CrearPostulanteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ObtenerPostulante_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerPostulante" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ObtenerPostulante_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerPostulanteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ModificarPostulante_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarPostulante" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ModificarPostulante_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarPostulanteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_EliminarPostulante_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarPostulante" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_EliminarPostulante_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarPostulanteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ListarPostulante_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarPostulante" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ListarPostulante_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarPostulanteResponse" />
+  </wsdl:message>
   <wsdl:portType name="IReclutamientoService">
     <wsdl:operation name="CrearRubro">
       <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/CrearRubro" message="tns:IReclutamientoService_CrearRubro_InputMessage" />
@@ -133,6 +163,26 @@
     <wsdl:operation name="ListarEmpresas">
       <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/ListarEmpresas" message="tns:IReclutamientoService_ListarEmpresas_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/ListarEmpresasResponse" message="tns:IReclutamientoService_ListarEmpresas_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CrearPostulante">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/CrearPostulante" message="tns:IReclutamientoService_CrearPostulante_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/CrearPostulanteResponse" message="tns:IReclutamientoService_CrearPostulante_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerPostulante">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/ObtenerPostulante" message="tns:IReclutamientoService_ObtenerPostulante_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/ObtenerPostulanteResponse" message="tns:IReclutamientoService_ObtenerPostulante_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarPostulante">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/ModificarPostulante" message="tns:IReclutamientoService_ModificarPostulante_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/ModificarPostulanteResponse" message="tns:IReclutamientoService_ModificarPostulante_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarPostulante">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/EliminarPostulante" message="tns:IReclutamientoService_EliminarPostulante_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/EliminarPostulanteResponse" message="tns:IReclutamientoService_EliminarPostulante_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarPostulante">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/ListarPostulante" message="tns:IReclutamientoService_ListarPostulante_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/ListarPostulanteResponse" message="tns:IReclutamientoService_ListarPostulante_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IReclutamientoService" type="tns:IReclutamientoService">
@@ -227,6 +277,51 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="CrearPostulante">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/CrearPostulante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerPostulante">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/ObtenerPostulante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarPostulante">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/ModificarPostulante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarPostulante">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/EliminarPostulante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarPostulante">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/ListarPostulante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="BasicHttpsBinding_IReclutamientoService" type="tns:IReclutamientoService">
     <wsp:PolicyReference URI="#BasicHttpsBinding_IReclutamientoService_policy" />
@@ -314,6 +409,51 @@
     </wsdl:operation>
     <wsdl:operation name="ListarEmpresas">
       <soap:operation soapAction="http://tempuri.org/IReclutamientoService/ListarEmpresas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearPostulante">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/CrearPostulante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerPostulante">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/ObtenerPostulante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarPostulante">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/ModificarPostulante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarPostulante">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/EliminarPostulante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarPostulante">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/ListarPostulante" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

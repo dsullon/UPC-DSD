@@ -165,6 +165,7 @@
     <Compile Include="Controllers\EmpresaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PostulanteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -213,6 +214,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\ReclutamientoWS\Reclutamiento.MVC.ReclutamientoWS.Rubro.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ReclutamientoWS\Reclutamiento.MVC.ReclutamientoWS.Postulante.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Service References\ReclutamientoWS\Reference.svcmap">
@@ -274,6 +278,9 @@
     <Content Include="Views\Shared\_LayoutCompany.cshtml" />
     <Content Include="Views\Empresa\Registrar.cshtml" />
     <Content Include="Views\Empresa\Editar.cshtml" />
+    <Content Include="Views\Postulante\Listado.cshtml" />
+    <Content Include="Views\Postulante\Registrar.cshtml" />
+    <Content Include="Views\Postulante\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

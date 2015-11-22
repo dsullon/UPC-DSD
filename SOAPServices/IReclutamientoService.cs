@@ -42,6 +42,21 @@ namespace SOAPServices
 
         #endregion
 
+        #region . Postulante .
+
+        [OperationContract]
+        OperationStatus CrearAnuncio(string titulo, string descripcion, int idAptitud);
+        [OperationContract]
+        Empresa ObtenerAnuncio(int id);
+        [OperationContract]
+        Empresa ModificarAnuncio(int id, string titulo, string descripcion, int idAptitud);
+        [OperationContract]
+        void EliminarPostulante(int id);
+        [OperationContract]
+        List<Postulante> ListarPostulante();
+
+        #endregion
+
         #region . Anuncio .
 
         [OperationContract]
@@ -60,11 +75,11 @@ namespace SOAPServices
         #region . Aptitud .
 
         [OperationContract]
-        Aptitud CrearAptitud(string descripcion, int valor);
+        Aptitud CrearAptitud(string descripcion);
         [OperationContract]
         Aptitud ObtenerAptitud(int id);
         [OperationContract]
-        Aptitud ModificarAptitud(int id, string descripcion, int valor);
+        Aptitud ModificarAptitud(int id, string descripcion);
         [OperationContract]
         void EliminarAptitud(int id);
         [OperationContract]
