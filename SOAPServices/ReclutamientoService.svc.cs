@@ -313,7 +313,7 @@ namespace SOAPServices
             }
         }
 
-        public OperationStatus CrearAnuncio(string titulo, string descripcion, List<Aptitud> aptitudes)
+        public OperationStatus CrearAnuncio(string titulo, string descripcion)
         {
             try
             {
@@ -322,7 +322,6 @@ namespace SOAPServices
                 {
                     Titulo = titulo,
                     Descripcion = descripcion,
-                    Aptitud = aptitudes
                 };
 
                 var validationContext = new ValidationContext(anuncioCrear, serviceProvider: null, items: null);
@@ -359,7 +358,7 @@ namespace SOAPServices
             return AnuncioDAO.Obtener(id);
         }
 
-        public Anuncio ModificarAnuncio(int id, string titulo, string descripcion, List<Aptitud> aptitud)
+        public Anuncio ModificarAnuncio(int id, string titulo, string descripcion)
         {
             //Aptitud aptitudExistente = AptitudDAO.Obtener(aptitud);
             Anuncio anuncioModificar = new Anuncio()
@@ -367,7 +366,6 @@ namespace SOAPServices
                 Id = id,
                 Titulo = titulo,
                 Descripcion = descripcion,
-                Aptitud = aptitud
             };
             return AnuncioDAO.Modificar(anuncioModificar);
         }
@@ -381,6 +379,57 @@ namespace SOAPServices
         public List<Anuncio> ListarAnuncios()
         {
             return AnuncioDAO.ListarTodos().ToList();
+        }
+
+        #endregion
+
+        #region . Aptitud_Anuncio .
+
+        private Aptitud_AnuncioDAO aptitud_anuncioDAO = null;
+        private Aptitud_AnuncioDAO Aptitud_AnuncioDAO
+        {
+            get
+            {
+                if (aptitud_anuncioDAO == null)
+                    aptitud_anuncioDAO = new Aptitud_AnuncioDAO();
+                return aptitud_anuncioDAO;
+            }
+        }
+
+        public Aptitud_Anuncio CrearAptitud_Anuncio(int idanuncio, int idaptitud)
+        {
+            Aptitud_Anuncio aptitud_anuncioCrear = new Aptitud_Anuncio()
+            {
+                IdAnuncio = idanuncio,
+                IdAptitud = idaptitud
+            };
+            return Aptitud_AnuncioDAO.Crear(aptitud_anuncioCrear);
+        }
+
+        public Aptitud_Anuncio ObtenerAptitud_Anuncio(int id)
+        {
+            return Aptitud_AnuncioDAO.Obtener(id);
+        }
+
+        public Aptitud_Anuncio ModificarAptitud_Anuncio(int idanuncio, int idaptitud)
+        {
+            Aptitud_Anuncio aptitud_anuncioModificar = new Aptitud_Anuncio()
+            {
+                IdAnuncio = idanuncio,
+                IdAptitud = idaptitud
+            };
+            return Aptitud_AnuncioDAO.Modificar(aptitud_anuncioModificar);
+        }
+
+        public void EliminarAptitud_Anuncio(int id)
+        {
+            Aptitud_Anuncio aptitud_anuncioExistente = Aptitud_AnuncioDAO.Obtener(id);
+            Aptitud_AnuncioDAO.Eliminar(aptitud_anuncioExistente);
+        }
+
+        public List<Aptitud_Anuncio> ListarAptitudesPorAnuncio()
+        {
+            return Aptitud_AnuncioDAO.ListarTodos().ToList();
         }
 
         #endregion
