@@ -204,6 +204,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\upcempresa.js" />
+    <Content Include="Scripts\upcfunciones.js" />
     <Content Include="Scripts\_references.js" />
     <None Include="Service References\ReclutamientoWS\configuration91.svcinfo" />
     <None Include="Service References\ReclutamientoWS\configuration.svcinfo" />
@@ -214,6 +215,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\ReclutamientoWS\Reclutamiento.MVC.ReclutamientoWS.Rubro.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ReclutamientoWS\Reclutamiento.MVC.ReclutamientoWS.Postulante.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Service References\ReclutamientoWS\Reference.svcmap">
