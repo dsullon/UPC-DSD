@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Runtime.Serialization.Json;
 using System.Web;
 using System.Web.Mvc;
 
@@ -9,6 +11,8 @@ namespace Reclutamiento.MVC.Controllers
 {
     public class EmpresaController : Controller
     {
+        string BASE_URL = "http://reclutamientoupc.azurewebsites.net/EntityServices.svc/";
+
         ReclutamientoServiceClient proxy = new ReclutamientoServiceClient();
         // GET: Empresa
         public ActionResult Index()
@@ -42,25 +46,46 @@ namespace Reclutamiento.MVC.Controllers
         public ActionResult Registrar()
         {
             var listaRubros = proxy.ListarRubros();
-            ViewBag.Rubros = listaRubros;
+            ViewBag.ListaRubros = listaRubros;
             return View();
         }
 
         [HttpPost]
         public ActionResult Registrar(Empresa empresa, int rubro)
         {
+            string url = string.Format("{0}/Empresas", BASE_URL);
             var r = proxy.ObtenerRubro(rubro);
-            //OperationStatus opStatus = proxy.CrearEmpresa(empresa.EmailContacto, empresa.Clave, empresa.RazonSocial, empresa.NumeroRuc, empresa.Rubro.Id);
-            OperationStatus opStatus = proxy.CrearEmpresa(empresa.EmailContacto, empresa.Clave, empresa.RazonSocial, empresa.NumeroRuc, r.Id);
-            return Json(opStatus);
-            //var result = proxy.CrearEmpresa(empresa.EmailContacto, empresa.Clave, empresa.RazonSocial, empresa.NumeroRuc, empresa.Rubro.Id);
-            //if (result.Success)
-            //    return RedirectToAction("Index", "Home");
-            //else
-            //{
-            //    ViewBag.Error = TempData["error"];
-            //    return View();
-            //}
+            empresa.Rubro = r;
+            var serial = new DataContractJsonSerializer(typeof(Empresa));
+            var request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = "POST";
+            request.ContentType = "application/json";
+            using (var requestStream = request.GetRequestStream())
+            {
+                serial.WriteObject(requestStream, empresa);
+            }
+
+            var response = (HttpWebResponse)request.GetResponse();
+            var status = response.StatusCode;
+            if(status==HttpStatusCode.Created)
+                return RedirectToAction("Index", "Home");
+            else
+            {
+                ViewBag.Error = TempData["error"];
+                return View();
+            }
+            //var r = proxy.ObtenerRubro(rubro);
+            ////OperationStatus opStatus = proxy.CrearEmpresa(empresa.EmailContacto, empresa.Clave, empresa.RazonSocial, empresa.NumeroRuc, empresa.Rubro.Id);
+            //OperationStatus opStatus = proxy.CrearEmpresa(empresa.EmailContacto, empresa.Clave, empresa.RazonSocial, empresa.NumeroRuc, r.Id);
+            //return Json(opStatus);
+            ////var result = proxy.CrearEmpresa(empresa.EmailContacto, empresa.Clave, empresa.RazonSocial, empresa.NumeroRuc, empresa.Rubro.Id);
+            ////if (result.Success)
+            ////    return RedirectToAction("Index", "Home");
+            ////else
+            ////{
+            ////    ViewBag.Error = TempData["error"];
+            ////    return View();
+            ////}
         }
 
         public ActionResult Editar()
@@ -89,12 +114,12 @@ namespace Reclutamiento.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                var empresaExistente= proxy.ListarEmpresas().Where(c => c.EmailContacto.Equals(empresa.EmailContacto) && c.Clave.Equals(empresa.Clave)).FirstOrDefault();
+                var empresaExistente = proxy.ListarEmpresas().Where(c => c.EmailContacto.Equals(empresa.EmailContacto) && c.Clave.Equals(empresa.Clave)).FirstOrDefault();
                 if (empresaExistente != null)
                 {
                     Session["EmpresaId"] = empresaExistente.Id.ToString();
                     Session["EmpresaNombre"] = empresaExistente.RazonSocial.ToString();
-                    return RedirectToAction("Listado","Empresa");
+                    return RedirectToAction("Listado", "Empresa");
                 }
             }
             return View(empresa);

@@ -17,11 +17,11 @@ namespace SOAPServices
 
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "Empresas", ResponseFormat = WebMessageFormat.Json)]
-        Empresa CrearEmpresa(Empresa empresa);
+        void CrearEmpresa(Empresa empresa);
 
         [OperationContract]
-        [WebInvoke(Method = "DELETE", UriTemplate = "Empresas", ResponseFormat = WebMessageFormat.Json)]
-        bool EliminarEmpresa(Empresa empresa);
+        [WebInvoke(Method = "DELETE", UriTemplate = "Empresas/{id}", ResponseFormat = WebMessageFormat.Json)]
+        void EliminarEmpresa(string id);
 
         [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "Empresas", ResponseFormat = WebMessageFormat.Json)]
@@ -29,7 +29,7 @@ namespace SOAPServices
 
         [OperationContract]
         [WebInvoke(Method = "PUT", UriTemplate = "Empresas", ResponseFormat = WebMessageFormat.Json)]
-        Empresa ModificarEmpresa(Empresa empresa);
+        void ModificarEmpresa(Empresa empresa);
 
         [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "Empresas/{id}", ResponseFormat = WebMessageFormat.Json)]

@@ -87,6 +87,7 @@
     <Compile Include="Dominio\Aptitud.cs" />
     <Compile Include="Dominio\Aptitud_Anuncio.cs" />
     <Compile Include="Dominio\Empresa.cs" />
+    <Compile Include="Dominio\ErrorData.cs" />
     <Compile Include="Dominio\OperationStatus.cs" />
     <Compile Include="Dominio\Postulante.cs" />
     <Compile Include="Dominio\Rubro.cs" />
@@ -113,9 +114,7 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\PublishProfiles\reclutamientoupc - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\reclutamientoupc - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\reclutamientoupc - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\reclutamientoupc - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

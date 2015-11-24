@@ -57,4 +57,44 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfPostulante" nillable="true" type="tns:ArrayOfPostulante" />
+  <xs:complexType name="Anuncio">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Titulo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Anuncio" nillable="true" type="tns:Anuncio" />
+  <xs:complexType name="ArrayOfAnuncio">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Anuncio" nillable="true" type="tns:Anuncio" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAnuncio" nillable="true" type="tns:ArrayOfAnuncio" />
+  <xs:complexType name="Aptitud">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Aptitud" nillable="true" type="tns:Aptitud" />
+  <xs:complexType name="ArrayOfAptitud">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Aptitud" nillable="true" type="tns:Aptitud" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAptitud" nillable="true" type="tns:ArrayOfAptitud" />
+  <xs:complexType name="Aptitud_Anuncio">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IdAnuncio" type="xs:int" />
+      <xs:element minOccurs="0" name="IdAptitud" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Aptitud_Anuncio" nillable="true" type="tns:Aptitud_Anuncio" />
+  <xs:complexType name="ArrayOfAptitud_Anuncio">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Aptitud_Anuncio" nillable="true" type="tns:Aptitud_Anuncio" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAptitud_Anuncio" nillable="true" type="tns:ArrayOfAptitud_Anuncio" />
 </xs:schema>

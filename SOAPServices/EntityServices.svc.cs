@@ -3,8 +3,10 @@ using SOAPServices.Persistencia;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.ServiceModel.Web;
 using System.Text;
 
 namespace SOAPServices
@@ -26,22 +28,33 @@ namespace SOAPServices
 
         #region . EMPRESA .
 
-        public Empresa CrearEmpresa(Empresa empresa)
+        public void CrearEmpresa(Empresa empresa)
         {
-            return EmpresaDAO.Crear(empresa);
+            EmpresaDAO.Crear(empresa);
+            WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.Created;
         }
 
-        public bool EliminarEmpresa(Empresa empresa)
+        public void EliminarEmpresa(string id)
+        {
+            int idEmpresa = int.Parse(id);
+            var empresaEncontrada = EmpresaDAO.Obtener(idEmpresa);
+            if (empresaEncontrada != null)
+                empresaDAO.Eliminar(empresaEncontrada);
+            else
+                throw new WebFaultException<string>("Empresa no encontrada.", HttpStatusCode.NotFound);
+        }
+
+        public void ModificarEmpresa(Empresa empresa)
         {
             int idEmpresa = empresa.Id;
-            EmpresaDAO.Eliminar(empresa);
-            var emp = EmpresaDAO.Obtener(idEmpresa);
-            return emp == null;
-        }
+            var empresaEncontrada = EmpresaDAO.Obtener(idEmpresa);
+            if (empresaEncontrada != null)
+            {
+                empresaDAO.Modificar(empresa);
+            }
+            else
+                throw new WebFaultException<string>("Empresa no encontrada.", HttpStatusCode.NotFound);
 
-        public Empresa ModificarEmpresa(Empresa empresa)
-        {
-            return EmpresaDAO.Modificar(empresa);
         }
 
         public List<Empresa> ListarEmpresa()
@@ -52,7 +65,16 @@ namespace SOAPServices
         public Empresa ObtenerEmpresa(string id)
         {
             int idEmpresa = int.Parse(id);
-            return EmpresaDAO.Obtener(idEmpresa);
+            var empresaEncontrada = EmpresaDAO.Obtener(idEmpresa);
+            if (empresaEncontrada != null)
+            {
+                return empresaEncontrada;
+            }
+            throw new WebFaultException<string>("Empresa no encontrada.", HttpStatusCode.NotFound);
+            //ErrorData error = new ErrorData("Empresa no encontrada.", "La empresa fue eliminada o no ha sido creada");
+            //throw new WebFaultException<ErrorData>(error, HttpStatusCode.NotFound);
+            //WebOperationContext.Current.OutgoingResponse.SetStatusAsNotFound("Empresa no encontada!");
+            return null;
         }
 
         #endregion

@@ -234,6 +234,15 @@
     <Content Include="Service References\ReclutamientoWS\Reclutamiento.MVC.ReclutamientoWS.Postulante.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\ReclutamientoWS\Reclutamiento.MVC.ReclutamientoWS.Anuncio.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ReclutamientoWS\Reclutamiento.MVC.ReclutamientoWS.Aptitud.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ReclutamientoWS\Reclutamiento.MVC.ReclutamientoWS.Aptitud_Anuncio.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\ReclutamientoWS\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
