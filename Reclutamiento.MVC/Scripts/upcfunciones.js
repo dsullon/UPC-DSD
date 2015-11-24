@@ -1,4 +1,5 @@
-﻿$(function () {
+﻿$(function () {
+
 $('#NumeroRuc').keypress(function (event) {
 
     cantidad = $('#NumeroRuc').val().length;
@@ -32,4 +33,4 @@ $('#NumeroRuc').keypress(function (event) {
 
     }
 );
-});
+});

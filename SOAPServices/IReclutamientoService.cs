@@ -49,7 +49,7 @@ namespace SOAPServices
         [OperationContract]
         Postulante ObtenerPostulante(int id);
         [OperationContract]
-        Postulante ModificarPostulante(int idPostulante, string nombre, string apellidoPaterno, string apellidoMaterno, DateTime fechaNacimiento, string email, string dni, string clave);
+        Postulante ModificarPostulante(int id, string nombre, string apellidoPaterno, string apellidoMaterno, DateTime fechaNacimiento, string email, string dni, string clave);
         [OperationContract]
         void EliminarPostulante(int id);
         [OperationContract]
@@ -57,34 +57,49 @@ namespace SOAPServices
 
         #endregion
 
-        //#region . Anuncio .
+        #region . Anuncio .
 
-        //[OperationContract]
-        //OperationStatus CrearAnuncio(string titulo, string descripcion, int idAptitud);
-        //[OperationContract]
-        //Empresa ObtenerAnuncio(int id);
-        //[OperationContract]
-        //Empresa ModificarAnuncio(int id, string titulo, string descripcion, int idAptitud);
-        //[OperationContract]
-        //void EliminarAnuncio(int id);
-        //[OperationContract]
-        //List<Anuncio> ListarAnuncios();
+        [OperationContract]
+        OperationStatus CrearAnuncio(string titulo, string descripcion);
+        [OperationContract]
+        Anuncio ObtenerAnuncio(int id);
+        [OperationContract]
+        Anuncio ModificarAnuncio(int id, string titulo, string descripcion);
+        [OperationContract]
+        void EliminarAnuncio(int id);
+        [OperationContract]
+        List<Anuncio> ListarAnuncios();
 
-        //#endregion
+        #endregion
 
-        //#region . Aptitud .
+        #region . Aptitud .
 
-        //[OperationContract]
-        //Rubro CrearAptitud(string descripcion, int valor);
-        //[OperationContract]
-        //Rubro ObtenerAptitud(int id);
-        //[OperationContract]
-        //Rubro ModificarAptitud(int id, string descripcion, int valor);
-        //[OperationContract]
-        //void EliminarAptitud(int id);
-        //[OperationContract]
-        //List<Aptitud> ListarAptitudes();
+        [OperationContract]
+        Aptitud CrearAptitud(string descripcion);
+        [OperationContract]
+        Aptitud ObtenerAptitud(int id);
+        [OperationContract]
+        Aptitud ModificarAptitud(int id, string descripcion);
+        [OperationContract]
+        void EliminarAptitud(int id);
+        [OperationContract]
+        List<Aptitud> ListarAptitudes();
 
-        //#endregion
+        #endregion
+
+        #region . Aptitud_Anuncio .
+
+        [OperationContract]
+        Aptitud_Anuncio CrearAptitud_Anuncio(int idAnuncio, int idAptitud);
+        [OperationContract]
+        Aptitud_Anuncio ObtenerAptitud_Anuncio(int id);
+        [OperationContract]
+        Aptitud_Anuncio ModificarAptitud_Anuncio(int idAnuncio, int idAptitud);
+        [OperationContract]
+        void EliminarAptitud_Anuncio(int id);
+        [OperationContract]
+        List<Aptitud_Anuncio> ListarAptitudesPorAnuncio();
+
+        #endregion
     }
 }

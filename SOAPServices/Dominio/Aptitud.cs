@@ -12,11 +12,5 @@ namespace SOAPServices.Dominio
         [DataMember]
         [Required(ErrorMessage = "El campo descripcion es obligatorio")]
         public string Descripcion { get; set; }
-
-        [DataMember]
-        [Required(ErrorMessage = "El campo valor es obligatorio")]
-        public int Valor { get; set; }
-
-
     }
 }
