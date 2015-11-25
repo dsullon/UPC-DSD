@@ -74,18 +74,6 @@ namespace Reclutamiento.MVC.Controllers
                 ViewBag.Error = TempData["error"];
                 return View();
             }
-            //var r = proxy.ObtenerRubro(rubro);
-            ////OperationStatus opStatus = proxy.CrearEmpresa(empresa.EmailContacto, empresa.Clave, empresa.RazonSocial, empresa.NumeroRuc, empresa.Rubro.Id);
-            //OperationStatus opStatus = proxy.CrearEmpresa(empresa.EmailContacto, empresa.Clave, empresa.RazonSocial, empresa.NumeroRuc, r.Id);
-            //return Json(opStatus);
-            ////var result = proxy.CrearEmpresa(empresa.EmailContacto, empresa.Clave, empresa.RazonSocial, empresa.NumeroRuc, empresa.Rubro.Id);
-            ////if (result.Success)
-            ////    return RedirectToAction("Index", "Home");
-            ////else
-            ////{
-            ////    ViewBag.Error = TempData["error"];
-            ////    return View();
-            ////}
         }
 
         public ActionResult Editar()

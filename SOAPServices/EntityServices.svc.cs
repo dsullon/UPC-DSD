@@ -8,6 +8,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using System.Web.Script.Serialization;
 
 namespace SOAPServices
 {
@@ -30,6 +31,21 @@ namespace SOAPServices
 
         public void CrearEmpresa(Empresa empresa)
         {
+            //string BASE_URL2 = "http://ws.razonsocialperu.com/rest/PROYUPC/RUC/";
+            //string urlConsulta = string.Format("{0}/{1}", BASE_URL2, empresa.NumeroRuc);
+            //var webClient = new WebClient();
+            //var json = webClient.DownloadString(urlConsulta);
+            //var js = new JavaScriptSerializer();
+            //var result = js.DeserializeObject(json);
+
+            //Dictionary<string, object> lista = ((object[])(result))[0] as Dictionary<string, object>;
+            //var estado = lista.Where(x => x.Key == "status") as Dictionary<string, object>;
+
+            //string value = lista["status"].ToString();
+
+            //if (value != "EXISTS")
+            //    throw new WebFaultException<string>("El RUC ingresado no se encuentra registrado en los sistemas tributarios.", HttpStatusCode.NotFound);
+
             EmpresaDAO.Crear(empresa);
             WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.Created;
         }
@@ -70,9 +86,9 @@ namespace SOAPServices
             {
                 return empresaEncontrada;
             }
-            throw new WebFaultException<string>("Empresa no encontrada.", HttpStatusCode.NotFound);
-            //ErrorData error = new ErrorData("Empresa no encontrada.", "La empresa fue eliminada o no ha sido creada");
-            //throw new WebFaultException<ErrorData>(error, HttpStatusCode.NotFound);
+            //throw new WebFaultException<string>("Empresa no encontrada.", HttpStatusCode.NotFound);
+            ErrorData error = new ErrorData("Empresa no encontrada.", "La empresa fue eliminada o no ha sido creada");
+            throw new WebFaultException<ErrorData>(error, HttpStatusCode.NotFound);
             //WebOperationContext.Current.OutgoingResponse.SetStatusAsNotFound("Empresa no encontada!");
             return null;
         }

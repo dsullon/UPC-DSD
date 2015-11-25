@@ -1,12 +1,12 @@
 ﻿$(function () {
 
-$('#NumeroRuc').keypress(function (event) {
+$('#NumeroRuc').keyup(function (event) {
 
     cantidad = $('#NumeroRuc').val().length;
     valruc = $('#NumeroRuc').val();
     key = "PROYUPC";
 
-    if (cantidad == 10){
+    if (cantidad == 11){
         url = "http://ws.razonsocialperu.com/rest/index.php";
 
         $.ajax(url, {
