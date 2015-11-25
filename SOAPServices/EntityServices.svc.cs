@@ -31,20 +31,20 @@ namespace SOAPServices
 
         public void CrearEmpresa(Empresa empresa)
         {
-            //string BASE_URL2 = "http://ws.razonsocialperu.com/rest/PROYUPC/RUC/";
-            //string urlConsulta = string.Format("{0}/{1}", BASE_URL2, empresa.NumeroRuc);
-            //var webClient = new WebClient();
-            //var json = webClient.DownloadString(urlConsulta);
-            //var js = new JavaScriptSerializer();
-            //var result = js.DeserializeObject(json);
+            string BASE_URL2 = "http://ws.razonsocialperu.com/rest/PROYUPC/RUC/";
+            string urlConsulta = string.Format("{0}/{1}", BASE_URL2, empresa.NumeroRuc);
+            var webClient = new WebClient();
+            var json = webClient.DownloadString(urlConsulta);
+            var js = new JavaScriptSerializer();
+            var result = js.DeserializeObject(json);
 
-            //Dictionary<string, object> lista = ((object[])(result))[0] as Dictionary<string, object>;
-            //var estado = lista.Where(x => x.Key == "status") as Dictionary<string, object>;
+            Dictionary<string, object> lista = ((object[])(result))[0] as Dictionary<string, object>;
+            var estado = lista.Where(x => x.Key == "status") as Dictionary<string, object>;
 
-            //string value = lista["status"].ToString();
+            string value = lista["status"].ToString();
 
-            //if (value != "EXISTS")
-            //    throw new WebFaultException<string>("El RUC ingresado no se encuentra registrado en los sistemas tributarios.", HttpStatusCode.NotFound);
+            if (value != "EXISTS")
+                throw new WebFaultException<string>("El RUC ingresado no se encuentra registrado en los sistemas tributarios.", HttpStatusCode.NotFound);
 
             EmpresaDAO.Crear(empresa);
             WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.Created;
