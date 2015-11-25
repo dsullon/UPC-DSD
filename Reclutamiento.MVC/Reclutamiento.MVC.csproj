@@ -305,6 +305,7 @@
     <Content Include="Views\Postulante\Listado.cshtml" />
     <Content Include="Views\Postulante\Registrar.cshtml" />
     <Content Include="Views\Postulante\Index.cshtml" />
+    <Content Include="Views\Postulante\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
