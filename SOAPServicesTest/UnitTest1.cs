@@ -13,7 +13,7 @@ namespace SOAPServicesTest
     [TestClass]
     public class UnitTest1
     {
-        string BASE_URL = "http://localhost:40845/EntityServices.svc/";
+        string BASE_URL = "http://reclutamientoupc.azurewebsites.net/entityservices.svc";
         [TestMethod]
         public void ObtenerListadoDeEmpresas()
         {
