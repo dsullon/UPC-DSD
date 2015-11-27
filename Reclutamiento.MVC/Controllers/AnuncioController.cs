@@ -17,9 +17,20 @@ namespace Reclutamiento.MVC.Controllers
         }
 
         // GET: Anuncio/Details/5
-        public ActionResult Detalles(int id)
+        public ActionResult Detalles()
         {
             return View();
+        }
+
+        public ActionResult Listar()
+        {
+            if (Session["idAnuncio"] != null)
+            {
+                var resultado = proxy.ListarAnuncios();
+                return View(resultado);
+            }
+            else
+                return RedirectToAction("Index", "Anuncio");
         }
 
         // GET: Anuncio/Create
@@ -45,7 +56,7 @@ namespace Reclutamiento.MVC.Controllers
         }
 
         // GET: Anuncio/Edit/5
-        public ActionResult Editar(int id)
+        public ActionResult Editar()
         {
             return View();
         }
@@ -67,7 +78,7 @@ namespace Reclutamiento.MVC.Controllers
         }
 
         // GET: Anuncio/Delete/5
-        public ActionResult Eliminar(int id)
+        public ActionResult Eliminar()
         {
             return View();
         }

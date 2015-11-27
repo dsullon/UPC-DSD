@@ -17,9 +17,20 @@ namespace Reclutamiento.MVC.Controllers
         }
 
         // GET: Aptitud/Details/5
-        public ActionResult Detalles(int id)
+        public ActionResult Detalles()
         {
             return View();
+        }
+
+        public ActionResult Listar()
+        {
+            if (Session["idAptitud"] != null)
+            {
+                var resultado = proxy.ListarAptitudes();
+                return View(resultado);
+            }
+            else
+                return RedirectToAction("Index", "Aptitud");
         }
 
         // GET: Aptitud/Create
@@ -45,7 +56,7 @@ namespace Reclutamiento.MVC.Controllers
         }
 
         // GET: Aptitud/Edit/5
-        public ActionResult Editar(int id)
+        public ActionResult Editar()
         {
             return View();
         }
@@ -67,7 +78,7 @@ namespace Reclutamiento.MVC.Controllers
         }
 
         // GET: Aptitud/Delete/5
-        public ActionResult Eliminar(int id)
+        public ActionResult Eliminar()
         {
             return View();
         }

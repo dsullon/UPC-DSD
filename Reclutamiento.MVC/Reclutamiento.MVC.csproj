@@ -316,6 +316,8 @@
     <Content Include="Views\Anuncio\Registrar.cshtml" />
     <Content Include="Views\Anuncio\Editar.cshtml" />
     <Content Include="Views\Anuncio\Eliminar.cshtml" />
+    <Content Include="Views\Aptitud\Listar.cshtml" />
+    <Content Include="Views\Anuncio\Listar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

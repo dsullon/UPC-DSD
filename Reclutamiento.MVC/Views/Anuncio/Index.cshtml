@@ -1,6 +1,19 @@
 ﻿@{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutCompany.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Index - Anuncios</h2>
+
+<div>
+    @Html.ActionLink("Anuncios", "Listar", "Anuncio")
+    <br />
+    @Html.ActionLink("Retornar", "Index", "Home")
+    <br />
+    @Html.ActionLink("Registrar un nuevo anuncio", "Registrar", "Anuncio")
+    <br />
+    @Html.ActionLink("Editar un anuncio", "Editar", "Anuncio")
+    <br />
+    @Html.ActionLink("Eliminar un anuncio", "Eliminar", "Anuncio")
+</div>
 
