@@ -306,11 +306,19 @@
     <Content Include="Views\Postulante\Registrar.cshtml" />
     <Content Include="Views\Postulante\Index.cshtml" />
     <Content Include="Views\Postulante\Editar.cshtml" />
+    <Content Include="Views\Aptitud\Index.cshtml" />
+    <Content Include="Views\Aptitud\Detalles.cshtml" />
+    <Content Include="Views\Aptitud\Registrar.cshtml" />
+    <Content Include="Views\Aptitud\Editar.cshtml" />
+    <Content Include="Views\Aptitud\Eliminar.cshtml" />
+    <Content Include="Views\Anuncio\Index.cshtml" />
+    <Content Include="Views\Anuncio\Detalles.cshtml" />
+    <Content Include="Views\Anuncio\Registrar.cshtml" />
+    <Content Include="Views\Anuncio\Editar.cshtml" />
+    <Content Include="Views\Anuncio\Eliminar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Anuncio\" />
-    <Folder Include="Views\Aptitud\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
