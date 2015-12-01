@@ -27,27 +27,47 @@ namespace SOAPServices
             }
         }
 
+        private RubroDAO rubroDAO = null;
+        private RubroDAO RubroDAO
+        {
+            get
+            {
+                if (rubroDAO == null)
+                    rubroDAO = new RubroDAO();
+                return rubroDAO;
+            }
+        }
+
         #region . EMPRESA .
 
         public void CrearEmpresa(Empresa empresa)
         {
-            string BASE_URL2 = "http://ws.razonsocialperu.com/rest/PROYUPC/RUC/";
-            string urlConsulta = string.Format("{0}/{1}", BASE_URL2, empresa.NumeroRuc);
-            var webClient = new WebClient();
-            var json = webClient.DownloadString(urlConsulta);
-            var js = new JavaScriptSerializer();
-            var result = js.DeserializeObject(json);
+            try
+            {
+                string BASE_URL2 = "http://ws.razonsocialperu.com/rest/PROYUPC/RUC/";
+                string urlConsulta = string.Format("{0}/{1}", BASE_URL2, empresa.NumeroRuc);
+                var webClient = new WebClient();
+                var json = webClient.DownloadString(urlConsulta);
+                var js = new JavaScriptSerializer();
+                var result = js.DeserializeObject(json);
 
-            Dictionary<string, object> lista = ((object[])(result))[0] as Dictionary<string, object>;
-            var estado = lista.Where(x => x.Key == "status") as Dictionary<string, object>;
+                Dictionary<string, object> lista = ((object[])(result))[0] as Dictionary<string, object>;
+                var estado = lista.Where(x => x.Key == "status") as Dictionary<string, object>;
 
-            string value = lista["status"].ToString();
+                string value = lista["status"].ToString();
 
-            if (value != "EXISTS")
-                throw new WebFaultException<string>("El RUC ingresado no se encuentra registrado en los sistemas tributarios.", HttpStatusCode.NotFound);
+                if (value != "EXISTS")
+                    throw new WebFaultException<string>("El RUC ingresado no se encuentra registrado en los sistemas tributarios.", HttpStatusCode.NotFound);
 
-            EmpresaDAO.Crear(empresa);
-            WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.Created;
+                EmpresaDAO.Crear(empresa);
+                WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.Created;
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
+            
         }
 
         public void EliminarEmpresa(string id)
@@ -91,6 +111,58 @@ namespace SOAPServices
             throw new WebFaultException<ErrorData>(error, HttpStatusCode.NotFound);
             //WebOperationContext.Current.OutgoingResponse.SetStatusAsNotFound("Empresa no encontada!");
             return null;
+        }
+
+        #endregion
+
+        #region . EMPRESA .
+
+        public void CrearRubro(Rubro rubro)
+        {
+            RubroDAO.Crear(rubro);
+            WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.Created;
+        }
+
+        public void EliminarRubro(string id)
+        {
+            int idRubro = int.Parse(id);
+            var rubroEncontrada = RubroDAO.Obtener(idRubro);
+            if (rubroEncontrada != null)
+                rubroDAO.Eliminar(rubroEncontrada);
+            else
+                throw new WebFaultException<string>("Rubro no encontrado.", HttpStatusCode.NotFound);
+        }
+
+        public void ModificarRubro(Rubro rubro)
+        {
+            int idRubro = rubro.Id;
+            var rubroEncontrada = RubroDAO.Obtener(idRubro);
+            if (rubroEncontrada != null)
+            {
+                rubroDAO.Modificar(rubro);
+            }
+            else
+                throw new WebFaultException<string>("Rubro no encontrado.", HttpStatusCode.NotFound);
+
+        }
+
+        public List<Rubro> ListarRubro()
+        {
+            return RubroDAO.ListarTodos().ToList();
+        }
+
+        public Rubro ObtenerRubro(string id)
+        {
+            int idRubro = int.Parse(id);
+            var rubroEncontrada = RubroDAO.Obtener(idRubro);
+            if (rubroEncontrada != null)
+            {
+                return rubroEncontrada;
+            }
+            //throw new WebFaultException<string>("Rubro no encontrada.", HttpStatusCode.NotFound);
+            ErrorData error = new ErrorData("Rubro no encontrada.", "El rubro fue eliminado o no ha sido creado");
+            throw new WebFaultException<ErrorData>(error, HttpStatusCode.NotFound);
+            //WebOperationContext.Current.OutgoingResponse.SetStatusAsNotFound("Rubro no encontada!");
         }
 
         #endregion

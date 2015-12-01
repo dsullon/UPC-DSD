@@ -180,18 +180,22 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PostulanteController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Anuncio.cs" />
+    <Compile Include="Models\Aptitud.cs" />
+    <Compile Include="Models\Aptitud_Anuncio.cs" />
+    <Compile Include="Models\Empresa.cs" />
+    <Compile Include="Models\Generico.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Postulante.cs" />
+    <Compile Include="Models\Rubro.cs" />
+    <Compile Include="Models\UsuarioViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\ReclutamientoWS\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -220,33 +224,6 @@
     <Content Include="Scripts\upcempresa.js" />
     <Content Include="Scripts\upcfunciones.js" />
     <Content Include="Scripts\_references.js" />
-    <None Include="Service References\ReclutamientoWS\configuration91.svcinfo" />
-    <None Include="Service References\ReclutamientoWS\configuration.svcinfo" />
-    <Content Include="Service References\ReclutamientoWS\Reclutamiento.MVC.ReclutamientoWS.Empresa.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\ReclutamientoWS\Reclutamiento.MVC.ReclutamientoWS.OperationStatus.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\ReclutamientoWS\Reclutamiento.MVC.ReclutamientoWS.Rubro.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\ReclutamientoWS\Reclutamiento.MVC.ReclutamientoWS.Postulante.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\ReclutamientoWS\Reclutamiento.MVC.ReclutamientoWS.Anuncio.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\ReclutamientoWS\Reclutamiento.MVC.ReclutamientoWS.Aptitud.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\ReclutamientoWS\Reclutamiento.MVC.ReclutamientoWS.Aptitud_Anuncio.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Service References\ReclutamientoWS\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -282,25 +259,10 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <None Include="Service References\ReclutamientoWS\ReclutamientoService.wsdl" />
-    <None Include="Service References\ReclutamientoWS\ReclutamientoService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ReclutamientoWS\ReclutamientoService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ReclutamientoWS\ReclutamientoService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ReclutamientoWS\ReclutamientoService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="Views\Empresa\Index.cshtml" />
-    <Content Include="Views\Empresa\Listado.cshtml" />
     <Content Include="Views\Empresa\Login.cshtml" />
     <Content Include="Views\Shared\_LoginPartialCompany.cshtml" />
     <Content Include="Views\Shared\_LayoutCompany.cshtml" />
-    <Content Include="Views\Empresa\Registrar.cshtml" />
     <Content Include="Views\Empresa\Editar.cshtml" />
     <Content Include="Views\Postulante\Listado.cshtml" />
     <Content Include="Views\Postulante\Registrar.cshtml" />
@@ -318,6 +280,9 @@
     <Content Include="Views\Anuncio\Eliminar.cshtml" />
     <Content Include="Views\Aptitud\Listar.cshtml" />
     <Content Include="Views\Anuncio\Listar.cshtml" />
+    <Content Include="Views\Empresa\Registrar.cshtml" />
+    <Content Include="Views\Empresa\Listado.cshtml" />
+    <Content Include="Views\Usuario\RegistrarEmpresa.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -331,9 +296,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\ReclutamientoWS\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

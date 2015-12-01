@@ -2,9 +2,9 @@
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 
-namespace SOAPServices.Dominio
+namespace Reclutamiento.MVC.Models
 {
-    [DataContract(Namespace = "")]
+    [DataContract]
     public class Empresa
     {
         [DataMember]

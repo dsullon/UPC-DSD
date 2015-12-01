@@ -36,5 +36,29 @@ namespace SOAPServices
         Empresa ObtenerEmpresa(string id);
 
         #endregion
+
+        #region . RUBRO .
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "Rubros", ResponseFormat = WebMessageFormat.Json)]
+        void CrearRubro(Rubro empresa);
+
+        [OperationContract]
+        [WebInvoke(Method = "DELETE", UriTemplate = "Rubros/{id}", ResponseFormat = WebMessageFormat.Json)]
+        void EliminarRubro(string id);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "Rubros", ResponseFormat = WebMessageFormat.Json)]
+        List<Rubro> ListarRubro();
+
+        [OperationContract]
+        [WebInvoke(Method = "PUT", UriTemplate = "Rubros", ResponseFormat = WebMessageFormat.Json)]
+        void ModificarRubro(Rubro empresa);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "Rubros/{id}", ResponseFormat = WebMessageFormat.Json)]
+        Rubro ObtenerRubro(string id);
+
+        #endregion
     }
 }

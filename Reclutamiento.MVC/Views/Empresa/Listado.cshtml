@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Reclutamiento.MVC.ReclutamientoWS.Empresa>
+﻿@model IEnumerable<Reclutamiento.MVC.Models.Empresa>
 
 @{
     ViewBag.Title = "Listado";
@@ -13,16 +13,19 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Clave)
+            @Html.DisplayNameFor(model => model.NumeroRuc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RazonSocial)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.EmailContacto)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NumeroRuc)
+            @Html.DisplayNameFor(model => model.Clave)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.RazonSocial)
+            @Html.DisplayNameFor(model => model.Rubro.Descripcion)
         </th>
         <th></th>
     </tr>
@@ -30,16 +33,19 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Clave)
+            @Html.DisplayFor(modelItem => item.NumeroRuc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RazonSocial)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.EmailContacto)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.NumeroRuc)
+            @Html.DisplayFor(modelItem => item.Clave)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.RazonSocial)
+            @Html.DisplayFor(modelItem => item.Rubro.Descripcion)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
