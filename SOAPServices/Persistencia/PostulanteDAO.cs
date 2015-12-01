@@ -6,7 +6,7 @@ using System.Web;
 
 namespace SOAPServices.Persistencia
 {
-    public class PostulanteDAO : BaseDAO<Postulante, int >
+    public class PostulanteDAO : BaseDAO<Postulante, int>
     {
     }
 }

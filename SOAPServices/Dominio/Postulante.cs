@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.ComponentModel.DataAnnotations;
 using System.Web;
 
 namespace SOAPServices.Dominio
@@ -9,25 +10,37 @@ namespace SOAPServices.Dominio
     [DataContract]
     public class Postulante
     {
-        [DataMember]
-        public int Id { get; set; }
+        [DataMember]        
+        public int idPostulante { get; set; }
 
         [DataMember]
-        public string Nombre { get; set; }
+        [Required(ErrorMessage = "El campo Nombre es obligatorio")]
+        public string nombre { get; set; }
 
         [DataMember]
-        public string ApellidoPaterno { get; set; }
+        [Required(ErrorMessage = "El campo Apellido Paterno es obligatorio")]
+        public string apellidoPaterno { get; set; }
 
         [DataMember]
-        public string ApellidoMaterno { get; set; }
+        [Required(ErrorMessage = "El campo Apellido Materno es obligatorio")]
+        public string apellidoMaterno { get; set; }
 
         [DataMember]
-        public string FechaNacimiento { get; set; }
+        [Required(ErrorMessage = "El campo Fecha de Nacimiento es obligatorio")]
+        public DateTime fechaNacimiento { get; set; }
 
         [DataMember]
-        public string Email { get; set; }
+        [Required(ErrorMessage = "El campo Email es obligatorio")]
+        [EmailAddress(ErrorMessage = "El email ingresado no es válido")]
+        public string email { get; set; }
 
         [DataMember]
-        public string Clave { get; set; }
+        [Required(ErrorMessage = "El campo DNI es obligatorio")]
+        [EmailAddress(ErrorMessage = "El dni ingresado no es válido")]
+        public string dni { get; set; }
+
+        [DataMember]
+        [Required(ErrorMessage = "El campo Clave es obligatorio")]
+        public string clave { get; set; }
     }
 }

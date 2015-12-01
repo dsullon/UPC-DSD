@@ -3,17 +3,17 @@
                    assembly="SOAPServices"
                    namespace="SOAPServices.Dominio"
                    default-lazy="false">
-  <class name="Postulante" table="Postulante">
+  <class name="postulante" table="postulante">
     <id name="Id" access="property" column="idPostulante">
       <!--<generator class="increment" />-->
       <generator class="native" />
     </id>
     <property name="Nombre" column="nombre" />
-    <property name="ApellidoPaterno" column="apellidoPaterno" />
-    <property name="ApellidoMaterno" column="apellidoMaterno" />
-    <property name="FechaNacimiento" column="fechaNacimiento" />
-    <property name="Email" column="email" />
-    <property name="Clave" column="clave" />
-    
+    <property name="apellidoPaterno" column="apellidoPaterno" />
+    <property name="apellidoMaterno" column="apellidoMaterno" />
+    <property name="fechaNacimiento" column="fechaNacimiento" />
+    <property name="email" column="email" />
+    <property name="dni" column="dni" />
+    <property name="clave" column="clave" />
   </class>
 </hibernate-mapping>

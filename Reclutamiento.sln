@@ -1,13 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Librerias", "Librerias", "{CF30037E-85E9-455C-A73E-E447A8D7C12E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOAPServices", "SOAPServices\SOAPServices.csproj", "{9350CA09-2520-4C10-97C1-75382C697FD3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reclutamiento.MVC", "Reclutamiento.MVC\Reclutamiento.MVC.csproj", "{FD6E920E-3DB2-4208-9DA7-C3E504459B35}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Librerias", "Librerias", "{CF30037E-85E9-455C-A73E-E447A8D7C12E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reclutamiento.MVC", "Reclutamiento.MVC\Reclutamiento.MVC.csproj", "{9EC282EF-61B3-44B7-A0D4-D3E1A3FFEE3D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9350CA09-2520-4C10-97C1-75382C697FD3} = {9350CA09-2520-4C10-97C1-75382C697FD3}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOAPServicesTest", "SOAPServicesTest\SOAPServicesTest.csproj", "{80DA4C45-0422-4E49-96E3-88537E34ACA8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +24,14 @@ Global
 		{9350CA09-2520-4C10-97C1-75382C697FD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9350CA09-2520-4C10-97C1-75382C697FD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9350CA09-2520-4C10-97C1-75382C697FD3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FD6E920E-3DB2-4208-9DA7-C3E504459B35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FD6E920E-3DB2-4208-9DA7-C3E504459B35}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FD6E920E-3DB2-4208-9DA7-C3E504459B35}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FD6E920E-3DB2-4208-9DA7-C3E504459B35}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EC282EF-61B3-44B7-A0D4-D3E1A3FFEE3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EC282EF-61B3-44B7-A0D4-D3E1A3FFEE3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EC282EF-61B3-44B7-A0D4-D3E1A3FFEE3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EC282EF-61B3-44B7-A0D4-D3E1A3FFEE3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80DA4C45-0422-4E49-96E3-88537E34ACA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80DA4C45-0422-4E49-96E3-88537E34ACA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80DA4C45-0422-4E49-96E3-88537E34ACA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80DA4C45-0422-4E49-96E3-88537E34ACA8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
