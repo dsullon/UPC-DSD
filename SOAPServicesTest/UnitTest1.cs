@@ -90,7 +90,7 @@ namespace SOAPServicesTest
                 Empresa empresa = new Empresa()
                 {
                     Id = 193,
-                    EmailContacto = "troinformes@reclutamiento.pe",
+                    Email = "troinformes@reclutamiento.pe",
                     Clave = "D12345678",
                     NumeroRuc = "11111111111",
                     RazonSocial = "Sistemas",
@@ -128,7 +128,7 @@ namespace SOAPServicesTest
                 Empresa empresa = new Empresa()
                 {
                     Id = 301,
-                    EmailContacto = "informes@reclutamiento.pe",
+                    Email = "informes@reclutamiento.pe",
                     Clave = "123456",
                     NumeroRuc = "12345658909",
                     RazonSocial = "Otra prueba",

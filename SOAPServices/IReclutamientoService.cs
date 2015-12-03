@@ -27,35 +27,35 @@ namespace SOAPServices
 
         #endregion
 
-        #region . Empresa .
+        //#region . Empresa .
 
-        [OperationContract]
-        OperationStatus CrearEmpresa(string email, string clave, string razonSocial, string numeroRuc, int idRubro);
-        [OperationContract]
-        Empresa ObtenerEmpresa(int id);
-        [OperationContract]
-        Empresa ModificarEmpresa(int id, string email, string clave, string razonSocial, string numeroRuc, int idRubro);
-        [OperationContract]
-        void EliminarEmpresa(int id);
-        [OperationContract]
-        List<Empresa> ListarEmpresas();
+        //[OperationContract]
+        //OperationStatus CrearEmpresa(string email, string clave, string razonSocial, string numeroRuc, int idRubro);
+        //[OperationContract]
+        //Empresa ObtenerEmpresa(int id);
+        //[OperationContract]
+        //Empresa ModificarEmpresa(int id, string email, string clave, string razonSocial, string numeroRuc, int idRubro);
+        //[OperationContract]
+        //void EliminarEmpresa(int id);
+        //[OperationContract]
+        //List<Empresa> ListarEmpresas();
 
-        #endregion
+        //#endregion
 
-        #region . Postulante .
+        //#region . Postulante .
 
-        [OperationContract]
-        OperationStatus CrearPostulante(string nombre, string apellidoPaterno, string apellidoMaterno, DateTime fechaNacimiento, string email, string dni, string clave);
-        [OperationContract]
-        Postulante ObtenerPostulante(int id);
-        [OperationContract]
-        Postulante ModificarPostulante(int id, string nombre, string apellidoPaterno, string apellidoMaterno, DateTime fechaNacimiento, string email, string dni, string clave);
-        [OperationContract]
-        void EliminarPostulante(int id);
-        [OperationContract]
-        List<Postulante> ListarPostulante();
+        //[OperationContract]
+        //OperationStatus CrearPostulante(string nombre, string apellidoPaterno, string apellidoMaterno, DateTime fechaNacimiento, string email, string dni, string clave);
+        //[OperationContract]
+        //Postulante ObtenerPostulante(int id);
+        //[OperationContract]
+        //Postulante ModificarPostulante(int id, string nombre, string apellidoPaterno, string apellidoMaterno, DateTime fechaNacimiento, string email, string dni, string clave);
+        //[OperationContract]
+        //void EliminarPostulante(int id);
+        //[OperationContract]
+        //List<Postulante> ListarPostulante();
 
-        #endregion
+        //#endregion
 
         #region . Anuncio .
 

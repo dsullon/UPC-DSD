@@ -1,4 +1,5 @@
 ﻿using Reclutamiento.MVC.Models;
+using Reclutamiento.MVC.ReclutamientoWS;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,7 +16,7 @@ namespace Reclutamiento.MVC.Controllers
     {
         string BASE_URL = "http://localhost:40845/EntityServices.svc/";
 
-        //ReclutamientoServiceClient proxy = new ReclutamientoServiceClient();
+        ReclutamientoServiceClient proxy = new ReclutamientoServiceClient();
         // GET: Empresa
         public ActionResult Index()
         {
@@ -65,12 +66,12 @@ namespace Reclutamiento.MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult Registrar(Reclutamiento.MVC.Models.Empresa empresa)
+        public ActionResult Registrar(Empresa empresa)
         {
             try
             {
                 string url = string.Format("{0}/Empresas", BASE_URL);
-                var serial = new DataContractJsonSerializer(typeof(Reclutamiento.MVC.Models.Empresa));
+                var serial = new DataContractJsonSerializer(typeof(Empresa));
                 var request = (HttpWebRequest)WebRequest.Create(url);
                 request.Method = "POST";
                 request.ContentType = "application/json";

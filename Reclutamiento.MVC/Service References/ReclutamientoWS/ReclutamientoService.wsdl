@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ReclutamientoService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:40845/ReclutamientoService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:40845/ReclutamientoService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:40845/ReclutamientoService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" />
+      <xsd:import schemaLocation="http://localhost:40845/ReclutamientoService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IReclutamientoService_CrearRubro_InputMessage">
+    <wsdl:part name="parameters" element="tns:CrearRubro" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_CrearRubro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CrearRubroResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ObtenerRubro_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerRubro" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ObtenerRubro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerRubroResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ModificarRubro_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarRubro" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ModificarRubro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarRubroResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_EliminarRubro_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarRubro" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_EliminarRubro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarRubroResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ListarRubros_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarRubros" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ListarRubros_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarRubrosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_CrearAnuncio_InputMessage">
+    <wsdl:part name="parameters" element="tns:CrearAnuncio" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_CrearAnuncio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CrearAnuncioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ObtenerAnuncio_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerAnuncio" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ObtenerAnuncio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerAnuncioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ModificarAnuncio_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarAnuncio" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ModificarAnuncio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarAnuncioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_EliminarAnuncio_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarAnuncio" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_EliminarAnuncio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarAnuncioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ListarAnuncios_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarAnuncios" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ListarAnuncios_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarAnunciosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_CrearAptitud_InputMessage">
+    <wsdl:part name="parameters" element="tns:CrearAptitud" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_CrearAptitud_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CrearAptitudResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ObtenerAptitud_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerAptitud" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ObtenerAptitud_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerAptitudResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ModificarAptitud_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarAptitud" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ModificarAptitud_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarAptitudResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_EliminarAptitud_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarAptitud" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_EliminarAptitud_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarAptitudResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ListarAptitudes_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarAptitudes" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ListarAptitudes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarAptitudesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_CrearAptitud_Anuncio_InputMessage">
+    <wsdl:part name="parameters" element="tns:CrearAptitud_Anuncio" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_CrearAptitud_Anuncio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CrearAptitud_AnuncioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ObtenerAptitud_Anuncio_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerAptitud_Anuncio" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ObtenerAptitud_Anuncio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerAptitud_AnuncioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ModificarAptitud_Anuncio_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarAptitud_Anuncio" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ModificarAptitud_Anuncio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarAptitud_AnuncioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_EliminarAptitud_Anuncio_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarAptitud_Anuncio" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_EliminarAptitud_Anuncio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarAptitud_AnuncioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ListarAptitudesPorAnuncio_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarAptitudesPorAnuncio" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ListarAptitudesPorAnuncio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarAptitudesPorAnuncioResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IReclutamientoService">
+    <wsdl:operation name="CrearRubro">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/CrearRubro" message="tns:IReclutamientoService_CrearRubro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/CrearRubroResponse" message="tns:IReclutamientoService_CrearRubro_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRubro">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/ObtenerRubro" message="tns:IReclutamientoService_ObtenerRubro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/ObtenerRubroResponse" message="tns:IReclutamientoService_ObtenerRubro_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarRubro">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/ModificarRubro" message="tns:IReclutamientoService_ModificarRubro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/ModificarRubroResponse" message="tns:IReclutamientoService_ModificarRubro_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarRubro">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/EliminarRubro" message="tns:IReclutamientoService_EliminarRubro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/EliminarRubroResponse" message="tns:IReclutamientoService_EliminarRubro_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarRubros">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/ListarRubros" message="tns:IReclutamientoService_ListarRubros_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/ListarRubrosResponse" message="tns:IReclutamientoService_ListarRubros_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CrearAnuncio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/CrearAnuncio" message="tns:IReclutamientoService_CrearAnuncio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/CrearAnuncioResponse" message="tns:IReclutamientoService_CrearAnuncio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerAnuncio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/ObtenerAnuncio" message="tns:IReclutamientoService_ObtenerAnuncio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/ObtenerAnuncioResponse" message="tns:IReclutamientoService_ObtenerAnuncio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarAnuncio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/ModificarAnuncio" message="tns:IReclutamientoService_ModificarAnuncio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/ModificarAnuncioResponse" message="tns:IReclutamientoService_ModificarAnuncio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarAnuncio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/EliminarAnuncio" message="tns:IReclutamientoService_EliminarAnuncio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/EliminarAnuncioResponse" message="tns:IReclutamientoService_EliminarAnuncio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarAnuncios">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/ListarAnuncios" message="tns:IReclutamientoService_ListarAnuncios_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/ListarAnunciosResponse" message="tns:IReclutamientoService_ListarAnuncios_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CrearAptitud">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/CrearAptitud" message="tns:IReclutamientoService_CrearAptitud_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/CrearAptitudResponse" message="tns:IReclutamientoService_CrearAptitud_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerAptitud">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/ObtenerAptitud" message="tns:IReclutamientoService_ObtenerAptitud_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/ObtenerAptitudResponse" message="tns:IReclutamientoService_ObtenerAptitud_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarAptitud">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/ModificarAptitud" message="tns:IReclutamientoService_ModificarAptitud_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/ModificarAptitudResponse" message="tns:IReclutamientoService_ModificarAptitud_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarAptitud">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/EliminarAptitud" message="tns:IReclutamientoService_EliminarAptitud_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/EliminarAptitudResponse" message="tns:IReclutamientoService_EliminarAptitud_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarAptitudes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/ListarAptitudes" message="tns:IReclutamientoService_ListarAptitudes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/ListarAptitudesResponse" message="tns:IReclutamientoService_ListarAptitudes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CrearAptitud_Anuncio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/CrearAptitud_Anuncio" message="tns:IReclutamientoService_CrearAptitud_Anuncio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/CrearAptitud_AnuncioResponse" message="tns:IReclutamientoService_CrearAptitud_Anuncio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerAptitud_Anuncio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/ObtenerAptitud_Anuncio" message="tns:IReclutamientoService_ObtenerAptitud_Anuncio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/ObtenerAptitud_AnuncioResponse" message="tns:IReclutamientoService_ObtenerAptitud_Anuncio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarAptitud_Anuncio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/ModificarAptitud_Anuncio" message="tns:IReclutamientoService_ModificarAptitud_Anuncio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/ModificarAptitud_AnuncioResponse" message="tns:IReclutamientoService_ModificarAptitud_Anuncio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarAptitud_Anuncio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/EliminarAptitud_Anuncio" message="tns:IReclutamientoService_EliminarAptitud_Anuncio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/EliminarAptitud_AnuncioResponse" message="tns:IReclutamientoService_EliminarAptitud_Anuncio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarAptitudesPorAnuncio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/ListarAptitudesPorAnuncio" message="tns:IReclutamientoService_ListarAptitudesPorAnuncio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/ListarAptitudesPorAnuncioResponse" message="tns:IReclutamientoService_ListarAptitudesPorAnuncio_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IReclutamientoService" type="tns:IReclutamientoService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CrearRubro">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/CrearRubro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRubro">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/ObtenerRubro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarRubro">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/ModificarRubro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarRubro">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/EliminarRubro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarRubros">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/ListarRubros" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearAnuncio">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/CrearAnuncio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerAnuncio">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/ObtenerAnuncio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarAnuncio">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/ModificarAnuncio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarAnuncio">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/EliminarAnuncio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarAnuncios">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/ListarAnuncios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearAptitud">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/CrearAptitud" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerAptitud">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/ObtenerAptitud" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarAptitud">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/ModificarAptitud" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarAptitud">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/EliminarAptitud" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarAptitudes">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/ListarAptitudes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearAptitud_Anuncio">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/CrearAptitud_Anuncio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerAptitud_Anuncio">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/ObtenerAptitud_Anuncio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarAptitud_Anuncio">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/ModificarAptitud_Anuncio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarAptitud_Anuncio">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/EliminarAptitud_Anuncio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarAptitudesPorAnuncio">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/ListarAptitudesPorAnuncio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ReclutamientoService">
+    <wsdl:port name="BasicHttpBinding_IReclutamientoService" binding="tns:BasicHttpBinding_IReclutamientoService">
+      <soap:address location="http://localhost:40845/ReclutamientoService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

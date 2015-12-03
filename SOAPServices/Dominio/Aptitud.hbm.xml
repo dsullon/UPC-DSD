@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="SOAPServices"
+                   namespace="SOAPServices.Dominio"
+                   default-lazy="false">
+  <class name="Aptitud" table="Aptitud">
+    <id name="Id" access="property" column="idAptitud">
+      <!--<generator class="increment" />-->
+    <generator class="native" />
+    </id>
+    <property name="Descripcion" column="descripcion" />
+  </class>
+</hibernate-mapping>

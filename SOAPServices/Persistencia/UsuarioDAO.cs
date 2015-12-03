@@ -2,8 +2,7 @@
 
 namespace SOAPServices.Persistencia
 {
-    public class AnuncioDAO : BaseDAO<Anuncio, int>
+    public class UsuarioDAO : BaseDAO<Usuario, int>
     {
-        //COMMIT DE PRUEBA
     }
 }

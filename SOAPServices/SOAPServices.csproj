@@ -73,8 +73,8 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Dominio\Rubro.hbm.xml" />
-    <EmbeddedResource Include="Dominio\Empresa.hbm.xml" />
-    <Content Include="Dominio\Postulante.hbm.xml" />
+    <EmbeddedResource Include="Dominio\Aptitud.hbm.xml" />
+    <EmbeddedResource Include="Dominio\Usuario.hbm.xml" />
     <Content Include="EntityServices.svc" />
     <Content Include="ReclutamientoService.svc" />
     <Content Include="ReferenciaExterna\Iesi.Collections.dll" />
@@ -91,6 +91,7 @@
     <Compile Include="Dominio\OperationStatus.cs" />
     <Compile Include="Dominio\Postulante.cs" />
     <Compile Include="Dominio\Rubro.cs" />
+    <Compile Include="Dominio\Usuario.cs" />
     <Compile Include="EntityServices.svc.cs">
       <DependentUpon>EntityServices.svc</DependentUpon>
     </Compile>
@@ -101,10 +102,9 @@
     <Compile Include="Persistencia\Aptitud_AnuncioDAO.cs" />
     <Compile Include="Persistencia\BaseDAO.cs" />
     <Compile Include="Persistencia\ConexionUtil.cs" />
-    <Compile Include="Persistencia\EmpresaDAO.cs" />
     <Compile Include="Persistencia\NHibernateHelper.cs" />
-    <Compile Include="Persistencia\PostulanteDAO.cs" />
     <Compile Include="Persistencia\RubroDAO.cs" />
+    <Compile Include="Persistencia\UsuarioDAO.cs" />
     <Compile Include="ReclutamientoService.svc.cs">
       <DependentUpon>ReclutamientoService.svc</DependentUpon>
     </Compile>

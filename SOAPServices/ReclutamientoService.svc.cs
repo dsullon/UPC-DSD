@@ -14,8 +14,18 @@ namespace SOAPServices
     // NOTA: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione ReclutamientoService.svc o ReclutamientoService.svc.cs en el Explorador de soluciones e inicie la depuración.
     public class ReclutamientoService : IReclutamientoService
     {
+        private UsuarioDAO usuarioDAO = null;
+        private UsuarioDAO UsuarioDAO
+        {
+            get
+            {
+                if (usuarioDAO == null)
+                    usuarioDAO = new UsuarioDAO();
+                return usuarioDAO;
+            }
+        }
 
-        #region . Rubro . 
+        #region . Rubro .
 
         private RubroDAO rubroDAO = null;
         private RubroDAO RubroDAO
@@ -32,7 +42,7 @@ namespace SOAPServices
         {
             Rubro empresaCrear = new Rubro()
             {
-                Descripcion  = descripcion
+                Descripcion = descripcion
             };
             return RubroDAO.Crear(empresaCrear);
         }
@@ -65,191 +75,167 @@ namespace SOAPServices
 
         #endregion
 
-        #region . Empresa .
+        //#region . Empresa .
 
-        private EmpresaDAO empresaDAO = null;
-        private EmpresaDAO EmpresaDAO
-        {
-            get
-            {
-                if (empresaDAO == null)
-                    empresaDAO = new EmpresaDAO();
-                return empresaDAO;
-            }
-        }
+        //public OperationStatus CrearEmpresa(string email, string clave, string razonSocial, string numeroRuc, int idRubro)
+        //{
+        //    try
+        //    {
+        //        Rubro rubroExistente = RubroDAO.Obtener(idRubro);
+        //        Empresa empresaCrear = new Empresa()
+        //        {
+        //            Email = email,
+        //            Clave = clave,
+        //            RazonSocial = razonSocial,
+        //            NumeroRuc = numeroRuc,
+        //            Rubro = rubroExistente
+        //        };
 
-        public OperationStatus CrearEmpresa(string email, string clave, string razonSocial, string numeroRuc, int idRubro)
-        {
-            try
-            {
-                Rubro rubroExistente = RubroDAO.Obtener(idRubro);
-                Empresa empresaCrear = new Empresa()
-                {
-                    EmailContacto = email,
-                    Clave = clave,
-                    RazonSocial = razonSocial,
-                    NumeroRuc = numeroRuc,
-                    Rubro = rubroExistente
-                };
+        //        var validationContext = new ValidationContext(empresaCrear, serviceProvider: null, items: null);
+        //        var validationResults = new List<ValidationResult>();
 
-                var validationContext = new ValidationContext(empresaCrear, serviceProvider: null, items: null);
-                var validationResults = new List<ValidationResult>();
+        //        var isValid = Validator.TryValidateObject(empresaCrear, validationContext, validationResults, true);
 
-                var isValid = Validator.TryValidateObject(empresaCrear, validationContext, validationResults, true);
+        //        if (!isValid)
+        //        {
+        //            OperationStatus opStatus = new OperationStatus();
+        //            opStatus.Success = false;
 
-                if (!isValid)
-                {
-                    OperationStatus opStatus = new OperationStatus();
-                    opStatus.Success = false;
+        //            foreach (ValidationResult message in validationResults)
+        //            {
+        //                opStatus.Messages.Add(message.ErrorMessage);
+        //            }
 
-                    foreach (ValidationResult message in validationResults)
-                    {
-                        opStatus.Messages.Add(message.ErrorMessage);
-                    }
+        //            return opStatus;
+        //        }
+        //        else
+        //        {
+        //            UsuarioDAO.Crear(empresaCrear);
+        //            return new OperationStatus { Success = true };
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return OperationStatus.CreateFromException("Al crear la empresa.", e);
+        //    }
+        //}
 
-                    return opStatus;
-                }
-                else
-                {
-                    EmpresaDAO.Crear(empresaCrear);
-                    return new OperationStatus { Success = true };
-                }
-            }
-            catch (Exception e)
-            {
-                return OperationStatus.CreateFromException("Al crear la empresa.", e);
-            }
-        }
+        //public Empresa ObtenerEmpresa(int id)
+        //{
+        //    return UsuarioDAO.Obtener(id) as Empresa;
+        //}
 
-        public Empresa ObtenerEmpresa(int id)
-        {
-            return EmpresaDAO.Obtener(id);
-        }
-        
-        public Empresa ModificarEmpresa(int id, string email, string clave, string razonSocial, string numeroRuc, int idRubro)
-        {
-            Rubro rubroExistente = RubroDAO.Obtener(idRubro);
-            Empresa empresaModificar = new Empresa()
-            {
-                Id = id,
-                EmailContacto = email,
-                Clave = clave,
-                RazonSocial = razonSocial,
-                NumeroRuc = numeroRuc,
-                Rubro = rubroExistente
-            };
-            return EmpresaDAO.Modificar(empresaModificar);
-        }
+        //public Empresa ModificarEmpresa(int id, string email, string clave, string razonSocial, string numeroRuc, int idRubro)
+        //{
+        //    Rubro rubroExistente = RubroDAO.Obtener(idRubro);
+        //    Empresa empresaModificar = new Empresa()
+        //    {
+        //        Id = id,
+        //        Email = email,
+        //        Clave = clave,
+        //        RazonSocial = razonSocial,
+        //        NumeroRuc = numeroRuc,
+        //        Rubro = rubroExistente
+        //    };
+        //    return UsuarioDAO.Modificar(empresaModificar) as Empresa;
+        //}
 
-        public void EliminarEmpresa(int id)
-        {
-            Empresa empresaExistente = EmpresaDAO.Obtener(id);
-            EmpresaDAO.Eliminar(empresaExistente);
-        }
+        //public void EliminarEmpresa(int id)
+        //{
+        //    Empresa empresaExistente = UsuarioDAO.Obtener(id) as Empresa;
+        //    UsuarioDAO.Eliminar(empresaExistente);
+        //}
 
-        public List<Empresa> ListarEmpresas()
-        {
-            return EmpresaDAO.ListarTodos().ToList();
-        }
+        //public List<Empresa> ListarEmpresas()
+        //{
+        //    return (UsuarioDAO.ListarTodos() as List<Empresa>).ToList();
+        //}
 
-        #endregion
+        //#endregion
 
-        #region . Postulante .
+        //#region . Postulante .
 
-        private PostulanteDAO postulanteDAO = null;
+        //public OperationStatus CrearPostulante(string nombre, string apellidoPaterno, string apellidoMaterno, DateTime fechaNacimiento, string email, string dni, string clave)
+        //{
+        //    try
+        //    {
+        //        //Rubro rubroExistente = RubroDAO.Obtener(idRubro);
+        //        Usuario postulanteCrear = new Postulante()
+        //        {
+        //            Nombre = nombre,
+        //            ApellidoPaterno = apellidoPaterno,
+        //            ApellidoMaterno = apellidoMaterno,
+        //            FechaNacimiento = fechaNacimiento,
+        //            //email = email,
+        //            Dni = dni,
+        //            //clave = clave
+        //        };
 
-        private PostulanteDAO PostulanteDAO
-        {
-            get
-            {
-                if (postulanteDAO == null)
-                    postulanteDAO = new PostulanteDAO();
-                return postulanteDAO;
-            }
-        }
+        //        var validationContext = new ValidationContext(postulanteCrear, serviceProvider: null, items: null);
+        //        var validationResults = new List<ValidationResult>();
 
+        //        var isValid = Validator.TryValidateObject(postulanteCrear, validationContext, validationResults, true);
 
-        public OperationStatus CrearPostulante(string nombre, string apellidoPaterno, string apellidoMaterno, DateTime fechaNacimiento, string email, string dni,string clave)
-        {
-            try
-            {
-                //Rubro rubroExistente = RubroDAO.Obtener(idRubro);
-                Postulante postulanteCrear = new Postulante()
-                {
-                    nombre = nombre,
-                    apellidoPaterno = apellidoPaterno,
-                    apellidoMaterno = apellidoMaterno,
-                    fechaNacimiento = fechaNacimiento,
-                    email = email,
-                    dni = dni,
-                    clave = clave
-                };
+        //        if (!isValid)
+        //        {
+        //            OperationStatus opStatus = new OperationStatus();
+        //            opStatus.Success = false;
 
-                var validationContext = new ValidationContext(postulanteCrear, serviceProvider: null, items: null);
-                var validationResults = new List<ValidationResult>();
+        //            foreach (ValidationResult message in validationResults)
+        //            {
+        //                opStatus.Messages.Add(message.ErrorMessage);
+        //            }
 
-                var isValid = Validator.TryValidateObject(postulanteCrear, validationContext, validationResults, true);
+        //            return opStatus;
+        //        }
+        //        else
+        //        {
+        //            UsuarioDAO.Crear(postulanteCrear);
+        //            return new OperationStatus { Success = true };
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return OperationStatus.CreateFromException("Al crear al postulante.", e);
+        //    }
+        //}
 
-                if (!isValid)
-                {
-                    OperationStatus opStatus = new OperationStatus();
-                    opStatus.Success = false;
+        //public Postulante ObtenerPostulante(int id)
+        //{
+        //    return UsuarioDAO.Obtener(id) as Postulante;
+        //}
 
-                    foreach (ValidationResult message in validationResults)
-                    {
-                        opStatus.Messages.Add(message.ErrorMessage);
-                    }
+        //public Postulante ModificarPostulante(int idPostulante, string nombre, string apellidoPaterno, string apellidoMaterno, DateTime fechaNacimiento, string email, string dni, string clave)
+        //{
+        //    //Rubro rubroExistente = RubroDAO.Obtener(idRubro);
+        //    Usuario postulanteModificar = new Postulante()
+        //    {
+        //        //idPostulante = idPostulante,
+        //        Nombre = nombre,
+        //        ApellidoPaterno = apellidoPaterno,
+        //        ApellidoMaterno = apellidoMaterno,
+        //        FechaNacimiento = fechaNacimiento,
+        //        //email = email,
+        //        Dni = dni,
+        //        //clave = clave
+        //        //Rubro = rubroExistente
+        //    };
+        //    return UsuarioDAO.Modificar(postulanteModificar) as Postulante;
+        //}
 
-                    return opStatus;
-                }
-                else
-                {
-                    PostulanteDAO.Crear(postulanteCrear);
-                    return new OperationStatus { Success = true };
-                }
-            }
-            catch (Exception e)
-            {
-                return OperationStatus.CreateFromException("Al crear al postulante.", e);
-            }
-        }
+        //public void EliminarPostulante(int id)
+        //{
+        //    var postulanteExistente = UsuarioDAO.Obtener(id);
+        //    UsuarioDAO.Eliminar(postulanteExistente);
+        //}
 
-        public Postulante ObtenerPostulante(int id)
-        {
-            return PostulanteDAO.Obtener(id);
-        }
-        
-        public Postulante ModificarPostulante(int idPostulante, string nombre, string apellidoPaterno, string apellidoMaterno, DateTime fechaNacimiento, string email, string dni, string clave)
-        {
-            //Rubro rubroExistente = RubroDAO.Obtener(idRubro);
-            Postulante postulanteModificar = new Postulante()
-            {
-                idPostulante = idPostulante,
-                nombre = nombre,
-                apellidoPaterno = apellidoPaterno,
-                apellidoMaterno = apellidoMaterno,
-                fechaNacimiento = fechaNacimiento,
-                email = email,
-                dni = dni,
-                clave = clave
-                //Rubro = rubroExistente
-            };
-            return postulanteDAO.Modificar(postulanteModificar);
-        }
+        //public List<Postulante> ListarPostulante()
+        //{
+        //    return (UsuarioDAO.ListarTodos() as List<Postulante>).ToList();
+        //}
 
-        public void EliminarPostulante(int id)
-        {
-            Postulante postulanteExistente = PostulanteDAO.Obtener(id);
-            PostulanteDAO.Eliminar(postulanteExistente);
-        }
+        //#endregion
 
-        public List<Postulante> ListarPostulante()
-        {
-            return PostulanteDAO.ListarTodos().ToList();
-        }
-
-        #endregion
-        
         #region . Aptitud .
 
         private AptitudDAO aptitudDAO = null;

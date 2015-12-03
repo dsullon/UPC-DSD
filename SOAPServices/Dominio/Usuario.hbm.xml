@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="SOAPServices"
+                   namespace="SOAPServices.Dominio"
+                   default-lazy="false">
+  <class name="Usuario" table="Usuario">
+    <id name="Id" access="property" column="idUsuario">
+      <!--<generator class="increment" />-->
+      <generator class="native" />
+    </id>
+    <property name="Email" column="email" />
+    <property name="Clave" column="clave" />
+    <joined-subclass name="Empresa" table="Empresa">
+      <key column="idEmpresa" />
+      <property name="RazonSocial" column="razonSocial" />
+      <property name="NumeroRuc" column="numeroRuc" />
+      <many-to-one name="Rubro" column="idRubro" />
+    </joined-subclass>
+    <joined-subclass name="Postulante" table="Postulante">
+      <key column="idPostulante" />
+      <property name="Nombre" column="nombre" />
+      <property name="ApellidoPaterno" column="apellidoPaterno" />
+      <property name="ApellidoMaterno" column="apellidoMaterno" />
+      <property name="FechaNacimiento" column="fechaNacimiento" />
+      <property name="Dni" column="dni" />
+    </joined-subclass>
+  </class>
+</hibernate-mapping>

@@ -1,4 +1,5 @@
 ﻿using Reclutamiento.MVC.Models;
+using Reclutamiento.MVC.ReclutamientoWS;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -36,13 +37,12 @@ namespace Reclutamiento.MVC.Controllers
                 var json = webClient.DownloadString(urlRubro);
                 var js = new JavaScriptSerializer();
                 var rubro = js.Deserialize<Rubro>(json);
-
-                var empresa = new Empresa { NumeroRuc = model.NumeroRuc, RazonSocial = model.RazonSocial, EmailContacto = model.EmailContacto, Clave = model.Password, Rubro = rubro };
+                var empresa = new Empresa { NumeroRuc = model.NumeroRuc, RazonSocial = model.RazonSocial, Email = model.EmailContacto, Clave = model.Password, Rubro = rubro };
 
                 try
                 {
                     string urlEmpresa = string.Format("{0}/Empresas", Generico.UrlServicioRest);
-                    var serial = new DataContractJsonSerializer(typeof(Reclutamiento.MVC.Models.Empresa));
+                    var serial = new DataContractJsonSerializer(typeof(Empresa));
                     var request = (HttpWebRequest)WebRequest.Create(urlEmpresa);
                     request.Method = "POST";
                     request.ContentType = "application/json";

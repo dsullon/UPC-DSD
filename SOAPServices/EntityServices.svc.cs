@@ -16,14 +16,14 @@ namespace SOAPServices
     // NOTA: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione EntityServices.svc o EntityServices.svc.cs en el Explorador de soluciones e inicie la depuración.
     public class EntityServices : IEntityServices
     {
-        private EmpresaDAO empresaDAO = null;
-        private EmpresaDAO EmpresaDAO
+        private UsuarioDAO usuarioDAO = null;
+        private UsuarioDAO UsuarioDAO
         {
             get
             {
-                if (empresaDAO == null)
-                    empresaDAO = new EmpresaDAO();
-                return empresaDAO;
+                if (usuarioDAO == null)
+                    usuarioDAO = new UsuarioDAO();
+                return usuarioDAO;
             }
         }
 
@@ -42,40 +42,42 @@ namespace SOAPServices
 
         public void CrearEmpresa(Empresa empresa)
         {
-            try
+            string BASE_URL2 = "http://ws.razonsocialperu.com/rest/PROYUPC/RUC/";
+            string urlConsulta = string.Format("{0}/{1}", BASE_URL2, empresa.NumeroRuc);
+            var webClient = new WebClient();
+            var json = webClient.DownloadString(urlConsulta);
+            var js = new JavaScriptSerializer();
+            var result = js.DeserializeObject(json);
+
+            Dictionary<string, object> lista = ((object[])(result))[0] as Dictionary<string, object>;
+            var estado = lista.Where(x => x.Key == "status") as Dictionary<string, object>;
+
+            string value = lista["status"].ToString();
+
+            if (value != "EXISTS")
+                throw new WebFaultException<string>("El RUC ingresado no se encuentra registrado en los sistemas tributarios.", HttpStatusCode.NotFound);
+            ICollection<Empresa> listaEmpresas = (UsuarioDAO.ListarTodos().Where(c => c.GetType() == typeof(Empresa)) as List<Empresa>).ToList();
+            if (listaEmpresas != null && listaEmpresas.Count > 0)
             {
-                string BASE_URL2 = "http://ws.razonsocialperu.com/rest/PROYUPC/RUC/";
-                string urlConsulta = string.Format("{0}/{1}", BASE_URL2, empresa.NumeroRuc);
-                var webClient = new WebClient();
-                var json = webClient.DownloadString(urlConsulta);
-                var js = new JavaScriptSerializer();
-                var result = js.DeserializeObject(json);
+                var empresaExistente = listaEmpresas.Where(c => c.NumeroRuc.Equals(empresa.NumeroRuc)).FirstOrDefault();
+                if (empresaExistente != null)
+                    throw new WebFaultException<string>("Existe una empresa registrada con el número de R.U.C. ingresado.", HttpStatusCode.Conflict);
 
-                Dictionary<string, object> lista = ((object[])(result))[0] as Dictionary<string, object>;
-                var estado = lista.Where(x => x.Key == "status") as Dictionary<string, object>;
-
-                string value = lista["status"].ToString();
-
-                if (value != "EXISTS")
-                    throw new WebFaultException<string>("El RUC ingresado no se encuentra registrado en los sistemas tributarios.", HttpStatusCode.NotFound);
-
-                EmpresaDAO.Crear(empresa);
-                WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.Created;
+                empresaExistente = listaEmpresas.Where(c => c.Email.Equals(empresa.Email)).FirstOrDefault();
+                if (empresaExistente != null)
+                    throw new WebFaultException<string>("Existe una empresa registrada con el email ingresado.", HttpStatusCode.Conflict);
             }
-            catch (Exception ex)
-            {
-                
-                throw ex;
-            }
-            
+
+            UsuarioDAO.Crear(empresa);
+            WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.Created;
         }
 
         public void EliminarEmpresa(string id)
         {
             int idEmpresa = int.Parse(id);
-            var empresaEncontrada = EmpresaDAO.Obtener(idEmpresa);
+            var empresaEncontrada = UsuarioDAO.Obtener(idEmpresa);
             if (empresaEncontrada != null)
-                empresaDAO.Eliminar(empresaEncontrada);
+                usuarioDAO.Eliminar(empresaEncontrada);
             else
                 throw new WebFaultException<string>("Empresa no encontrada.", HttpStatusCode.NotFound);
         }
@@ -83,10 +85,10 @@ namespace SOAPServices
         public void ModificarEmpresa(Empresa empresa)
         {
             int idEmpresa = empresa.Id;
-            var empresaEncontrada = EmpresaDAO.Obtener(idEmpresa);
+            var empresaEncontrada = UsuarioDAO.Obtener(idEmpresa);
             if (empresaEncontrada != null)
             {
-                empresaDAO.Modificar(empresa);
+                usuarioDAO.Modificar(empresa);
             }
             else
                 throw new WebFaultException<string>("Empresa no encontrada.", HttpStatusCode.NotFound);
@@ -95,27 +97,30 @@ namespace SOAPServices
 
         public List<Empresa> ListarEmpresa()
         {
-            return EmpresaDAO.ListarTodos().ToList();
+            var lista = UsuarioDAO.ListarTodos().ToList();
+            var listaEmpresa = new List<Empresa>();
+            foreach (var item in lista)
+            {
+                if (item.GetType() == typeof(Empresa))
+                    listaEmpresa.Add(item as Empresa);
+            }
+            return listaEmpresa;
         }
 
         public Empresa ObtenerEmpresa(string id)
         {
             int idEmpresa = int.Parse(id);
-            var empresaEncontrada = EmpresaDAO.Obtener(idEmpresa);
+            Empresa empresaEncontrada = UsuarioDAO.Obtener(idEmpresa) as Empresa;
             if (empresaEncontrada != null)
             {
                 return empresaEncontrada;
             }
-            //throw new WebFaultException<string>("Empresa no encontrada.", HttpStatusCode.NotFound);
-            ErrorData error = new ErrorData("Empresa no encontrada.", "La empresa fue eliminada o no ha sido creada");
-            throw new WebFaultException<ErrorData>(error, HttpStatusCode.NotFound);
-            //WebOperationContext.Current.OutgoingResponse.SetStatusAsNotFound("Empresa no encontada!");
-            return null;
+            throw new WebFaultException<string>("La empresa fue eliminada o no ha sido creada", HttpStatusCode.NotFound);
         }
 
         #endregion
 
-        #region . EMPRESA .
+        #region . RUBRO .
 
         public void CrearRubro(Rubro rubro)
         {
