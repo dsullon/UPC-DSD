@@ -151,6 +151,12 @@ namespace Reclutamiento.MVC.ReclutamientoWS {
         private string DescripcionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool EstadoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool FechaPublicacionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -188,6 +194,32 @@ namespace Reclutamiento.MVC.ReclutamientoWS {
                 if ((object.ReferenceEquals(this.DescripcionField, value) != true)) {
                     this.DescripcionField = value;
                     this.RaisePropertyChanged("Descripcion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Estado {
+            get {
+                return this.EstadoField;
+            }
+            set {
+                if ((this.EstadoField.Equals(value) != true)) {
+                    this.EstadoField = value;
+                    this.RaisePropertyChanged("Estado");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool FechaPublicacion {
+            get {
+                return this.FechaPublicacionField;
+            }
+            set {
+                if ((this.FechaPublicacionField.Equals(value) != true)) {
+                    this.FechaPublicacionField = value;
+                    this.RaisePropertyChanged("FechaPublicacion");
                 }
             }
         }

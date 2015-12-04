@@ -45,7 +45,13 @@ namespace Reclutamiento.MVC.Controllers
             return View();
         }
 
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult RegistrarAnuncio(Anuncio anuncio)
+        {
 
+
+            return RedirectToAction("InvitarPostulante","Empresa");
+        }
 
 
 

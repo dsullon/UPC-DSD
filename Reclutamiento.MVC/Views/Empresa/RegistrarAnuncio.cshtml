@@ -34,12 +34,27 @@
         <div class="form-group">
             @Html.Label("Aptitudes", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("Aptitudes", ViewData["Aptitudes"] as SelectList, "<--Seleccione-->", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownList("Aptitudes", ViewData["Aptitudes"] as SelectList, new { htmlAttributes = new { @class = "form-control" } })
                 @*@Html.ValidationMessageFor(model => model.RubroID, "", new { @class = "text-danger" })*@
             </div>
             <div class="col-md-offset-2 col-md-2">
-                <input type="button" value="Agregar" onclick="AgregarAptitud();" class=" btn btn-default" />
+                <input id="AgregarAptitudbtn" type="button" value="Agregar" class=" btn btn-default" />
             </div>
+        </div>
+
+        <div>
+            <table id="AptitudesTable" class="table table-hover table-responsive table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            APTITUD
+                        </th>
+                    </tr>
+                </thead>
+            </table>
         </div>
 
         <div class="form-group">
@@ -59,31 +74,35 @@
 }
 
 <script type="text/javascript">
-    function AgregarAptitud() {
+    $(function () {
 
-        var tabla = $("#AptitudesTable");
 
-        var indice = $("#AptitudesTable tr").length - 1;
+        $("#AgregarAptitudbtn").click(function () {
 
-        var aptitud = $("#Alumnos option:selected");
+            var tabla = $("#AptitudesTable");
 
-        if (aptitud.length == 0) {
-            return;
-        }
+            var indice = $("#AptitudesTable tr").length - 1;
 
-        var id = aptitud.val();
-        var descripcion = aptitud.text();
+            var aptitud = $("#Aptitudes option:selected");
 
-        var nuevaFila = "<tr><td>";
-        nuevaFila += "<input type='hidden' id='Aptitudes[" + indice + "].Id' name='Aptitudes[" + indice + "].Id' value='" + id + "' />";
-        nuevaFila += "<input type='hidden' id='Aptitudes[" + indice + "].Descripcion' name='Aptitudes[" + indice + "].Descripcion' value='" + descripcion + "'/>";
-        nuevaFila += id
-        nuevaFila += "</td><td>";
-        nuevaFila += descripcion;
-        nuevaFila += "</td></tr>";
+            if (aptitud.length == 0) {
+                return;
+            }
 
-        tabla.append(nuevaFila);
+            var id = aptitud.val();
+            var descripcion = aptitud.text();
 
-        $("#Aptitudes option:selected").remove();
-    }
+            var nuevaFila = "<tr><td>";
+            nuevaFila += "<input type='hidden' id='Aptitudes[" + indice + "].Id' name='Aptitudes[" + indice + "].Id' value='" + id + "' />";
+            nuevaFila += "<input type='hidden' id='Aptitudes[" + indice + "].Descripcion' name='Aptitudes[" + indice + "].Descripcion' value='" + descripcion + "'/>";
+            nuevaFila += id
+            nuevaFila += "</td><td>";
+            nuevaFila += descripcion;
+            nuevaFila += "</td></tr>";
+
+            tabla.append(nuevaFila);
+
+            $("#Aptitudes option:selected").remove();
+        });
+    });
 </script>

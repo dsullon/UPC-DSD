@@ -324,6 +324,7 @@
     <Content Include="Views\Empresa\Principal.cshtml" />
     <Content Include="Views\Empresa\Index.cshtml" />
     <Content Include="Views\Empresa\RegistrarAnuncio.cshtml" />
+    <Content Include="Views\Empresa\InvitarPostulantes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

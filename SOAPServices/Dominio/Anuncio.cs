@@ -28,6 +28,6 @@ namespace SOAPServices.Dominio
         public bool Estado { get; set; }
 
         [DataMember]
-        public ICollection<Aptitud> Aptitudes { get; set; }
+        public List<Aptitud> Aptitudes { get; set; }
     }
 }
