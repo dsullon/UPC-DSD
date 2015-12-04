@@ -323,6 +323,7 @@
     </None>
     <Content Include="Views\Empresa\Principal.cshtml" />
     <Content Include="Views\Empresa\Index.cshtml" />
+    <Content Include="Views\Empresa\RegistrarAnuncio.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

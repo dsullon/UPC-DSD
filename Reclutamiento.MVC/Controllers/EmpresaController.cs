@@ -38,6 +38,17 @@ namespace Reclutamiento.MVC.Controllers
                 return RedirectToAction("Index", "Empresa");
         }
 
+        public ActionResult RegistrarAnuncio()
+        {
+            return View();
+        }
+
+
+
+
+
+
+
         public ActionResult Registrar()
         {
             //var listaRubros = proxy.ListarRubros();
