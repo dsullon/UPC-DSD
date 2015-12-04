@@ -77,32 +77,9 @@ namespace Reclutamiento.MVC.Controllers
                         {
                             smtp.Send(message);
                         }
-                        //string from = "alex.sullonporras@gmail.com";
-                        //var body = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";
-                        //var message = new MailMessage();
-                        //message.To.Add(new MailAddress(model.EmailContacto));  // replace with valid value 
-                        //message.From = new MailAddress(from);  // replace with valid value
-                        //message.Subject = "Your email subject";
-                        //message.Body = string.Format(body, "Alex Sullon Porras", from, "Gracias popr registrarte en el sitio web");
-                        //message.IsBodyHtml = true;
-
-                        //using (var smtp = new SmtpClient())
-                        //{
-                        //    var credential = new NetworkCredential
-                        //    {
-                        //        UserName = from,  // replace with valid value
-                        //        Password = "d9900221662"  // replace with valid value
-                        //    };
-                        //    smtp.Credentials = credential;
-                        //    smtp.Host = "smtp.gmail.com";
-                        //    smtp.Port = 587;
-                        //    smtp.EnableSsl = true;
-                        //    smtp.SendMailAsync(message);
-                        //    //return RedirectToAction("Sent");
-                        //    return RedirectToAction("Listado", "Empresa");
-                        //}
+                        Session["Empresa"] = empresa;
+                        return RedirectToAction("Principal", "Empresa");
                     }
-
                     else
                     {
                         ViewBag.Error = TempData["error"];
@@ -119,22 +96,6 @@ namespace Reclutamiento.MVC.Controllers
                     AsignarRubros(model);
                     return View(model);
                 }
-
-
-                //var result = await UserManager.CreateAsync(user, model.Password);
-                //if (result.Succeeded)
-                //{
-                //    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-
-                //    // Para obtener más información sobre cómo habilitar la confirmación de cuenta y el restablecimiento de contraseña, visite http://go.microsoft.com/fwlink/?LinkID=320771
-                //    // Enviar correo electrónico con este vínculo
-                //    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                //    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                //    // await UserManager.SendEmailAsync(user.Id, "Confirmar cuenta", "Para confirmar la cuenta, haga clic <a href=\"" + callbackUrl + "\">aquí</a>");
-
-                //    return RedirectToAction("Index", "Home");
-                //}
-                //AddErrors(result);
             }
 
             // Si llegamos a este punto, es que se ha producido un error y volvemos a mostrar el formulario

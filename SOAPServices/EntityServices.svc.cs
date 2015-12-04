@@ -56,7 +56,7 @@ namespace SOAPServices
 
             if (value != "EXISTS")
                 throw new WebFaultException<string>("El RUC ingresado no se encuentra registrado en los sistemas tributarios.", HttpStatusCode.NotFound);
-            ICollection<Empresa> listaEmpresas = (UsuarioDAO.ListarTodos().Where(c => c.GetType() == typeof(Empresa)) as List<Empresa>).ToList();
+            var listaEmpresas = ObtenerListadoEmpresa();
             if (listaEmpresas != null && listaEmpresas.Count > 0)
             {
                 var empresaExistente = listaEmpresas.Where(c => c.NumeroRuc.Equals(empresa.NumeroRuc)).FirstOrDefault();
@@ -97,6 +97,12 @@ namespace SOAPServices
 
         public List<Empresa> ListarEmpresa()
         {
+            var listaEmpresa = ObtenerListadoEmpresa();
+            return listaEmpresa;
+        }
+
+        private List<Empresa> ObtenerListadoEmpresa()
+        {
             var lista = UsuarioDAO.ListarTodos().ToList();
             var listaEmpresa = new List<Empresa>();
             foreach (var item in lista)
@@ -105,6 +111,18 @@ namespace SOAPServices
                     listaEmpresa.Add(item as Empresa);
             }
             return listaEmpresa;
+        }
+
+        private List<Postulante> ObtenerListadoPostulante()
+        {
+            var lista = UsuarioDAO.ListarTodos().ToList();
+            var listaPostulante = new List<Postulante>();
+            foreach (var item in lista)
+            {
+                if (item.GetType() == typeof(Postulante))
+                    listaPostulante.Add(item as Postulante);
+            }
+            return listaPostulante;
         }
 
         public Empresa ObtenerEmpresa(string id)

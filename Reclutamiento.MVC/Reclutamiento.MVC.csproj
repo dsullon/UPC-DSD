@@ -285,7 +285,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Empresa\Index.cshtml" />
     <Content Include="Views\Empresa\Login.cshtml" />
     <Content Include="Views\Shared\_LoginPartialCompany.cshtml" />
     <Content Include="Views\Shared\_LayoutCompany.cshtml" />
@@ -322,6 +321,8 @@
     <None Include="Service References\ReclutamientoWS\ReclutamientoService3.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Views\Empresa\Principal.cshtml" />
+    <Content Include="Views\Empresa\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

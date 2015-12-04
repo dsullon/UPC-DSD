@@ -20,49 +20,42 @@ namespace Reclutamiento.MVC.Controllers
         // GET: Empresa
         public ActionResult Index()
         {
-            //var listaRubros = proxy.ListarRubros();
-            var webClient = new WebClient();
-            var json = webClient.DownloadString(BASE_URL + "/Empresas");
-            var js = new JavaScriptSerializer();
-            var listaRubros = js.Deserialize<List<Empresa>>(json);
+            ////var listaRubros = proxy.ListarRubros();
+            //var webClient = new WebClient();
+            //var json = webClient.DownloadString(BASE_URL + "/Empresas");
+            //var js = new JavaScriptSerializer();
+            //var listaRubros = js.Deserialize<List<Empresa>>(json);
 
-            ViewBag.Rubros = listaRubros;
+            //ViewBag.Rubros = listaRubros;
             return View();
         }
 
-        //public JsonResult ExisteRUC(string ruc)
-        //{
-        //    var empresa = proxy.ListarEmpresas().Where(c => c.NumeroRuc.Equals(ruc)).FirstOrDefault();
-        //    if (empresa != null)
-        //        return new JsonResult { Data = false };
-        //    return new JsonResult { Data = true };
-
-        //    //    return Json(true, JsonRequestBehavior.AllowGet);
-
-        //    //return Json("Email address in use", JsonRequestBehavior.AllowGet);
-
-        //}
-
-        //public JsonResult ExisteEmail(string email)
-        //{
-        //    var empresa = proxy.ListarEmpresas().Where(c => c.EmailContacto.Equals(email)).FirstOrDefault();
-        //    if (empresa != null)
-        //        return new JsonResult { Data = false };
-        //    return new JsonResult { Data = true };
-        //}
+        public ActionResult Principal()
+        {
+            if (Session["Empresa"] != null)
+                return View();
+            else
+                return RedirectToAction("Index", "Empresa");
+        }
 
         public ActionResult Registrar()
         {
             //var listaRubros = proxy.ListarRubros();
+            var listaRubros = ObtenerListadoRubros();
+
+            RegisterViewModel viewModel = new RegisterViewModel();
+            ViewBag.ListaRubros = listaRubros;
+            return View();
+        }
+
+        private SelectList ObtenerListadoRubros()
+        {
             var webClient = new WebClient();
             var json = webClient.DownloadString(BASE_URL + "/Rubros");
             var js = new JavaScriptSerializer();
             //var listaRubros = js.Deserialize<List<Rubro>>(json);
             var listaRubros = new SelectList(js.Deserialize<List<Rubro>>(json), "Id", "Descripcion");
-
-            RegisterViewModel viewModel = new RegisterViewModel();
-            ViewBag.ListaRubros = listaRubros;
-            return View();
+            return listaRubros;
         }
 
         [HttpPost]
@@ -82,7 +75,7 @@ namespace Reclutamiento.MVC.Controllers
                 var response = (HttpWebResponse)request.GetResponse();
                 var status = response.StatusCode;
                 if (status == HttpStatusCode.Created)
-                    return RedirectToAction("Listado", "Empresa");
+                    return RedirectToAction("Principal", "Empresa");
                 else
                 {
                     ViewBag.Error = TempData["error"];
@@ -98,34 +91,6 @@ namespace Reclutamiento.MVC.Controllers
                 ModelState.AddModelError(string.Empty, ex.Message);
                 return View(empresa);
             }
-
-            //if (!ValidarRuc(empresa.NumeroRuc))
-            //{
-            //    "El RUC ingresado no se encuentra registrado en los sistemas tributarios.";
-            //}
-
-
-            //string url = string.Format("{0}/Empresas", BASE_URL);
-            ////var r = proxy.ObtenerRubro(rubro);
-            ////empresa.Rubro = r;
-            //var serial = new DataContractJsonSerializer(typeof(Reclutamiento.MVC.Models.Empresa));
-            //var request = (HttpWebRequest)WebRequest.Create(url);
-            //request.Method = "POST";
-            //request.ContentType = "application/json";
-            //using (var requestStream = request.GetRequestStream())
-            //{
-            //    serial.WriteObject(requestStream, empresa);
-            //}
-
-            //var response = (HttpWebResponse)request.GetResponse();
-            //var status = response.StatusCode;
-            //if(status==HttpStatusCode.Created)
-            //    return RedirectToAction("Index", "Home");
-            //else
-            //{
-            //    ViewBag.Error = TempData["error"];
-            //    return View();
-            //}
         }
 
         private static bool ValidarRuc(string ruc)
