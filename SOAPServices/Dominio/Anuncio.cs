@@ -21,5 +21,7 @@ namespace SOAPServices.Dominio
         [Required(ErrorMessage = "El campo descripcion es obligatorio")]
         public string Descripcion { get; set; }
 
+        [DataMember]
+        public ICollection<Aptitud> Aptitudes { get; set; }
     }
 }

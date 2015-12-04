@@ -75,6 +75,7 @@
     <EmbeddedResource Include="Dominio\Rubro.hbm.xml" />
     <EmbeddedResource Include="Dominio\Aptitud.hbm.xml" />
     <EmbeddedResource Include="Dominio\Usuario.hbm.xml" />
+    <EmbeddedResource Include="Dominio\Anuncio.hbm.xml" />
     <Content Include="EntityServices.svc" />
     <Content Include="ReclutamientoService.svc" />
     <Content Include="ReferenciaExterna\Iesi.Collections.dll" />
