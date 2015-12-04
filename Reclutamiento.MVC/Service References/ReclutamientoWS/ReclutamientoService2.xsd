@@ -23,18 +23,19 @@
   <xs:element name="OperationStatus" nillable="true" type="tns:OperationStatus" />
   <xs:complexType name="Anuncio">
     <xs:sequence>
+      <xs:element minOccurs="0" name="Aptitudes" nillable="true" type="tns:ArrayOfAptitud" />
       <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="Titulo" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Anuncio" nillable="true" type="tns:Anuncio" />
-  <xs:complexType name="ArrayOfAnuncio">
+  <xs:complexType name="ArrayOfAptitud">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Anuncio" nillable="true" type="tns:Anuncio" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Aptitud" nillable="true" type="tns:Aptitud" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfAnuncio" nillable="true" type="tns:ArrayOfAnuncio" />
+  <xs:element name="ArrayOfAptitud" nillable="true" type="tns:ArrayOfAptitud" />
   <xs:complexType name="Aptitud">
     <xs:sequence>
       <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
@@ -42,12 +43,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Aptitud" nillable="true" type="tns:Aptitud" />
-  <xs:complexType name="ArrayOfAptitud">
+  <xs:complexType name="ArrayOfAnuncio">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Aptitud" nillable="true" type="tns:Aptitud" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Anuncio" nillable="true" type="tns:Anuncio" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfAptitud" nillable="true" type="tns:ArrayOfAptitud" />
+  <xs:element name="ArrayOfAnuncio" nillable="true" type="tns:ArrayOfAnuncio" />
   <xs:complexType name="Aptitud_Anuncio">
     <xs:sequence>
       <xs:element minOccurs="0" name="IdAnuncio" type="xs:int" />

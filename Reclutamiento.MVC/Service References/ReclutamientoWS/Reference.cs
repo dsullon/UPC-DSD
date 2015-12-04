@@ -84,7 +84,7 @@ namespace Reclutamiento.MVC.ReclutamientoWS {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string[] MessagesField;
+        private System.Collections.Generic.List<string> MessagesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool SuccessField;
@@ -100,7 +100,7 @@ namespace Reclutamiento.MVC.ReclutamientoWS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string[] Messages {
+        public System.Collections.Generic.List<string> Messages {
             get {
                 return this.MessagesField;
             }
@@ -145,6 +145,9 @@ namespace Reclutamiento.MVC.ReclutamientoWS {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.List<Reclutamiento.MVC.ReclutamientoWS.Aptitud> AptitudesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DescripcionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -160,6 +163,19 @@ namespace Reclutamiento.MVC.ReclutamientoWS {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.List<Reclutamiento.MVC.ReclutamientoWS.Aptitud> Aptitudes {
+            get {
+                return this.AptitudesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AptitudesField, value) != true)) {
+                    this.AptitudesField = value;
+                    this.RaisePropertyChanged("Aptitudes");
+                }
             }
         }
         
@@ -363,10 +379,10 @@ namespace Reclutamiento.MVC.ReclutamientoWS {
         System.Threading.Tasks.Task EliminarRubroAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReclutamientoService/ListarRubros", ReplyAction="http://tempuri.org/IReclutamientoService/ListarRubrosResponse")]
-        Reclutamiento.MVC.ReclutamientoWS.Rubro[] ListarRubros();
+        System.Collections.Generic.List<Reclutamiento.MVC.ReclutamientoWS.Rubro> ListarRubros();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReclutamientoService/ListarRubros", ReplyAction="http://tempuri.org/IReclutamientoService/ListarRubrosResponse")]
-        System.Threading.Tasks.Task<Reclutamiento.MVC.ReclutamientoWS.Rubro[]> ListarRubrosAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Reclutamiento.MVC.ReclutamientoWS.Rubro>> ListarRubrosAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReclutamientoService/CrearAnuncio", ReplyAction="http://tempuri.org/IReclutamientoService/CrearAnuncioResponse")]
         Reclutamiento.MVC.ReclutamientoWS.OperationStatus CrearAnuncio(string titulo, string descripcion);
@@ -393,10 +409,10 @@ namespace Reclutamiento.MVC.ReclutamientoWS {
         System.Threading.Tasks.Task EliminarAnuncioAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReclutamientoService/ListarAnuncios", ReplyAction="http://tempuri.org/IReclutamientoService/ListarAnunciosResponse")]
-        Reclutamiento.MVC.ReclutamientoWS.Anuncio[] ListarAnuncios();
+        System.Collections.Generic.List<Reclutamiento.MVC.ReclutamientoWS.Anuncio> ListarAnuncios();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReclutamientoService/ListarAnuncios", ReplyAction="http://tempuri.org/IReclutamientoService/ListarAnunciosResponse")]
-        System.Threading.Tasks.Task<Reclutamiento.MVC.ReclutamientoWS.Anuncio[]> ListarAnunciosAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Reclutamiento.MVC.ReclutamientoWS.Anuncio>> ListarAnunciosAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReclutamientoService/CrearAptitud", ReplyAction="http://tempuri.org/IReclutamientoService/CrearAptitudResponse")]
         Reclutamiento.MVC.ReclutamientoWS.Aptitud CrearAptitud(string descripcion);
@@ -423,10 +439,10 @@ namespace Reclutamiento.MVC.ReclutamientoWS {
         System.Threading.Tasks.Task EliminarAptitudAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReclutamientoService/ListarAptitudes", ReplyAction="http://tempuri.org/IReclutamientoService/ListarAptitudesResponse")]
-        Reclutamiento.MVC.ReclutamientoWS.Aptitud[] ListarAptitudes();
+        System.Collections.Generic.List<Reclutamiento.MVC.ReclutamientoWS.Aptitud> ListarAptitudes();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReclutamientoService/ListarAptitudes", ReplyAction="http://tempuri.org/IReclutamientoService/ListarAptitudesResponse")]
-        System.Threading.Tasks.Task<Reclutamiento.MVC.ReclutamientoWS.Aptitud[]> ListarAptitudesAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Reclutamiento.MVC.ReclutamientoWS.Aptitud>> ListarAptitudesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReclutamientoService/CrearAptitud_Anuncio", ReplyAction="http://tempuri.org/IReclutamientoService/CrearAptitud_AnuncioResponse")]
         Reclutamiento.MVC.ReclutamientoWS.Aptitud_Anuncio CrearAptitud_Anuncio(int idAnuncio, int idAptitud);
@@ -453,10 +469,10 @@ namespace Reclutamiento.MVC.ReclutamientoWS {
         System.Threading.Tasks.Task EliminarAptitud_AnuncioAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReclutamientoService/ListarAptitudesPorAnuncio", ReplyAction="http://tempuri.org/IReclutamientoService/ListarAptitudesPorAnuncioResponse")]
-        Reclutamiento.MVC.ReclutamientoWS.Aptitud_Anuncio[] ListarAptitudesPorAnuncio();
+        System.Collections.Generic.List<Reclutamiento.MVC.ReclutamientoWS.Aptitud_Anuncio> ListarAptitudesPorAnuncio();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReclutamientoService/ListarAptitudesPorAnuncio", ReplyAction="http://tempuri.org/IReclutamientoService/ListarAptitudesPorAnuncioResponse")]
-        System.Threading.Tasks.Task<Reclutamiento.MVC.ReclutamientoWS.Aptitud_Anuncio[]> ListarAptitudesPorAnuncioAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Reclutamiento.MVC.ReclutamientoWS.Aptitud_Anuncio>> ListarAptitudesPorAnuncioAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -518,11 +534,11 @@ namespace Reclutamiento.MVC.ReclutamientoWS {
             return base.Channel.EliminarRubroAsync(id);
         }
         
-        public Reclutamiento.MVC.ReclutamientoWS.Rubro[] ListarRubros() {
+        public System.Collections.Generic.List<Reclutamiento.MVC.ReclutamientoWS.Rubro> ListarRubros() {
             return base.Channel.ListarRubros();
         }
         
-        public System.Threading.Tasks.Task<Reclutamiento.MVC.ReclutamientoWS.Rubro[]> ListarRubrosAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Reclutamiento.MVC.ReclutamientoWS.Rubro>> ListarRubrosAsync() {
             return base.Channel.ListarRubrosAsync();
         }
         
@@ -558,11 +574,11 @@ namespace Reclutamiento.MVC.ReclutamientoWS {
             return base.Channel.EliminarAnuncioAsync(id);
         }
         
-        public Reclutamiento.MVC.ReclutamientoWS.Anuncio[] ListarAnuncios() {
+        public System.Collections.Generic.List<Reclutamiento.MVC.ReclutamientoWS.Anuncio> ListarAnuncios() {
             return base.Channel.ListarAnuncios();
         }
         
-        public System.Threading.Tasks.Task<Reclutamiento.MVC.ReclutamientoWS.Anuncio[]> ListarAnunciosAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Reclutamiento.MVC.ReclutamientoWS.Anuncio>> ListarAnunciosAsync() {
             return base.Channel.ListarAnunciosAsync();
         }
         
@@ -598,11 +614,11 @@ namespace Reclutamiento.MVC.ReclutamientoWS {
             return base.Channel.EliminarAptitudAsync(id);
         }
         
-        public Reclutamiento.MVC.ReclutamientoWS.Aptitud[] ListarAptitudes() {
+        public System.Collections.Generic.List<Reclutamiento.MVC.ReclutamientoWS.Aptitud> ListarAptitudes() {
             return base.Channel.ListarAptitudes();
         }
         
-        public System.Threading.Tasks.Task<Reclutamiento.MVC.ReclutamientoWS.Aptitud[]> ListarAptitudesAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Reclutamiento.MVC.ReclutamientoWS.Aptitud>> ListarAptitudesAsync() {
             return base.Channel.ListarAptitudesAsync();
         }
         
@@ -638,11 +654,11 @@ namespace Reclutamiento.MVC.ReclutamientoWS {
             return base.Channel.EliminarAptitud_AnuncioAsync(id);
         }
         
-        public Reclutamiento.MVC.ReclutamientoWS.Aptitud_Anuncio[] ListarAptitudesPorAnuncio() {
+        public System.Collections.Generic.List<Reclutamiento.MVC.ReclutamientoWS.Aptitud_Anuncio> ListarAptitudesPorAnuncio() {
             return base.Channel.ListarAptitudesPorAnuncio();
         }
         
-        public System.Threading.Tasks.Task<Reclutamiento.MVC.ReclutamientoWS.Aptitud_Anuncio[]> ListarAptitudesPorAnuncioAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Reclutamiento.MVC.ReclutamientoWS.Aptitud_Anuncio>> ListarAptitudesPorAnuncioAsync() {
             return base.Channel.ListarAptitudesPorAnuncioAsync();
         }
     }

@@ -40,6 +40,8 @@ namespace Reclutamiento.MVC.Controllers
 
         public ActionResult RegistrarAnuncio()
         {
+            List<Aptitud> aptitudes = proxy.ListarAptitudes();
+            ViewData["Aptitudes"] = new SelectList(aptitudes, "Id", "Descripcion");            
             return View();
         }
 

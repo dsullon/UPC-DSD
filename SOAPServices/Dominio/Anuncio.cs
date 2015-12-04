@@ -22,6 +22,12 @@ namespace SOAPServices.Dominio
         public string Descripcion { get; set; }
 
         [DataMember]
+        public bool FechaPublicacion { get; set; }
+
+        [DataMember]
+        public bool Estado { get; set; }
+
+        [DataMember]
         public ICollection<Aptitud> Aptitudes { get; set; }
     }
 }

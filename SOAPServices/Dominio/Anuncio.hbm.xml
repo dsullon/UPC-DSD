@@ -3,12 +3,14 @@
                    assembly="SOAPServices"
                    namespace="SOAPServices.Dominio"
                    default-lazy="false">
-  <class name="Aptitud" table="Aptitud">
-    <id name="Id" access="property" column="idAptitud">
-      <!--<generator class="increment" />-->
+  <class name="Anuncio" table="Anuncio">
+    <id name="Id" access="property" column="idAnuncio">
       <generator class="native" />
     </id>
+    <property name="Titulo" column="titulo" />
     <property name="Descripcion" column="descripcion" />
+    <property name="FechaPublicacion" column="fechaPublicacion" />
+    <property name="Estado" column="estado" />
     <set name="Aptitudes" table="aptitud_anuncio"
           inverse="false" lazy="true" fetch="select" cascade="all">
       <key column="idAnuncio" />
