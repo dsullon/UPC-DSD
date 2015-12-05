@@ -68,6 +68,12 @@ namespace Reclutamiento.MVC.Controllers
             return View(listado);
         }
 
+        public ActionResult ListarAnuncioUsuario()
+        {
+            var listado = proxy.ListarAnuncios().Where(c => c.Estado == true).ToList();
+            return View(listado);
+        }
+
 
 
         public ActionResult Registrar()
@@ -187,12 +193,6 @@ namespace Reclutamiento.MVC.Controllers
         //    return View(empresa);
         //}
 
-        [HttpPost]
-        public ActionResult LogOff()
-        {
-            Session.Abandon();
-            return RedirectToAction("Index", "Home");
-        }
     }
 
 }

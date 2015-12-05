@@ -37,6 +37,30 @@ namespace SOAPServices
 
         #endregion
 
+        #region . POSTULANTE .
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "Postulantes", ResponseFormat = WebMessageFormat.Json)]
+        void CrearPostulante(Postulante postulante);
+
+        [OperationContract]
+        [WebInvoke(Method = "DELETE", UriTemplate = "Postulantes/{id}", ResponseFormat = WebMessageFormat.Json)]
+        void EliminarPostulante(string id);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "Postulantes", ResponseFormat = WebMessageFormat.Json)]
+        List<Postulante> ListarPostulante();
+
+        [OperationContract]
+        [WebInvoke(Method = "PUT", UriTemplate = "Postulantes", ResponseFormat = WebMessageFormat.Json)]
+        void ModificarPostulante(Postulante postulante);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "Postulantes/{id}", ResponseFormat = WebMessageFormat.Json)]
+        Postulante ObtenerPostulante(string id);
+
+        #endregion
+
         #region . RUBRO .
 
         [OperationContract]

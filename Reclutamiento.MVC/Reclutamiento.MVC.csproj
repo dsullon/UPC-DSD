@@ -188,6 +188,7 @@
     <Compile Include="Models\Generico.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Postulante.cs" />
     <Compile Include="Models\UsuarioViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\ReclutamientoWS\Reference.cs">
@@ -324,6 +325,9 @@
     <Content Include="Views\Empresa\InvitarPostulantes.cshtml" />
     <Content Include="Views\Usuario\LoginEmpresa.cshtml" />
     <Content Include="Views\Empresa\ListarAnuncio.cshtml" />
+    <Content Include="Views\Usuario\RegistrarPostulante.cshtml" />
+    <Content Include="Views\Empresa\ListarAnuncioUsuario.cshtml" />
+    <Content Include="Views\Usuario\LoginPostulante.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

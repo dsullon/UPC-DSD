@@ -138,5 +138,123 @@ namespace Reclutamiento.MVC.Controllers
             return View(login);
 
         }
+
+        public ActionResult RegistrarPostulante()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult RegistrarPostulante(RegistrarPostulante model)
+        {
+            if (ModelState.IsValid)
+            {
+                var postulante = new Postulante
+                {
+                    Dni = model.Dni,
+                    Nombre = model.Nombres,
+                    ApellidoPaterno = model.ApellidoPaterno,
+                    ApellidoMaterno = model.ApellidoMaterno,
+                    FechaNacimiento = model.FechaNacimiento,
+                    Email = model.EmailContacto,
+                    Clave = model.Password
+                };
+
+                try
+                {
+                    string urlPostulante = string.Format("{0}/Postulantes", Generico.UrlServicioRest);
+                    var serial = new DataContractJsonSerializer(typeof(Postulante));
+                    var request = (HttpWebRequest)WebRequest.Create(urlPostulante);
+                    request.Method = "POST";
+                    request.ContentType = "application/json";
+                    using (var requestStream = request.GetRequestStream())
+                    {
+                        serial.WriteObject(requestStream, postulante);
+                    }
+                    var response = (HttpWebResponse)request.GetResponse();
+                    var status = response.StatusCode;
+                    if (status == HttpStatusCode.Created)
+                    {
+                        var fromAddress = new MailAddress("alex.sullonporras@gmail.com", "Trabajorum.PE");
+                        var toAddress = new MailAddress(model.EmailContacto, string.Format("{0} {1} {2}", model.Nombres, model.ApellidoPaterno, model.ApellidoMaterno));
+                        const string fromPassword = "d9900221662";
+                        const string subject = "Registro";
+                        const string body = "Gracias por registrate";
+
+                        var smtp = new SmtpClient
+                        {
+                            Host = "smtp.gmail.com",
+                            Port = 587,
+                            EnableSsl = true,
+                            DeliveryMethod = SmtpDeliveryMethod.Network,
+                            UseDefaultCredentials = false,
+                            Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+                        };
+                        using (var message = new MailMessage(fromAddress, toAddress)
+                        {
+                            Subject = subject,
+                            Body = body
+                        })
+                        {
+                            smtp.Send(message);
+                        }
+                        Session["Postulante"] = postulante;
+                        return RedirectToAction("ListarAnuncioUsuario", "Empresa");
+                    }
+                    else
+                    {
+                        ViewBag.Error = TempData["error"];
+                        return View();
+                    }
+                }
+                catch (WebException ex)
+                {
+                    var json = new StreamReader(ex.Response.GetResponseStream()).ReadToEnd();
+                    var js = new JavaScriptSerializer();
+                    var data = js.Deserialize<string>(json);
+                    ViewBag.Error = TempData["error"];
+                    ModelState.AddModelError(string.Empty, data);
+                    return View(model);
+                }
+            }
+
+            // Si llegamos a este punto, es que se ha producido un error y volvemos a mostrar el formulario
+            return View(model);
+        }
+
+        public ActionResult LoginPostulante()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult LoginPostulante(InicioSesionViewModel login)
+        {
+            var webClient = new WebClient();
+            var json = webClient.DownloadString(BASE_URL + "/Postulantes");
+            var js = new JavaScriptSerializer();
+            var listaPostulante = js.Deserialize<List<Postulante>>(json);
+
+            if (ModelState.IsValid)
+            {
+                var empresaExistente = listaPostulante.Where(c => c.Email.Equals(login.Email) && c.Clave.Equals(login.Password)).FirstOrDefault();
+                if (empresaExistente != null)
+                {
+                    Session["Postulante"] = empresaExistente;
+                    return RedirectToAction("ListarAnuncioUsuario", "Empresa");
+                }
+            }
+            return View(login);
+
+        }
+
+        [HttpPost]
+        public ActionResult LogOff()
+        {
+            Session.Abandon();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

@@ -124,6 +124,83 @@ namespace SOAPServices
             return listaEmpresa;
         }
 
+
+        public Empresa ObtenerEmpresa(string id)
+        {
+            int idEmpresa = int.Parse(id);
+            Empresa empresaEncontrada = UsuarioDAO.Obtener(idEmpresa) as Empresa;
+            if (empresaEncontrada != null)
+            {
+                return empresaEncontrada;
+            }
+            throw new WebFaultException<string>("La empresa fue eliminada o no ha sido creada", HttpStatusCode.NotFound);
+        }
+
+        #endregion
+
+        #region . POSTULANTE .
+
+        public void CrearPostulante(Postulante postulante)
+        {
+            string BASE_URL2 = "http://ws.razonsocialperu.com/rest/PROYUPC/DNI/";
+            string urlConsulta = string.Format("{0}/{1}", BASE_URL2, postulante.Dni);
+            var webClient = new WebClient();
+            var json = webClient.DownloadString(urlConsulta);
+            var js = new JavaScriptSerializer();
+            var result = js.DeserializeObject(json);
+
+            Dictionary<string, object> lista = ((object[])(result))[0] as Dictionary<string, object>;
+            var estado = lista.Where(x => x.Key == "status") as Dictionary<string, object>;
+
+            string value = lista["status"].ToString();
+
+            if (value != "EXISTS")
+                throw new WebFaultException<string>("El DNI ingresado no se encuentra registrado en los sistemas de identificación nacional.", HttpStatusCode.NotFound);
+            var listaPostulantes = ObtenerListadoPostulante();
+            if (listaPostulantes != null && listaPostulantes.Count > 0)
+            {
+                var postulanteExistente = listaPostulantes.Where(c => c.Dni.Equals(postulante.Dni)).FirstOrDefault();
+                if (postulanteExistente != null)
+                    throw new WebFaultException<string>("Existe una postulante registrada con el número de D.N.I. ingresado.", HttpStatusCode.Conflict);
+
+                postulanteExistente = listaPostulantes.Where(c => c.Email.Equals(postulante.Email)).FirstOrDefault();
+                if (postulanteExistente != null)
+                    throw new WebFaultException<string>("Existe una postulante registrada con el email ingresado.", HttpStatusCode.Conflict);
+            }
+
+            UsuarioDAO.Crear(postulante);
+            WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.Created;
+        }
+
+        public void EliminarPostulante(string id)
+        {
+            int idPostulante = int.Parse(id);
+            var postulanteEncontrada = UsuarioDAO.Obtener(idPostulante);
+            if (postulanteEncontrada != null)
+                usuarioDAO.Eliminar(postulanteEncontrada);
+            else
+                throw new WebFaultException<string>("Postulante no encontrada.", HttpStatusCode.NotFound);
+        }
+
+        public void ModificarPostulante(Postulante postulante)
+        {
+            int idPostulante = postulante.Id;
+            var postulanteEncontrada = UsuarioDAO.Obtener(idPostulante);
+            if (postulanteEncontrada != null)
+            {
+                usuarioDAO.Modificar(postulante);
+            }
+            else
+                throw new WebFaultException<string>("Postulante no encontrada.", HttpStatusCode.NotFound);
+
+        }
+
+        public List<Postulante> ListarPostulante()
+        {
+            var listaPostulante = ObtenerListadoPostulante();
+            return listaPostulante;
+        }
+
         private List<Postulante> ObtenerListadoPostulante()
         {
             var lista = UsuarioDAO.ListarTodos().ToList();
@@ -136,15 +213,15 @@ namespace SOAPServices
             return listaPostulante;
         }
 
-        public Empresa ObtenerEmpresa(string id)
+        public Postulante ObtenerPostulante(string id)
         {
-            int idEmpresa = int.Parse(id);
-            Empresa empresaEncontrada = UsuarioDAO.Obtener(idEmpresa) as Empresa;
-            if (empresaEncontrada != null)
+            int idPostulante = int.Parse(id);
+            Postulante postulanteEncontrada = UsuarioDAO.Obtener(idPostulante) as Postulante;
+            if (postulanteEncontrada != null)
             {
-                return empresaEncontrada;
+                return postulanteEncontrada;
             }
-            throw new WebFaultException<string>("La empresa fue eliminada o no ha sido creada", HttpStatusCode.NotFound);
+            throw new WebFaultException<string>("La postulante fue eliminada o no ha sido creada", HttpStatusCode.NotFound);
         }
 
         #endregion
