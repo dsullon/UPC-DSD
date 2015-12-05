@@ -80,7 +80,7 @@ namespace Reclutamiento.MVC.Controllers
                             smtp.Send(message);
                         }
                         Session["Empresa"] = empresa;
-                        return RedirectToAction("Principal", "Empresa");
+                        return RedirectToAction("ListarAnuncio", "Empresa");
                     }
                     else
                     {
@@ -132,7 +132,7 @@ namespace Reclutamiento.MVC.Controllers
                 if (empresaExistente != null)
                 {
                     Session["Empresa"] = empresaExistente;
-                    return RedirectToAction("Index", "Empresa");
+                    return RedirectToAction("ListarAnuncio", "Empresa");
                 }
             }
             return View(login);

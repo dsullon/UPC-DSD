@@ -27,6 +27,17 @@ namespace SOAPServices
             }
         }
 
+        private AnuncioDAO anuncioDAO = null;
+        private AnuncioDAO AnuncioDAO
+        {
+            get
+            {
+                if (anuncioDAO == null)
+                    anuncioDAO = new AnuncioDAO();
+                return anuncioDAO;
+            }
+        }
+
         private RubroDAO rubroDAO = null;
         private RubroDAO RubroDAO
         {
@@ -190,6 +201,15 @@ namespace SOAPServices
 
         #endregion
 
+        #region . ANUNCIO .
 
+        public List<Anuncio> ListarAnuncio()
+        {
+            var listado = AnuncioDAO.ListarTodos().ToList();
+            return listado;
+        }
+
+
+        #endregion
     }
 }

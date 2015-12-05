@@ -60,5 +60,14 @@ namespace SOAPServices
         Rubro ObtenerRubro(string id);
 
         #endregion
+
+        #region . ANUNCIOS .
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "Anuncios", ResponseFormat = WebMessageFormat.Json)]
+        List<Anuncio> ListarAnuncio();
+
+
+        #endregion
     }
 }

@@ -53,15 +53,19 @@ namespace Reclutamiento.MVC.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult RegistrarAnuncio(Anuncio anuncio)
         {
+            var empresa = (Empresa)Session["Empresa"];
+            anuncio.Empresa = empresa;
+            anuncio.FechaPublicacion = DateTime.Now;
+            anuncio.Estado = true;
             OperationStatus estado = proxy.CrearAnuncio(anuncio);
-            return RedirectToAction("InvitarPostulante", "Empresa");
+            return RedirectToAction("ListarAnuncio", "Empresa");
         }
 
         public ActionResult ListarAnuncio()
         {
             var empresa = (Empresa)Session["Empresa"];
             var listado = proxy.ListarAnuncios().Where(c => c.Empresa.Id == empresa.Id).ToList();
-            return View();
+            return View(listado);
         }
 
 

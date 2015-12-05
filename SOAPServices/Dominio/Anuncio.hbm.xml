@@ -13,7 +13,7 @@
     <property name="Estado" column="estado" />
     <many-to-one name="Empresa" column="idEmpresa" />
     <set name="Aptitudes" table="aptitud_anuncio"
-          inverse="false" lazy="true" fetch="select" cascade="all">
+          inverse="false" lazy="false" fetch="select" cascade="all">
       <key column="idAnuncio" />
       <many-to-many column="idAptitud" class="Aptitud" />
     </set>

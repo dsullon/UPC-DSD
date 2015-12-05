@@ -61,12 +61,16 @@ namespace SOAPServices
 
         [OperationContract]
         OperationStatus CrearAnuncio(Anuncio anuncio);
+
         [OperationContract]
         Anuncio ObtenerAnuncio(int id);
+
         [OperationContract]
         Anuncio ModificarAnuncio(int id, string titulo, string descripcion);
+
         [OperationContract]
         void EliminarAnuncio(int id);
+
         [OperationContract]
         List<Anuncio> ListarAnuncios();
 

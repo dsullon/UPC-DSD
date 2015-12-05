@@ -358,7 +358,8 @@ namespace SOAPServices
 
         public List<Anuncio> ListarAnuncios()
         {
-            return AnuncioDAO.ListarTodos().ToList();
+            var listado = AnuncioDAO.ListarTodos().ToList();
+            return listado;
         }
 
         #endregion
