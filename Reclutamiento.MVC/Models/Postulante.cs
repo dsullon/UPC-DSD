@@ -16,6 +16,6 @@ namespace Reclutamiento.MVC.Models
 
         public string Dni { get; set; }
 
-        //public ICollection<Aptitud> Aptitudes { get; set; }
+        public ICollection<Anuncio> Anuncios { get; set; }
     }
 }

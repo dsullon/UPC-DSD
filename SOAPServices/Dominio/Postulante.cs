@@ -32,6 +32,6 @@ namespace SOAPServices.Dominio
         public string Dni { get; set; }
 
         [DataMember]
-        public ICollection<Aptitud> Aptitudes { get; set; }
+        public ICollection<Anuncio> Anuncios { get; set; }
     }
 }

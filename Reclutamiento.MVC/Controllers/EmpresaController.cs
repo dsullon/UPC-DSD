@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Runtime.Serialization.Json;
 using System.Web;
 using System.Web.Mvc;
@@ -63,16 +64,73 @@ namespace Reclutamiento.MVC.Controllers
 
         public ActionResult ListarAnuncio()
         {
-            var empresa = (Empresa)Session["Empresa"];
-            var listado = proxy.ListarAnuncios().Where(c => c.Empresa.Id == empresa.Id).ToList();
-            return View(listado);
+            if (Session["Empresa"] != null)
+            {
+                var empresa = (Empresa)Session["Empresa"];
+                var listado = proxy.ListarAnuncios().Where(c => c.Empresa.Id == empresa.Id).ToList();
+                return View(listado);
+            }
+            else
+                return RedirectToAction("LoginEmpresa", "Empresa");
         }
 
         public ActionResult ListarAnuncioUsuario()
         {
-            var listado = proxy.ListarAnuncios().Where(c => c.Estado == true).ToList();
-            return View(listado);
+            if (Session["Postulante"] != null)
+            {
+                var listado = proxy.ListarAnuncios().Where(c => c.Estado == true).ToList();
+                return View(listado);
+            }
+            else
+                return RedirectToAction("LoginPostulante", "Empresa");
         }
+
+        public ActionResult Postular(string id)
+        {
+            if (Session["Postulante"] != null)
+            {
+                Anuncio anuncio = proxy.ObtenerAnuncio(int.Parse(id));
+                var postulante = (Postulante)Session["Postulante"];
+                postulante.Anuncios.Add(anuncio);
+
+                try
+                {
+                    string urlPostulante = string.Format("{0}/Postulantes", Generico.UrlServicioRest);
+                    var serial = new DataContractJsonSerializer(typeof(Postulante));
+                    var request = (HttpWebRequest)WebRequest.Create(urlPostulante);
+                    request.Method = "PUT";
+                    request.ContentType = "application/json";
+                    using (var requestStream = request.GetRequestStream())
+                    {
+                        serial.WriteObject(requestStream, postulante);
+                    }
+                    var response = (HttpWebResponse)request.GetResponse();
+                    var status = response.StatusCode;
+                    if (status == HttpStatusCode.OK)
+                    {
+
+                        return RedirectToAction("ListarAnuncioUsuario", "Empresa");
+                    }
+                    else
+                    {
+                        ViewBag.Error = TempData["error"];
+                        return View();
+                    }
+                }
+                catch (WebException ex)
+                {
+                    var json = new StreamReader(ex.Response.GetResponseStream()).ReadToEnd();
+                    var js = new JavaScriptSerializer();
+                    var data = js.Deserialize<string>(json);
+                    ViewBag.Error = TempData["error"];
+                    ModelState.AddModelError(string.Empty, data);
+                    return View(postulante);
+                }
+            }
+            //return RedirectToAction("ListarAnuncioUsuario", "Empresa");
+            return RedirectToAction("LoginPostulante", "Usuario");
+        }
+
 
 
 

@@ -328,6 +328,7 @@
     <Content Include="Views\Usuario\RegistrarPostulante.cshtml" />
     <Content Include="Views\Empresa\ListarAnuncioUsuario.cshtml" />
     <Content Include="Views\Usuario\LoginPostulante.cshtml" />
+    <Content Include="Views\Shared\_Anuncio.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
