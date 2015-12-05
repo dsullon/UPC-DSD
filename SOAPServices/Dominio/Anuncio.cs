@@ -10,6 +10,11 @@ namespace SOAPServices.Dominio
     [DataContract]
     public class Anuncio
     {
+        public Anuncio()
+        {
+            this.FechaPublicacion = DateTime.Now;
+        }
+
         [DataMember]
         public int Id { get; set; }
 
@@ -22,12 +27,15 @@ namespace SOAPServices.Dominio
         public string Descripcion { get; set; }
 
         [DataMember]
-        public bool FechaPublicacion { get; set; }
+        public Empresa Empresa { get; set; }
+
+        [DataMember]
+        public DateTime FechaPublicacion { get; set; }
 
         [DataMember]
         public bool Estado { get; set; }
 
         [DataMember]
-        public List<Aptitud> Aptitudes { get; set; }
+        public ICollection<Aptitud> Aptitudes { get; set; }
     }
 }

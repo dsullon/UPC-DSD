@@ -16,6 +16,9 @@ namespace Reclutamiento.MVC.Controllers
 {
     public class UsuarioController : Controller
     {
+        string BASE_URL = "http://localhost:40845/EntityServices.svc/";
+
+
         // GET: Usuario
         public ActionResult RegistrarEmpresa()
         {
@@ -23,7 +26,6 @@ namespace Reclutamiento.MVC.Controllers
             AsignarRubros(empresa);
             return View(empresa);
         }
-
 
         [HttpPost]
         [AllowAnonymous]
@@ -109,6 +111,32 @@ namespace Reclutamiento.MVC.Controllers
             var js = new JavaScriptSerializer();
             var listaRubros = new SelectList(js.Deserialize<List<Rubro>>(json), "Id", "Descripcion");
             empresa.Rubros = listaRubros;
+        }
+
+        public ActionResult LoginEmpresa()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult LoginEmpresa(InicioSesionViewModel login)
+        {
+            var webClient = new WebClient();
+            var json = webClient.DownloadString(BASE_URL + "/Empresas");
+            var js = new JavaScriptSerializer();
+            var listaEmpresa = js.Deserialize<List<Empresa>>(json);
+
+            if (ModelState.IsValid)
+            {
+                var empresaExistente = listaEmpresa.Where(c => c.Email.Equals(login.Email) && c.Clave.Equals(login.Password)).FirstOrDefault();
+                if (empresaExistente != null)
+                {
+                    Session["Empresa"] = empresaExistente;
+                    return RedirectToAction("Index", "Empresa");
+                }
+            }
+            return View(login);
+
         }
     }
 }

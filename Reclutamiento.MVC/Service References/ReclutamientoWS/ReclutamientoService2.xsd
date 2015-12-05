@@ -14,19 +14,13 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfRubro" nillable="true" type="tns:ArrayOfRubro" />
-  <xs:complexType name="OperationStatus">
-    <xs:sequence>
-      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Messages" nillable="true" type="q1:ArrayOfstring" />
-      <xs:element minOccurs="0" name="Success" type="xs:boolean" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="OperationStatus" nillable="true" type="tns:OperationStatus" />
   <xs:complexType name="Anuncio">
     <xs:sequence>
       <xs:element minOccurs="0" name="Aptitudes" nillable="true" type="tns:ArrayOfAptitud" />
       <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Empresa" nillable="true" type="tns:Empresa" />
       <xs:element minOccurs="0" name="Estado" type="xs:boolean" />
-      <xs:element minOccurs="0" name="FechaPublicacion" type="xs:boolean" />
+      <xs:element minOccurs="0" name="FechaPublicacion" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="Titulo" nillable="true" type="xs:string" />
     </xs:sequence>
@@ -45,6 +39,33 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Aptitud" nillable="true" type="tns:Aptitud" />
+  <xs:complexType name="Empresa">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Usuario">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="NumeroRuc" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RazonSocial" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Rubro" nillable="true" type="tns:Rubro" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Empresa" nillable="true" type="tns:Empresa" />
+  <xs:complexType name="Usuario">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Clave" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Usuario" nillable="true" type="tns:Usuario" />
+  <xs:complexType name="OperationStatus">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Messages" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element minOccurs="0" name="Success" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OperationStatus" nillable="true" type="tns:OperationStatus" />
   <xs:complexType name="ArrayOfAnuncio">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Anuncio" nillable="true" type="tns:Anuncio" />

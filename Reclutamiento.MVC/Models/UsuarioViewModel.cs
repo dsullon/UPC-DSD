@@ -35,4 +35,17 @@ namespace Reclutamiento.MVC.Models
         public System.Web.Mvc.SelectList Rubros { get; set; }
 
     }
+
+    public class InicioSesionViewModel
+    {
+        [Required]
+        [Display(Name = "Correo electrónico")]
+        [EmailAddress]
+        public string Email { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        [Display(Name = "Contraseña")]
+        public string Password { get; set; }
+    }
 }

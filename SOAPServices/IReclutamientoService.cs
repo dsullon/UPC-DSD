@@ -60,7 +60,7 @@ namespace SOAPServices
         #region . Anuncio .
 
         [OperationContract]
-        OperationStatus CrearAnuncio(string titulo, string descripcion);
+        OperationStatus CrearAnuncio(Anuncio anuncio);
         [OperationContract]
         Anuncio ObtenerAnuncio(int id);
         [OperationContract]

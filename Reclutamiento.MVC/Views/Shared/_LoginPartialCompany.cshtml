@@ -1,12 +1,13 @@
 ﻿@if (Session["Empresa"] != null)
 {
+    Reclutamiento.MVC.ReclutamientoWS.Empresa user = (Reclutamiento.MVC.ReclutamientoWS.Empresa)HttpContext.Current.Session["Empresa"]; 
     using (Html.BeginForm("LogOff", "Empresa", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
         @Html.AntiForgeryToken()
 
         <ul class="nav navbar-nav navbar-right">
             <li>
-                @Html.ActionLink("Bienvenido: " + Session["EmpresaNombre"] + "!", "Editar", "Empresa", routeValues: null, htmlAttributes: new { title = "Empresa" })
+                @Html.ActionLink("Bienvenido: " + @user.RazonSocial + "!", "Editar", "Empresa", routeValues: null, htmlAttributes: new { title = "Empresa" })
             </li>
             <li><a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a></li>
         </ul>

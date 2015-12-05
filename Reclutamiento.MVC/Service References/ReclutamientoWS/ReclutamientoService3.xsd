@@ -71,15 +71,14 @@
   <xs:element name="CrearAnuncio">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="titulo" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="descripcion" nillable="true" type="xs:string" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" minOccurs="0" name="anuncio" nillable="true" type="q5:Anuncio" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="CrearAnuncioResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" minOccurs="0" name="CrearAnuncioResult" nillable="true" type="q5:OperationStatus" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" minOccurs="0" name="CrearAnuncioResult" nillable="true" type="q6:OperationStatus" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -93,7 +92,7 @@
   <xs:element name="ObtenerAnuncioResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" minOccurs="0" name="ObtenerAnuncioResult" nillable="true" type="q6:Anuncio" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" minOccurs="0" name="ObtenerAnuncioResult" nillable="true" type="q7:Anuncio" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -109,7 +108,7 @@
   <xs:element name="ModificarAnuncioResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" minOccurs="0" name="ModificarAnuncioResult" nillable="true" type="q7:Anuncio" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" minOccurs="0" name="ModificarAnuncioResult" nillable="true" type="q8:Anuncio" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -133,7 +132,7 @@
   <xs:element name="ListarAnunciosResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" minOccurs="0" name="ListarAnunciosResult" nillable="true" type="q8:ArrayOfAnuncio" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" minOccurs="0" name="ListarAnunciosResult" nillable="true" type="q9:ArrayOfAnuncio" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -147,7 +146,7 @@
   <xs:element name="CrearAptitudResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" minOccurs="0" name="CrearAptitudResult" nillable="true" type="q9:Aptitud" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" minOccurs="0" name="CrearAptitudResult" nillable="true" type="q10:Aptitud" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -161,7 +160,7 @@
   <xs:element name="ObtenerAptitudResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" minOccurs="0" name="ObtenerAptitudResult" nillable="true" type="q10:Aptitud" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" minOccurs="0" name="ObtenerAptitudResult" nillable="true" type="q11:Aptitud" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -176,7 +175,7 @@
   <xs:element name="ModificarAptitudResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" minOccurs="0" name="ModificarAptitudResult" nillable="true" type="q11:Aptitud" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" minOccurs="0" name="ModificarAptitudResult" nillable="true" type="q12:Aptitud" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -200,7 +199,7 @@
   <xs:element name="ListarAptitudesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" minOccurs="0" name="ListarAptitudesResult" nillable="true" type="q12:ArrayOfAptitud" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" minOccurs="0" name="ListarAptitudesResult" nillable="true" type="q13:ArrayOfAptitud" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -215,7 +214,7 @@
   <xs:element name="CrearAptitud_AnuncioResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" minOccurs="0" name="CrearAptitud_AnuncioResult" nillable="true" type="q13:Aptitud_Anuncio" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" minOccurs="0" name="CrearAptitud_AnuncioResult" nillable="true" type="q14:Aptitud_Anuncio" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -229,7 +228,7 @@
   <xs:element name="ObtenerAptitud_AnuncioResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" minOccurs="0" name="ObtenerAptitud_AnuncioResult" nillable="true" type="q14:Aptitud_Anuncio" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" minOccurs="0" name="ObtenerAptitud_AnuncioResult" nillable="true" type="q15:Aptitud_Anuncio" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -244,7 +243,7 @@
   <xs:element name="ModificarAptitud_AnuncioResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" minOccurs="0" name="ModificarAptitud_AnuncioResult" nillable="true" type="q15:Aptitud_Anuncio" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" minOccurs="0" name="ModificarAptitud_AnuncioResult" nillable="true" type="q16:Aptitud_Anuncio" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -268,7 +267,7 @@
   <xs:element name="ListarAptitudesPorAnuncioResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" minOccurs="0" name="ListarAptitudesPorAnuncioResult" nillable="true" type="q16:ArrayOfAptitud_Anuncio" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" minOccurs="0" name="ListarAptitudesPorAnuncioResult" nillable="true" type="q17:ArrayOfAptitud_Anuncio" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -40,20 +40,29 @@ namespace Reclutamiento.MVC.Controllers
 
         public ActionResult RegistrarAnuncio()
         {
-            List<Aptitud> aptitudes = proxy.ListarAptitudes();
-            ViewData["Aptitudes"] = new SelectList(aptitudes, "Id", "Descripcion");            
-            return View();
+            if (Session["Empresa"] != null)
+            {
+                List<Aptitud> aptitudes = proxy.ListarAptitudes();
+                ViewData["Aptitudes"] = new SelectList(aptitudes, "Id", "Descripcion");
+                return View();
+            }
+            else
+                return RedirectToAction("LoginEmpresa", "Empresa");
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult RegistrarAnuncio(Anuncio anuncio)
         {
-
-
-            return RedirectToAction("InvitarPostulante","Empresa");
+            OperationStatus estado = proxy.CrearAnuncio(anuncio);
+            return RedirectToAction("InvitarPostulante", "Empresa");
         }
 
-
+        public ActionResult ListarAnuncio()
+        {
+            var empresa = (Empresa)Session["Empresa"];
+            var listado = proxy.ListarAnuncios().Where(c => c.Empresa.Id == empresa.Id).ToList();
+            return View();
+        }
 
 
 

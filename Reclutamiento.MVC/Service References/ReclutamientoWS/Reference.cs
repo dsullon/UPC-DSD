@@ -76,67 +76,6 @@ namespace Reclutamiento.MVC.ReclutamientoWS {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="OperationStatus", Namespace="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio")]
-    [System.SerializableAttribute()]
-    public partial class OperationStatus : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<string> MessagesField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool SuccessField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<string> Messages {
-            get {
-                return this.MessagesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MessagesField, value) != true)) {
-                    this.MessagesField = value;
-                    this.RaisePropertyChanged("Messages");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool Success {
-            get {
-                return this.SuccessField;
-            }
-            set {
-                if ((this.SuccessField.Equals(value) != true)) {
-                    this.SuccessField = value;
-                    this.RaisePropertyChanged("Success");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Anuncio", Namespace="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio")]
     [System.SerializableAttribute()]
     public partial class Anuncio : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -151,10 +90,13 @@ namespace Reclutamiento.MVC.ReclutamientoWS {
         private string DescripcionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Reclutamiento.MVC.ReclutamientoWS.Empresa EmpresaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool EstadoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool FechaPublicacionField;
+        private System.DateTime FechaPublicacionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdField;
@@ -199,6 +141,19 @@ namespace Reclutamiento.MVC.ReclutamientoWS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public Reclutamiento.MVC.ReclutamientoWS.Empresa Empresa {
+            get {
+                return this.EmpresaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmpresaField, value) != true)) {
+                    this.EmpresaField = value;
+                    this.RaisePropertyChanged("Empresa");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public bool Estado {
             get {
                 return this.EstadoField;
@@ -212,7 +167,7 @@ namespace Reclutamiento.MVC.ReclutamientoWS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool FechaPublicacion {
+        public System.DateTime FechaPublicacion {
             get {
                 return this.FechaPublicacionField;
             }
@@ -256,6 +211,61 @@ namespace Reclutamiento.MVC.ReclutamientoWS {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Empresa", Namespace="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio")]
+    [System.SerializableAttribute()]
+    public partial class Empresa : Reclutamiento.MVC.ReclutamientoWS.Usuario {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NumeroRucField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RazonSocialField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Reclutamiento.MVC.ReclutamientoWS.Rubro RubroField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string NumeroRuc {
+            get {
+                return this.NumeroRucField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NumeroRucField, value) != true)) {
+                    this.NumeroRucField = value;
+                    this.RaisePropertyChanged("NumeroRuc");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RazonSocial {
+            get {
+                return this.RazonSocialField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RazonSocialField, value) != true)) {
+                    this.RazonSocialField = value;
+                    this.RaisePropertyChanged("RazonSocial");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Reclutamiento.MVC.ReclutamientoWS.Rubro Rubro {
+            get {
+                return this.RubroField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RubroField, value) != true)) {
+                    this.RubroField = value;
+                    this.RaisePropertyChanged("Rubro");
+                }
             }
         }
     }
@@ -307,6 +317,145 @@ namespace Reclutamiento.MVC.ReclutamientoWS {
                 if ((this.IdField.Equals(value) != true)) {
                     this.IdField = value;
                     this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Usuario", Namespace="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Reclutamiento.MVC.ReclutamientoWS.Empresa))]
+    public partial class Usuario : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ClaveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Clave {
+            get {
+                return this.ClaveField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ClaveField, value) != true)) {
+                    this.ClaveField = value;
+                    this.RaisePropertyChanged("Clave");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OperationStatus", Namespace="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio")]
+    [System.SerializableAttribute()]
+    public partial class OperationStatus : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.List<string> MessagesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool SuccessField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.List<string> Messages {
+            get {
+                return this.MessagesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessagesField, value) != true)) {
+                    this.MessagesField = value;
+                    this.RaisePropertyChanged("Messages");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Success {
+            get {
+                return this.SuccessField;
+            }
+            set {
+                if ((this.SuccessField.Equals(value) != true)) {
+                    this.SuccessField = value;
+                    this.RaisePropertyChanged("Success");
                 }
             }
         }
@@ -417,10 +566,10 @@ namespace Reclutamiento.MVC.ReclutamientoWS {
         System.Threading.Tasks.Task<System.Collections.Generic.List<Reclutamiento.MVC.ReclutamientoWS.Rubro>> ListarRubrosAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReclutamientoService/CrearAnuncio", ReplyAction="http://tempuri.org/IReclutamientoService/CrearAnuncioResponse")]
-        Reclutamiento.MVC.ReclutamientoWS.OperationStatus CrearAnuncio(string titulo, string descripcion);
+        Reclutamiento.MVC.ReclutamientoWS.OperationStatus CrearAnuncio(Reclutamiento.MVC.ReclutamientoWS.Anuncio anuncio);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReclutamientoService/CrearAnuncio", ReplyAction="http://tempuri.org/IReclutamientoService/CrearAnuncioResponse")]
-        System.Threading.Tasks.Task<Reclutamiento.MVC.ReclutamientoWS.OperationStatus> CrearAnuncioAsync(string titulo, string descripcion);
+        System.Threading.Tasks.Task<Reclutamiento.MVC.ReclutamientoWS.OperationStatus> CrearAnuncioAsync(Reclutamiento.MVC.ReclutamientoWS.Anuncio anuncio);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReclutamientoService/ObtenerAnuncio", ReplyAction="http://tempuri.org/IReclutamientoService/ObtenerAnuncioResponse")]
         Reclutamiento.MVC.ReclutamientoWS.Anuncio ObtenerAnuncio(int id);
@@ -574,12 +723,12 @@ namespace Reclutamiento.MVC.ReclutamientoWS {
             return base.Channel.ListarRubrosAsync();
         }
         
-        public Reclutamiento.MVC.ReclutamientoWS.OperationStatus CrearAnuncio(string titulo, string descripcion) {
-            return base.Channel.CrearAnuncio(titulo, descripcion);
+        public Reclutamiento.MVC.ReclutamientoWS.OperationStatus CrearAnuncio(Reclutamiento.MVC.ReclutamientoWS.Anuncio anuncio) {
+            return base.Channel.CrearAnuncio(anuncio);
         }
         
-        public System.Threading.Tasks.Task<Reclutamiento.MVC.ReclutamientoWS.OperationStatus> CrearAnuncioAsync(string titulo, string descripcion) {
-            return base.Channel.CrearAnuncioAsync(titulo, descripcion);
+        public System.Threading.Tasks.Task<Reclutamiento.MVC.ReclutamientoWS.OperationStatus> CrearAnuncioAsync(Reclutamiento.MVC.ReclutamientoWS.Anuncio anuncio) {
+            return base.Channel.CrearAnuncioAsync(anuncio);
         }
         
         public Reclutamiento.MVC.ReclutamientoWS.Anuncio ObtenerAnuncio(int id) {

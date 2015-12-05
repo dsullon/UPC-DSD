@@ -299,21 +299,15 @@ namespace SOAPServices
             }
         }
 
-        public OperationStatus CrearAnuncio(string titulo, string descripcion)
+        public OperationStatus CrearAnuncio(Anuncio anuncio)
         {
             try
             {
                 //Aptitud aptitudesExistentes = AptitudDAO.ListarTodos;
-                Anuncio anuncioCrear = new Anuncio()
-                {
-                    Titulo = titulo,
-                    Descripcion = descripcion,
-                };
-
-                var validationContext = new ValidationContext(anuncioCrear, serviceProvider: null, items: null);
+                var validationContext = new ValidationContext(anuncio, serviceProvider: null, items: null);
                 var validationResults = new List<ValidationResult>();
 
-                var isValid = Validator.TryValidateObject(anuncioCrear, validationContext, validationResults, true);
+                var isValid = Validator.TryValidateObject(anuncio, validationContext, validationResults, true);
 
                 if (!isValid)
                 {
@@ -329,7 +323,7 @@ namespace SOAPServices
                 }
                 else
                 {
-                    AnuncioDAO.Crear(anuncioCrear);
+                    AnuncioDAO.Crear(anuncio);
                     return new OperationStatus { Success = true };
                 }
             }
