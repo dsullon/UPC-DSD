@@ -10,7 +10,8 @@ namespace SOAPServices.Persistencia
     {
         public static string ObtenerCadena()
         {
-            return "Database=Reclutamiento;Data Source=br-cdbr-azure-south-a.cloudapp.net;User Id=b904472183830c;Password=8cfea840";
+            return "Database=Reclutamiento;Data Source=localhost;User Id=root;Password=";
+            //return "Database=Reclutamiento;Data Source=br-cdbr-azure-south-a.cloudapp.net;User Id=b904472183830c;Password=8cfea840";
         }
     }
 }

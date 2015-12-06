@@ -29,16 +29,16 @@ namespace SOAPServices
 
         //#region . Empresa .
 
-        //[OperationContract]
-        //OperationStatus CrearEmpresa(string email, string clave, string razonSocial, string numeroRuc, int idRubro);
+        [OperationContract]
+        OperationStatus CrearPostulaciones(PostulanteAnuncio postulanteAnuncio);
         //[OperationContract]
         //Empresa ObtenerEmpresa(int id);
         //[OperationContract]
         //Empresa ModificarEmpresa(int id, string email, string clave, string razonSocial, string numeroRuc, int idRubro);
         //[OperationContract]
         //void EliminarEmpresa(int id);
-        //[OperationContract]
-        //List<Empresa> ListarEmpresas();
+        [OperationContract]
+        List<PostulanteAnuncio> ListarPostulaciones();
 
         //#endregion
 
@@ -94,15 +94,15 @@ namespace SOAPServices
         #region . Aptitud_Anuncio .
 
         [OperationContract]
-        Aptitud_Anuncio CrearAptitud_Anuncio(int idAnuncio, int idAptitud);
+        AptitudAnuncio CrearAptitud_Anuncio(int idAnuncio, int idAptitud);
         [OperationContract]
-        Aptitud_Anuncio ObtenerAptitud_Anuncio(int id);
+        AptitudAnuncio ObtenerAptitud_Anuncio(int id);
         [OperationContract]
-        Aptitud_Anuncio ModificarAptitud_Anuncio(int idAnuncio, int idAptitud);
+        AptitudAnuncio ModificarAptitud_Anuncio(int idAnuncio, int idAptitud);
         [OperationContract]
         void EliminarAptitud_Anuncio(int id);
         [OperationContract]
-        List<Aptitud_Anuncio> ListarAptitudesPorAnuncio();
+        List<AptitudAnuncio> ListarAptitudesPorAnuncio();
 
         #endregion
     }

@@ -23,11 +23,11 @@
       <property name="ApellidoMaterno" column="apellidoMaterno" />
       <property name="FechaNacimiento" column="fechaNacimiento" />
       <property name="Dni" column="dni" />
-      <set name="Anuncios" table="postulanteAnuncio"
+      <!--<set name="Anuncios" table="postulanteAnuncio"
           inverse="false" lazy="false" fetch="select" cascade="all">
         <key column="idPostulante" />
         <many-to-many column="idAnuncio" class="Anuncio" />
-      </set>
+      </set>-->
     </joined-subclass>
   </class>
 </hibernate-mapping>

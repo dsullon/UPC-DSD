@@ -38,6 +38,18 @@
   <wsdl:message name="IReclutamientoService_ListarRubros_OutputMessage">
     <wsdl:part name="parameters" element="tns:ListarRubrosResponse" />
   </wsdl:message>
+  <wsdl:message name="IReclutamientoService_CrearPostulaciones_InputMessage">
+    <wsdl:part name="parameters" element="tns:CrearPostulaciones" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_CrearPostulaciones_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CrearPostulacionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ListarPostulaciones_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarPostulaciones" />
+  </wsdl:message>
+  <wsdl:message name="IReclutamientoService_ListarPostulaciones_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarPostulacionesResponse" />
+  </wsdl:message>
   <wsdl:message name="IReclutamientoService_CrearAnuncio_InputMessage">
     <wsdl:part name="parameters" element="tns:CrearAnuncio" />
   </wsdl:message>
@@ -149,6 +161,14 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/ListarRubros" message="tns:IReclutamientoService_ListarRubros_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/ListarRubrosResponse" message="tns:IReclutamientoService_ListarRubros_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="CrearPostulaciones">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/CrearPostulaciones" message="tns:IReclutamientoService_CrearPostulaciones_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/CrearPostulacionesResponse" message="tns:IReclutamientoService_CrearPostulaciones_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarPostulaciones">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/ListarPostulaciones" message="tns:IReclutamientoService_ListarPostulaciones_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/ListarPostulacionesResponse" message="tns:IReclutamientoService_ListarPostulaciones_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="CrearAnuncio">
       <wsdl:input wsaw:Action="http://tempuri.org/IReclutamientoService/CrearAnuncio" message="tns:IReclutamientoService_CrearAnuncio_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IReclutamientoService/CrearAnuncioResponse" message="tns:IReclutamientoService_CrearAnuncio_OutputMessage" />
@@ -250,6 +270,24 @@
     </wsdl:operation>
     <wsdl:operation name="ListarRubros">
       <soap:operation soapAction="http://tempuri.org/IReclutamientoService/ListarRubros" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearPostulaciones">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/CrearPostulaciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarPostulaciones">
+      <soap:operation soapAction="http://tempuri.org/IReclutamientoService/ListarPostulaciones" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

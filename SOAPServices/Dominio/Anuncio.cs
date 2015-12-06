@@ -34,8 +34,5 @@ namespace SOAPServices.Dominio
 
         [DataMember]
         public bool Estado { get; set; }
-
-        [DataMember]
-        public ICollection<Aptitud> Aptitudes { get; set; }
     }
 }

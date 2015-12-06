@@ -78,7 +78,12 @@ namespace Reclutamiento.MVC.Controllers
         {
             if (Session["Postulante"] != null)
             {
-                var listado = proxy.ListarAnuncios().Where(c => c.Estado == true).ToList();
+                //var postulante = (Postulante)Session["Postulante"];
+                //var listadoPostulaciones = proxy.ListarPostulaciones().ToList();
+                //var listadoAnuncios = proxy.ListarAnuncios().ToList();
+                //var listado = listadoAnuncios.Where(a => !listadoPostulaciones.Any(m => m.Anuncio.Id == a.Id));
+
+                var listado = proxy.ListarAnuncios().ToList();
                 return View(listado);
             }
             else
@@ -91,45 +96,14 @@ namespace Reclutamiento.MVC.Controllers
             {
                 Anuncio anuncio = proxy.ObtenerAnuncio(int.Parse(id));
                 var postulante = (Postulante)Session["Postulante"];
-                postulante.Anuncios.Add(anuncio);
-
-                try
-                {
-                    string urlPostulante = string.Format("{0}/Postulantes", Generico.UrlServicioRest);
-                    var serial = new DataContractJsonSerializer(typeof(Postulante));
-                    var request = (HttpWebRequest)WebRequest.Create(urlPostulante);
-                    request.Method = "PUT";
-                    request.ContentType = "application/json";
-                    using (var requestStream = request.GetRequestStream())
-                    {
-                        serial.WriteObject(requestStream, postulante);
-                    }
-                    var response = (HttpWebResponse)request.GetResponse();
-                    var status = response.StatusCode;
-                    if (status == HttpStatusCode.OK)
-                    {
-
-                        return RedirectToAction("ListarAnuncioUsuario", "Empresa");
-                    }
-                    else
-                    {
-                        ViewBag.Error = TempData["error"];
-                        return View();
-                    }
-                }
-                catch (WebException ex)
-                {
-                    var json = new StreamReader(ex.Response.GetResponseStream()).ReadToEnd();
-                    var js = new JavaScriptSerializer();
-                    var data = js.Deserialize<string>(json);
-                    ViewBag.Error = TempData["error"];
-                    ModelState.AddModelError(string.Empty, data);
-                    return View(postulante);
-                }
+                proxy.CrearPostulaciones(new PostulanteAnuncio() { Anuncio = anuncio, Postulante = postulante });
+                return RedirectToAction("ListarAnuncioUsuario", "Empresa");
             }
             //return RedirectToAction("ListarAnuncioUsuario", "Empresa");
             return RedirectToAction("LoginPostulante", "Usuario");
         }
+
+
 
 
 

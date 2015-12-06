@@ -44,6 +44,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Net.Http.Formatting, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.0.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
       <Private>True</Private>
@@ -188,7 +189,6 @@
     <Compile Include="Models\Generico.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Postulante.cs" />
     <Compile Include="Models\UsuarioViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\ReclutamientoWS\Reference.cs">
@@ -230,13 +230,16 @@
     <Content Include="Service References\ReclutamientoWS\Reclutamiento.MVC.ReclutamientoWS.Aptitud.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\ReclutamientoWS\Reclutamiento.MVC.ReclutamientoWS.Aptitud_Anuncio.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <Content Include="Service References\ReclutamientoWS\Reclutamiento.MVC.ReclutamientoWS.OperationStatus.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\ReclutamientoWS\Reclutamiento.MVC.ReclutamientoWS.Rubro.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ReclutamientoWS\Reclutamiento.MVC.ReclutamientoWS.AptitudAnuncio.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ReclutamientoWS\Reclutamiento.MVC.ReclutamientoWS.PostulanteAnuncio.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Service References\ReclutamientoWS\ReclutamientoService.disco" />

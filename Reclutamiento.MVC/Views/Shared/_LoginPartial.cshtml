@@ -1,6 +1,6 @@
 ﻿@if (Session["Postulante"] != null)
 {
-    Reclutamiento.MVC.Models.Postulante user = (Reclutamiento.MVC.Models.Postulante)HttpContext.Current.Session["Postulante"];
+    Reclutamiento.MVC.ReclutamientoWS.Postulante user = (Reclutamiento.MVC.ReclutamientoWS.Postulante)HttpContext.Current.Session["Postulante"];
     using (Html.BeginForm("LogOff", "Usuario", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
     @Html.AntiForgeryToken()

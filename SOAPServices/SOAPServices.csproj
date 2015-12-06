@@ -76,6 +76,8 @@
     <EmbeddedResource Include="Dominio\Aptitud.hbm.xml" />
     <EmbeddedResource Include="Dominio\Usuario.hbm.xml" />
     <EmbeddedResource Include="Dominio\Anuncio.hbm.xml" />
+    <EmbeddedResource Include="Dominio\AptitudAnuncio.hbm.xml" />
+    <EmbeddedResource Include="Dominio\PostulanteAnuncio.hbm.xml" />
     <Content Include="EntityServices.svc" />
     <Content Include="ReclutamientoService.svc" />
     <Content Include="ReferenciaExterna\Iesi.Collections.dll" />
@@ -86,11 +88,12 @@
   <ItemGroup>
     <Compile Include="Dominio\Anuncio.cs" />
     <Compile Include="Dominio\Aptitud.cs" />
-    <Compile Include="Dominio\Aptitud_Anuncio.cs" />
+    <Compile Include="Dominio\AptitudAnuncio.cs" />
     <Compile Include="Dominio\Empresa.cs" />
     <Compile Include="Dominio\ErrorData.cs" />
     <Compile Include="Dominio\OperationStatus.cs" />
     <Compile Include="Dominio\Postulante.cs" />
+    <Compile Include="Dominio\PostulanteAnuncio.cs" />
     <Compile Include="Dominio\Rubro.cs" />
     <Compile Include="Dominio\Usuario.cs" />
     <Compile Include="EntityServices.svc.cs">
@@ -104,6 +107,7 @@
     <Compile Include="Persistencia\BaseDAO.cs" />
     <Compile Include="Persistencia\ConexionUtil.cs" />
     <Compile Include="Persistencia\NHibernateHelper.cs" />
+    <Compile Include="Persistencia\PostulanteAnuncioDAO.cs" />
     <Compile Include="Persistencia\RubroDAO.cs" />
     <Compile Include="Persistencia\UsuarioDAO.cs" />
     <Compile Include="ReclutamientoService.svc.cs">

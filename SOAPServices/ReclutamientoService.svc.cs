@@ -25,6 +25,17 @@ namespace SOAPServices
             }
         }
 
+        private PostulanteAnuncioDAO postulanteAnuncioDAO = null;
+        private PostulanteAnuncioDAO PostulanteAnuncioDAO
+        {
+            get
+            {
+                if (postulanteAnuncioDAO == null)
+                    postulanteAnuncioDAO = new PostulanteAnuncioDAO();
+                return postulanteAnuncioDAO;
+            }
+        }
+
         #region . Rubro .
 
         private RubroDAO rubroDAO = null;
@@ -77,48 +88,19 @@ namespace SOAPServices
 
         //#region . Empresa .
 
-        //public OperationStatus CrearEmpresa(string email, string clave, string razonSocial, string numeroRuc, int idRubro)
-        //{
-        //    try
-        //    {
-        //        Rubro rubroExistente = RubroDAO.Obtener(idRubro);
-        //        Empresa empresaCrear = new Empresa()
-        //        {
-        //            Email = email,
-        //            Clave = clave,
-        //            RazonSocial = razonSocial,
-        //            NumeroRuc = numeroRuc,
-        //            Rubro = rubroExistente
-        //        };
+        public OperationStatus CrearPostulaciones(PostulanteAnuncio postulanteAnuncio)
+        {
+            try
+            {
+                PostulanteAnuncioDAO.Crear(postulanteAnuncio);
+                return new OperationStatus { Success = true };
 
-        //        var validationContext = new ValidationContext(empresaCrear, serviceProvider: null, items: null);
-        //        var validationResults = new List<ValidationResult>();
-
-        //        var isValid = Validator.TryValidateObject(empresaCrear, validationContext, validationResults, true);
-
-        //        if (!isValid)
-        //        {
-        //            OperationStatus opStatus = new OperationStatus();
-        //            opStatus.Success = false;
-
-        //            foreach (ValidationResult message in validationResults)
-        //            {
-        //                opStatus.Messages.Add(message.ErrorMessage);
-        //            }
-
-        //            return opStatus;
-        //        }
-        //        else
-        //        {
-        //            UsuarioDAO.Crear(empresaCrear);
-        //            return new OperationStatus { Success = true };
-        //        }
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        return OperationStatus.CreateFromException("Al crear la empresa.", e);
-        //    }
-        //}
+            }
+            catch (Exception e)
+            {
+                return OperationStatus.CreateFromException("Al crear la empresa.", e);
+            }
+        }
 
         //public Empresa ObtenerEmpresa(int id)
         //{
@@ -146,10 +128,10 @@ namespace SOAPServices
         //    UsuarioDAO.Eliminar(empresaExistente);
         //}
 
-        //public List<Empresa> ListarEmpresas()
-        //{
-        //    return (UsuarioDAO.ListarTodos() as List<Empresa>).ToList();
-        //}
+        public List<PostulanteAnuncio> ListarPostulaciones()
+        {
+            return PostulanteAnuncioDAO.ListarTodos().ToList();
+        }
 
         //#endregion
 
@@ -377,38 +359,38 @@ namespace SOAPServices
             }
         }
 
-        public Aptitud_Anuncio CrearAptitud_Anuncio(int idanuncio, int idaptitud)
+        public AptitudAnuncio CrearAptitud_Anuncio(int idanuncio, int idaptitud)
         {
-            Aptitud_Anuncio aptitud_anuncioCrear = new Aptitud_Anuncio()
-            {
-                IdAnuncio = idanuncio,
-                IdAptitud = idaptitud
-            };
+            AptitudAnuncio aptitud_anuncioCrear = new AptitudAnuncio();
+            //{
+            //    Anuncio = idanuncio,
+            //    Aptitud = idaptitud
+            //};
             return Aptitud_AnuncioDAO.Crear(aptitud_anuncioCrear);
         }
 
-        public Aptitud_Anuncio ObtenerAptitud_Anuncio(int id)
+        public AptitudAnuncio ObtenerAptitud_Anuncio(int id)
         {
             return Aptitud_AnuncioDAO.Obtener(id);
         }
 
-        public Aptitud_Anuncio ModificarAptitud_Anuncio(int idanuncio, int idaptitud)
+        public AptitudAnuncio ModificarAptitud_Anuncio(int idanuncio, int idaptitud)
         {
-            Aptitud_Anuncio aptitud_anuncioModificar = new Aptitud_Anuncio()
-            {
-                IdAnuncio = idanuncio,
-                IdAptitud = idaptitud
-            };
+            AptitudAnuncio aptitud_anuncioModificar = new AptitudAnuncio();
+            //{
+            //    Anuncio = idanuncio,
+            //    Aptitud = idaptitud
+            //};
             return Aptitud_AnuncioDAO.Modificar(aptitud_anuncioModificar);
         }
 
         public void EliminarAptitud_Anuncio(int id)
         {
-            Aptitud_Anuncio aptitud_anuncioExistente = Aptitud_AnuncioDAO.Obtener(id);
+            AptitudAnuncio aptitud_anuncioExistente = Aptitud_AnuncioDAO.Obtener(id);
             Aptitud_AnuncioDAO.Eliminar(aptitud_anuncioExistente);
         }
 
-        public List<Aptitud_Anuncio> ListarAptitudesPorAnuncio()
+        public List<AptitudAnuncio> ListarAptitudesPorAnuncio()
         {
             return Aptitud_AnuncioDAO.ListarTodos().ToList();
         }

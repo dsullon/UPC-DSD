@@ -114,7 +114,7 @@ namespace SOAPServicesTest
                 var json = new StreamReader(ex.Response.GetResponseStream()).ReadToEnd();
                 var js = new JavaScriptSerializer();
                 var data = js.Deserialize<string>(json);
-                Assert.AreEqual("Empresa no encontrada.", data);
+                Assert.AreEqual("El RUC ingresado no se encuentra registrado en los sistemas tributarios.", data);
             }
         }
 

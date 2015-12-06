@@ -14,9 +14,16 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfRubro" nillable="true" type="tns:ArrayOfRubro" />
+  <xs:complexType name="PostulanteAnuncio">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Anuncio" nillable="true" type="tns:Anuncio" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Postulante" nillable="true" type="tns:Postulante" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PostulanteAnuncio" nillable="true" type="tns:PostulanteAnuncio" />
   <xs:complexType name="Anuncio">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Aptitudes" nillable="true" type="tns:ArrayOfAptitud" />
       <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Empresa" nillable="true" type="tns:Empresa" />
       <xs:element minOccurs="0" name="Estado" type="xs:boolean" />
@@ -26,19 +33,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Anuncio" nillable="true" type="tns:Anuncio" />
-  <xs:complexType name="ArrayOfAptitud">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Aptitud" nillable="true" type="tns:Aptitud" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfAptitud" nillable="true" type="tns:ArrayOfAptitud" />
-  <xs:complexType name="Aptitud">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Id" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Aptitud" nillable="true" type="tns:Aptitud" />
   <xs:complexType name="Empresa">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:Usuario">
@@ -59,6 +53,20 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Usuario" nillable="true" type="tns:Usuario" />
+  <xs:complexType name="Postulante">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Usuario">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ApellidoMaterno" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ApellidoPaterno" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Dni" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FechaNacimiento" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Postulante" nillable="true" type="tns:Postulante" />
   <xs:complexType name="OperationStatus">
     <xs:sequence>
       <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Messages" nillable="true" type="q1:ArrayOfstring" />
@@ -66,23 +74,43 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="OperationStatus" nillable="true" type="tns:OperationStatus" />
+  <xs:complexType name="ArrayOfPostulanteAnuncio">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PostulanteAnuncio" nillable="true" type="tns:PostulanteAnuncio" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPostulanteAnuncio" nillable="true" type="tns:ArrayOfPostulanteAnuncio" />
   <xs:complexType name="ArrayOfAnuncio">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Anuncio" nillable="true" type="tns:Anuncio" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfAnuncio" nillable="true" type="tns:ArrayOfAnuncio" />
-  <xs:complexType name="Aptitud_Anuncio">
+  <xs:complexType name="Aptitud">
     <xs:sequence>
-      <xs:element minOccurs="0" name="IdAnuncio" type="xs:int" />
-      <xs:element minOccurs="0" name="IdAptitud" type="xs:int" />
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="Aptitud_Anuncio" nillable="true" type="tns:Aptitud_Anuncio" />
-  <xs:complexType name="ArrayOfAptitud_Anuncio">
+  <xs:element name="Aptitud" nillable="true" type="tns:Aptitud" />
+  <xs:complexType name="ArrayOfAptitud">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Aptitud_Anuncio" nillable="true" type="tns:Aptitud_Anuncio" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Aptitud" nillable="true" type="tns:Aptitud" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfAptitud_Anuncio" nillable="true" type="tns:ArrayOfAptitud_Anuncio" />
+  <xs:element name="ArrayOfAptitud" nillable="true" type="tns:ArrayOfAptitud" />
+  <xs:complexType name="AptitudAnuncio">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Anuncio" nillable="true" type="tns:Anuncio" />
+      <xs:element minOccurs="0" name="Aptitud" nillable="true" type="tns:Aptitud" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AptitudAnuncio" nillable="true" type="tns:AptitudAnuncio" />
+  <xs:complexType name="ArrayOfAptitudAnuncio">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AptitudAnuncio" nillable="true" type="tns:AptitudAnuncio" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAptitudAnuncio" nillable="true" type="tns:ArrayOfAptitudAnuncio" />
 </xs:schema>

@@ -27,6 +27,8 @@ namespace SOAPServices.Persistencia
                     conf.SetProperty("dialect", "NHibernate.Dialect.MySQLDialect");
                     conf.SetProperty("command_timeout", "60");
                     conf.SetProperty("query.substitutions", "true 1, false 0, yes 'Y', no 'N'");
+                    //this was added
+                    conf.SetProperty("use_proxy_validator", "false");
                     conf.AddAssembly(typeof(NHibernateHelper).Assembly);
                     _fabrica = conf.BuildSessionFactory();
                 }

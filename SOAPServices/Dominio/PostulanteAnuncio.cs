@@ -7,12 +7,15 @@ using System.Web;
 namespace SOAPServices.Dominio
 {
     [DataContract]
-    public class Aptitud_Anuncio
+    public class PostulanteAnuncio
     {
         [DataMember]
-        public int IdAnuncio { get; set; }
+        public int Id { get; set; }
 
         [DataMember]
-        public int IdAptitud { get; set; }
+        public Postulante Postulante { get; set; }
+
+        [DataMember]
+        public Anuncio Anuncio { get; set; }
     }
 }

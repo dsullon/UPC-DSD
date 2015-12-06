@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Messaging;
 using System.Net;
 using System.Net.Mail;
 using System.Runtime.Serialization.Json;
@@ -97,6 +98,25 @@ namespace Reclutamiento.MVC.Controllers
                     ModelState.AddModelError(string.Empty, data);
                     AsignarRubros(model);
                     return View(model);
+                }
+                catch (Exception)
+                {
+                    //ESCRIBIR COLA
+                    string rutaCola = @".\private$\Empresa";
+                    if (!MessageQueue.Exists(rutaCola))
+                        MessageQueue.Create(rutaCola);
+                    MessageQueue cola = new MessageQueue(rutaCola);
+                    Message mensaje = new Message();
+                    mensaje.Label = "Registro existente";
+                    mensaje.Body = new Empresa()
+                    {
+                        NumeroRuc = model.NumeroRuc,
+                        RazonSocial = model.RazonSocial,
+                        Rubro = rubro,
+                        Email = model.EmailContacto,
+                        Clave = model.Password
+                    };
+                    cola.Send(mensaje);
                 }
             }
 

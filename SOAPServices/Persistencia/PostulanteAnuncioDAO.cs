@@ -2,7 +2,7 @@
 
 namespace SOAPServices.Persistencia
 {
-    public class Aptitud_AnuncioDAO : BaseDAO<AptitudAnuncio, int>
+    public class PostulanteAnuncioDAO : BaseDAO<PostulanteAnuncio, int>
     {
     }
 }
